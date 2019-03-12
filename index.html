@@ -39,8 +39,8 @@
               <div class="screen disabled" data-name="home">
                       <div class="mdc-layout-grid mdc-layout-grid__cell--span-12">
                         <div class="mdc-layout-grid__inner">
-                          <div class="mdc-layout-grid__cell--span-12"><button class="mdc-button">select class</button></div>
-                          <div class="mdc-layout-grid__cell"><button class="mdc-button">schedule</button></div>
+                          <div class="mdc-layout-grid__cell--span-12"><button class="mdc-button">Prepare Class B333</button></div>
+                          <div class="mdc-layout-grid__cell"><button class="mdc-button">Start Class</button></div>
                                 <div class="mdc-layout-grid__cell"><button class="mdc-button" onclick="rotateScreen()">rotate</button></div>
                           <div class="mdc-layout-grid__cell"></div>
                         </div>
@@ -100,9 +100,6 @@
 
 
 <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-<div class="pusher-socket">
-   <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
-</div>
 
 <script src="js/controller.js"></script>
 
@@ -127,17 +124,28 @@ toggleNavigation();
 </div>
   <script>
 
+/* Working client connection to heroku server for websocket client authentication */
   // Enable pusher logging - don't include this in production
+
+
      Pusher.logToConsole = true;
 
-         var pusher = new Pusher('d698d9aba463d53b13b5', {
-           cluster: 'us3'
-         });
+     var pusher = new Pusher('d698d9aba463d53b13b5', {
+       cluster: 'us3',
+       forceTLS: true,
+        authEndpoint: 'https://portalwebsocket.herokuapp.com/pusher/auth' // Custom heroku websocket authentication endpoint
+     });
 
      var channel = pusher.subscribe('private-channel');
-     channel.bind('my-event', function(data) {
-       alert(JSON.stringify(data));
+     channel.bind('pusher:subscription_succeeded', function() {
+       var triggered = channel.trigger('client-event', {type:"status",id:"controller"});
      });
+
+
+     $('button').click(function(){
+       var val = $(this).text();
+       channel.trigger('client-event', { type: 'pusher', value: val });
+     })
    </script>
 
 </html>
