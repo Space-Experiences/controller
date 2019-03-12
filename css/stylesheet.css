@@ -9,9 +9,9 @@ html{
 body{
   color:black;
   background-color: white;
-  padding: 0px;
-  margin: 0px;
-font-family: Roboto;
+  /* padding: 0px; */
+  /* margin: 0px; */
+  font-family: Roboto;
 }
 body div{
   /* color:inherit; */
@@ -68,7 +68,7 @@ transition:height .15s 0s;
   width:100%;
   right:0px;
   background-color: inherit;
-  text-align: center;
+  text-align: unset;
   overflow-y: scroll;
 }
 .screen.disabled{

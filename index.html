@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <meta name="viewport" content="width=device-width, user-scalable=no" />
   <link rel="manifest" href="manifest.json" />
-    
+
     <title>Portal</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/&#10;css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"> <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -34,11 +34,14 @@
 
               <!-- loading screen -->
               <div class="screen disabled enabled" style="opacity:1;" data-name="loading">
+                <div class="screen_inner">
                 <div class="loading-visual"><img src="images/loadingblob.gif"></div>
-              </div>
+              </div><!-- End screen_inner -->
+              </div><!-- End screen -->
 
 
               <div class="screen disabled" data-name="home">
+                <div class="screen_inner">
                       <div class="mdc-layout-grid mdc-layout-grid__cell--span-12">
                         <div class="mdc-layout-grid__inner">
                           <div class="mdc-layout-grid__cell--span-12">
@@ -48,15 +51,17 @@
                           <div class="mdc-layout-grid__cell"></div>
                         </div>
                         </div>
-              </div>
-
+                </div><!-- End screen_inner -->
+              </div><!-- End screen -->
 
               <div class="screen disabled" data-name="list">
+                <div class="screen_inner">
                       <div class="mdc-layout-grid mdc-layout-grid__cell--span-12">
                         <div class="mdc-layout-grid__inner">
                           <div class="mdc-layout-grid__cell--span-12">Select a class</div>
                           <br>
                           <div class="mdc-layout-grid__cell--span-12 class-list">
+                            <div id="class-list"></div>
                             <button data-type="pusher" class="mdc-button" data-type="pusher" data-value="Prepare Class B101">B101</button>
                             <button data-type="pusher" class="mdc-button" data-value="Prepare Class B102">B102</button>
                             <button data-type="pusher" class="mdc-button" data-value="Prepare Class B103">B103</button>
@@ -71,7 +76,8 @@
                           <br>
                         </div>
                         </div>
-              </div>
+              </div><!-- End screen_inner -->
+            </div><!-- End screen -->
 
 
 <!-- End screens -->
@@ -124,7 +130,8 @@
 
 
 <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-
+<script src="js/information-manager.js"></script>
+<script src="js/socket-manager.js"></script>
 <script src="js/controller.js"></script>
 
   <script>
@@ -153,6 +160,9 @@ toggleNavigation();
 /* Working client connection to heroku server for websocket client authentication */
   // Enable pusher logging - don't include this in production
 
+    // Parse incoming messages from pusher socket.
+    var classData = [];
+    var socketManager = new SocketManager();
 
      Pusher.logToConsole = true;
 
@@ -164,8 +174,18 @@ toggleNavigation();
 
      var channel = pusher.subscribe('private-channel');
      channel.bind('pusher:subscription_succeeded', function() {
-       var triggered = channel.trigger('client-event', {type:"status",id:"controller"});
+       // Indicate controller is on
+       channel.trigger('client-event', {type:"status",id:"controller"});
+       channel.trigger('client-event', {value:'returnAirtableClassData'});
      });
+
+     channel.bind('portal-event', function(msg) {
+       socketManager.parsePortalEvent(msg);
+     });
+
+
+
+
 
 
      $('button').click(function(){
@@ -181,6 +201,14 @@ toggleNavigation();
      $('.nav-btn').click(function(){
        var sectionName = $(this).attr('data-name');
        showScreen(sectionName);
+     });
+
+
+     $(document).ready(function(){
+
+       // Get the
+
+
      });
    </script>
 
