@@ -28,9 +28,10 @@ body div{
   right:0px;
   width:100%;
   margin:auto;
-bottom:0px;
-transition:bottom .15s 0s;
+  bottom:0px;
+  transition:bottom .15s 0s;
   height:50px;
+  background-color: white;
 }
 .main.nav-disabled{
 
@@ -38,7 +39,7 @@ height:100vh;
 transition:height .15s 0s;
 }
 .main.nav-disabled.nav-enabled{
-  height:90vh;
+  height: 90vh;
 }
 .main.nav-disabled .navigation{
   bottom:-10vh;
@@ -66,6 +67,8 @@ transition:height .15s 0s;
   width:100%;
   right:0px;
   background-color: inherit;
+  text-align: center;
+  overflow-y: scroll;
 }
 .screen.disabled{
 z-index: 0;
@@ -85,4 +88,20 @@ z-index: 10;
   margin:auto;
   top: 20%;
   position: relative;
+  margin: auto;
+  top: 20%;
+  position: relative;
+
+  left: 0px;
+  right: 0px;
+  width: auto;
+  height: auto;
+
+  text-align: center;
+}
+
+.class-list button{
+  width: 100%;
+  margin: 5% 0%;
+  animation:;
 }

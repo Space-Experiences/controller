@@ -39,8 +39,9 @@
               <div class="screen disabled" data-name="home">
                       <div class="mdc-layout-grid mdc-layout-grid__cell--span-12">
                         <div class="mdc-layout-grid__inner">
-                          <div class="mdc-layout-grid__cell--span-12"><button class="mdc-button">Prepare Class B333</button></div>
-                          <div class="mdc-layout-grid__cell"><button class="mdc-button">Start Class</button></div>
+                          <div class="mdc-layout-grid__cell--span-12">
+                            <button data-type="pusher" class="mdc-button" data-value="Prepare Class B333">B333</button></div>
+                          <div class="mdc-layout-grid__cell"><button data-type="pusher" class="mdc-button"  data-value="Start Class">Start</button></div>
                                 <div class="mdc-layout-grid__cell"><button class="mdc-button" onclick="rotateScreen()">rotate</button></div>
                           <div class="mdc-layout-grid__cell"></div>
                         </div>
@@ -48,6 +49,24 @@
               </div>
 
 
+              <div class="screen disabled" data-name="list">
+                      <div class="mdc-layout-grid mdc-layout-grid__cell--span-12">
+                        <div class="mdc-layout-grid__inner">
+                          <div class="mdc-layout-grid__cell--span-12">Select a class</div>
+                          <br>
+                          <div class="mdc-layout-grid__cell--span-12 class-list">
+                            <button data-type="pusher" class="mdc-button" data-type="pusher" data-value="Prepare Class B101">B101</button>
+                            <button data-type="pusher" class="mdc-button" data-value="Prepare Class B102">B102</button>
+                            <button data-type="pusher" class="mdc-button" data-value="Prepare Class B103">B103</button>
+                            <button data-type="pusher" class="mdc-button" data-value="Prepare Class B104">B104</button>
+                            <button data-type="pusher" class="mdc-button" data-value="Prepare Class B105">B105</button>
+                            <button data-type="pusher" class="mdc-button" data-value="Prepare Class B106">B106</button>
+                            <button data-type="pusher" class="mdc-button" data-value="Prepare Class B109">B109</button>
+                            <button data-type="pusher" class="mdc-button" data-value="Prepare Class B110">B110</button>
+                          </div>
+                        </div>
+                        </div>
+              </div>
 
 
 <!-- End screens -->
@@ -58,7 +77,7 @@
                 <div class="mdc-tab-scroller__scroll-area">
                   <div class="mdc-tab-scroller__scroll-content">
                     <!-- Nav tab -->
-                    <button class="mdc-tab mdc-tab--active" role="tab" aria-selected="true" tabindex="0">
+                    <button class="mdc-tab mdc-tab--active nav-btn" role="tab" data-name="home" aria-selected="true" tabindex="0">
                       <span class="mdc-tab__content">
                         <span class="mdc-tab__icon material-icons" aria-hidden="true">home</span>
                         <span class="mdc-tab__text-label"></span>
@@ -70,7 +89,7 @@
                     </button>
 
                     <!-- Nav tab -->
-                    <button class="mdc-tab " role="tab" aria-selected="false" tabindex="1">
+                    <button class="mdc-tab  nav-btn" role="tab" aria-selected="false" data-name="list" tabindex="1">
                       <span class="mdc-tab__content">
                         <span class="mdc-tab__icon material-icons" aria-hidden="true">list</span>
                         <span class="mdc-tab__text-label"></span>
@@ -143,9 +162,19 @@ toggleNavigation();
 
 
      $('button').click(function(){
-       var val = $(this).text();
-       channel.trigger('client-event', { type: 'pusher', value: val });
-     })
+
+       var val = $(this).attr('data-value');
+       var type = $(this).attr('data-type');
+       if(type == 'pusher'){
+                 channel.trigger('client-event', { type: 'pusher', value: val });
+       }
+
+     });
+
+     $('.nav-btn').click(function(){
+       var sectionName = $(this).attr('data-name');
+       showScreen(sectionName);
+     });
    </script>
 
 </html>
