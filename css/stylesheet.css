@@ -32,6 +32,7 @@ body div{
   transition:bottom .15s 0s;
   height:50px;
   background-color: white;
+  z-index: 9999999;
 }
 .main.nav-disabled{
 
