@@ -5,6 +5,7 @@
   "start_url": "/controller/index.html",
   "theme_color": "#000000",
   "background_color": "#000000",
+  "display" :"fullscreen",
   "icons": [
     {
       "src": "icon-192.png",
