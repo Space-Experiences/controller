@@ -41,6 +41,7 @@
                         <div class="mdc-layout-grid__inner">
                           <div class="mdc-layout-grid__cell--span-12"><button class="mdc-button">select class</button></div>
                           <div class="mdc-layout-grid__cell"><button class="mdc-button">schedule</button></div>
+                                <div class="mdc-layout-grid__cell"><button class="mdc-button" onclick="rotateScreen()">rotate</button></div>
                           <div class="mdc-layout-grid__cell"></div>
                         </div>
                         </div>
@@ -98,27 +99,15 @@
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 
 
-
 <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
-
-<script src="js/controller.js"></script>
 <div class="pusher-socket">
    <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
 </div>
+
+<script src="js/controller.js"></script>
+
   <script>
 
-  // Enable pusher logging - don't include this in production
-     Pusher.logToConsole = true;
-     Pusher.logToConsole = true;
-
-         var pusher = new Pusher('d698d9aba463d53b13b5', {
-           cluster: 'us3'
-         });
-
-     var channel = pusher.subscribe('private-channel');
-     channel.bind('my-event', function(data) {
-       alert(JSON.stringify(data));
-     });
 
    </script>
 
@@ -130,3 +119,25 @@ toggleNavigation();
 </script>
 
 <script>mdc.autoInit();</script>
+
+
+
+<div class="pusher-socket">
+   <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+</div>
+  <script>
+
+  // Enable pusher logging - don't include this in production
+     Pusher.logToConsole = true;
+
+         var pusher = new Pusher('d698d9aba463d53b13b5', {
+           cluster: 'us3'
+         });
+
+     var channel = pusher.subscribe('private-channel');
+     channel.bind('my-event', function(data) {
+       alert(JSON.stringify(data));
+     });
+   </script>
+
+</html>

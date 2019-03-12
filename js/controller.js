@@ -1,4 +1,9 @@
 
+var rotateAmount = 0;
+function rotateScreen(){
+  rotateAmount -=90;
+  TweenMax.set('body',{rotation:rotateAmount})
+}
 
 var loadingOverlayElement = $('.screen[data-name="loading"]');
 var $params = {
