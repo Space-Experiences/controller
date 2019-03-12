@@ -1,0 +1,88 @@
+:root {
+  --mdc-theme-primary: #000000;
+  --mdc-theme-secondary: #676767;
+  --mdc-theme-background: #fff;
+}
+html{
+
+}
+body{
+  color:black;
+  background-color: white;
+  padding: 0px;
+  margin: 0px;
+font-family: Roboto;
+}
+body div{
+  /* color:inherit; */
+  /* background-color: inherit; */
+}
+.main{
+  display:block;
+  position: relative;
+  height: 100%;
+}
+.navigation{
+  position:fixed;
+  left:0px;
+  right:0px;
+  width:100%;
+  margin:auto;
+bottom:0px;
+transition:bottom .15s 0s;
+  height:50px;
+}
+.main.nav-disabled{
+
+height:100vh;
+transition:height .15s 0s;
+}
+.main.nav-disabled.nav-enabled{
+  height:90vh;
+}
+.main.nav-disabled .navigation{
+  bottom:-10vh;
+}
+.main.nav-disabled.nav-enabled .navigation{
+  bottom:0vh;
+  z-index: 10000;
+  pointer-events: all;
+}
+.navigation.disabled{
+    bottom:0px;
+
+}
+.navigation.disabled.enabled{
+
+}
+
+.screen{
+  text-align: left;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width:100%;
+  right:0px;
+  background-color: inherit;
+}
+.screen.disabled{
+z-index: 0;
+opacity: 0;
+pointer-events: none;
+}
+.screen.disabled.enabled{
+z-index: 10;
+}
+
+
+.screen[data-name="loading"]{
+  z-index: 1000 !important;
+}
+
+.loading-visual{
+  margin:auto;
+  top: 20%;
+  position: relative;
+}
