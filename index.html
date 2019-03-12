@@ -12,8 +12,25 @@
     <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
     <link rel="stylesheet" href="css/stylesheet.css">
 
-<body class="">
+
+<body class="top-bar-menu top-bar-back top-bar-neutral">
+
+  <header class=" mdc-top-app-bar mdc-top-app-bar--fixed app-top-bar" data-mdc-auto-init="MDCTopAppBar">
+    <div class="mdc-top-app-bar__row">
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+        <button class="material-icons mdc-top-app-bar__navigation-icon--unbounded" id="top-app-btn-back">back</button>
+        <button class="material-icons mdc-top-app-bar__navigation-icon--unbounded" id="top-app-btn-menu">menu</button>
+        <span class="mdc-top-app-bar__title top-app-bar-title">San Francisco, CA</span> </section>
+      <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+        <button class="material-icons mdc-top-app-bar__action-item--unbounded" id="toggle-lock-state-btn" style="opacity:0;" aria-label="lock"><i class="material-icons">lock</i></button>
+      </section>
+    </div>
+  </header>
+
     <div class="main nav-disabled">
+
+
+
 
         <!-- Sections are seperate screens -->
 
@@ -88,9 +105,9 @@
                 <div class="mdc-tab-scroller__scroll-area">
                   <div class="mdc-tab-scroller__scroll-content">
                     <!-- Nav tab -->
-                    <button class="mdc-tab mdc-tab--active nav-btn" role="tab" data-name="home" aria-selected="true" tabindex="0">
+                    <button class="mdc-tab mdc-tab--active nav-btn" role="tab" data-name="home" data-screen-name="Portal overview" aria-selected="true" tabindex="0">
                       <span class="mdc-tab__content">
-                        <span class="mdc-tab__icon material-icons" aria-hidden="true">home</span>
+                          <span class="mdc-tab__icon material-icons" aria-hidden="true">assessment</span>
                         <span class="mdc-tab__text-label"></span>
                       </span>
                       <span class="mdc-tab-indicator mdc-tab-indicator--active">
@@ -100,7 +117,7 @@
                     </button>
 
                     <!-- Nav tab -->
-                    <button class="mdc-tab  nav-btn" role="tab" aria-selected="false" data-name="list" tabindex="1">
+                    <button class="mdc-tab  nav-btn" role="tab" aria-selected="false" data-name="list" data-screen-name="Classes" tabindex="1">
                       <span class="mdc-tab__content">
                         <span class="mdc-tab__icon material-icons" aria-hidden="true">list</span>
                         <span class="mdc-tab__text-label"></span>
@@ -143,7 +160,7 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
 
 <script>
 setTimeout(function(){
-showScreen('home');
+showScreen('home','Portal');
 toggleNavigation();
 },2000);
 </script>

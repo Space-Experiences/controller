@@ -3,12 +3,12 @@
 // Returns html element for class overview card.
 function returnClassCard(info){
 
-    var h = '<div class="mdc-card demo-basic-with-header" data-mdc-auto-init="MDCCard">';
-      h+='<div class="mdc-card__primary-action demo-card__primary-action" tabindex="0">';
-        h+='<div class="mdc-card__media mdc-card__media--square demo-card__media" style="background-image: url(&quot;https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg&quot;);"></div>';
-        h+='<div class="demo-card__primary">';
-          h+='<h2 class="demo-card__title mdc-typography mdc-typography--headline6">Our Changing Planet</h2>';
-          h+='<h3 class="demo-card__subtitle mdc-typography mdc-typography--subtitle2">by Kurt Wagner</h3>';
+    var h = '<div class="mdc-card class-card" data-mdc-auto-init="MDCCard">';
+      h+='<div class="mdc-card__primary-action class-card_action" tabindex="0">';
+        h+='<div class="mdc-card__media mdc-card__media--square class-card_media" style="background-image: url(&quot;https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg&quot;);"></div>';
+        h+='<div class="">';
+          h+='<h2 class="demo-card__title mdc-typography mdc-typography--headline6 class-card_headline">'+info.classID+'</h2>';
+          h+='<h3 class="demo-card__subtitle mdc-typography mdc-typography--subtitle2 class-card_subtitle">'+info.instructorName+'</h3>';
         h+='</div>';
       h+='</div>';
       h+='<div class="mdc-card__actions">';

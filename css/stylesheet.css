@@ -6,21 +6,39 @@
 html{
 
 }
-body{
-  color:black;
-  background-color: white;
-  /* padding: 0px; */
-  /* margin: 0px; */
-  font-family: Roboto;
-}
+body{color:black;background-color: white;padding: 0px;margin: 0px;font-family: Roboto;overflow: hidden;user-select: none;}
 body div{
   /* color:inherit; */
   /* background-color: inherit; */
 }
+
+body.top-bar-menu{}
+body.top-bar-back{}
+body.top-bar-neutral{}
+
+.top-app-bar-title{
+  font-size: .8em;color: #000;text-transform: uppercase;letter-spacing: 0.1em;
+  font-weight:600;
+  
+}
+
+/* When top app bar is on screen with no back button or menu*/
+body.top-bar-menu.top-bar-back.top-bar-neutral #top-app-btn-menu,
+body.top-bar-menu.top-bar-back.top-bar-neutral #top-app-btn-back{
+display: none;
+}
+body.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title{
+  }
+body.top-bar-menu.top-bar-back{
+
+}
+.app-top-bar{background-color: white;color: black;}
+
 .main{
   display:block;
   position: relative;
-  height: 100%;
+  height: calc(100vh - 56px);
+  top: 56px;
 }
 .navigation{
   position:fixed;
@@ -105,4 +123,21 @@ z-index: 10;
   width: 100%;
   margin: 5% 0%;
   animation:;
+}
+
+/* Class cards */
+.class-card{
+padding:.6em 1em;
+}
+
+.class-card_headline{
+
+}
+.class-card_subtitle{
+  text-align:left;
+
+}
+
+.class-card_media{
+  display:none;
 }
