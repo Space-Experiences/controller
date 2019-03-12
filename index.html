@@ -100,7 +100,27 @@
 
 
 <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
 <script src="js/controller.js"></script>
+<div class="pusher-socket">
+   <script src="https://js.pusher.com/4.4/pusher.min.js"></script>
+</div>
+  <script>
+
+  // Enable pusher logging - don't include this in production
+     Pusher.logToConsole = true;
+     Pusher.logToConsole = true;
+
+         var pusher = new Pusher('d698d9aba463d53b13b5', {
+           cluster: 'us3'
+         });
+
+     var channel = pusher.subscribe('private-channel');
+     channel.bind('my-event', function(data) {
+       alert(JSON.stringify(data));
+     });
+
+   </script>
 
 <script>
 setTimeout(function(){
