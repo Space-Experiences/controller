@@ -27,13 +27,41 @@ function toggleNavigation(command){
 }
 
 var appBarTitle = $('.top-app-bar-title');
-function changeTopAppBarText(text){
+var appBarBackButton = $('#top-app-btn-back');
+var appBarTitleHistory = []; // Store navigation for titles.
+var appBarTitleButtons = {showing:false,button:false};
+function changeTopAppBarText(text,button = false){
   let tl = new TimelineMax({});
   tl.to(appBarTitle,.15,{opacity:0,x:10,ease:Expo.easeIn});
   tl.add(function(){
     $(appBarTitle).text(text);
   })
   tl.to(appBarTitle,.25,{opacity:1,x:1,ease:Expo.easeOut});
+
+  if(button){
+      if(button == 'back'){
+        console.log('show back button');
+        TweenMax.set(appBarBackButton,{clearProps:"all"});
+        $(appBarBackButton).show();
+        TweenMax.from(appBarBackButton,.15,{scale:0,ease:Back.easeOut});
+        appBarTitleButtons.showing = true;
+        appBarTitleButtons.button = appBarBackButton;
+      }
+  }
+  else{
+    if(appBarTitleButtons.showing == true){
+      let tl = new TimelineMax({});
+      tl.to(appBarTitleButtons.button,.15,{scale:0});
+      tl.add(function(){
+        $(appBarTitleButtons.button).hide();
+        TweenMax.set(appBarTitleButtons.button,{clearProps:"all"});
+        appBarTitleButtons.button = false;
+        appBarTitleButtons.showing = false;
+      });
+    }
+  }
+
+  appBarTitleHistory.unshift(text);
 
 }
 

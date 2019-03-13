@@ -2,6 +2,7 @@
   --mdc-theme-primary: #000000;
   --mdc-theme-secondary: #676767;
   --mdc-theme-background: #fff;
+  font-size: 16px;
 }
 html{
 
@@ -24,14 +25,10 @@ body.top-bar-neutral{}
 
 /* When top app bar is on screen with no back button or menu*/
 body.top-bar-menu.top-bar-back.top-bar-neutral #top-app-btn-menu,
-body.top-bar-menu.top-bar-back.top-bar-neutral #top-app-btn-back{
-display: none;
-}
+body.top-bar-menu.top-bar-back.top-bar-neutral #top-app-btn-back{display: none;background: unset;border: none;}
 body.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title{
   }
-body.top-bar-menu.top-bar-back{
-
-}
+body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
 .app-top-bar{background-color: white;color: black;z-index: 9999;}
 
 .main{
@@ -144,13 +141,16 @@ z-index: 10;
 }
 
 /* Class cards */
-.class-card{padding: 16px;margin: 24px -4px;border-radius: 0px;box-shadow: 0px 2px 0px -2px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 4px 15px 0px hsla(0, 0%, 17%, 0.12);transition: none;}
+.class-card{padding: 16px;margin: 24px -4px;border-radius: 0px;box-shadow: 0px 2px 0px -2px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 4px 15px 0px hsla(0, 0%, 17%, 0.12);transition: none;margin: 20px 18px;}
 
-.class-card_headline{margin-top: 0px;}
+.class-card_headline{margin-top: 0px;margin-bottom: 0px;/* font-weight: 400; */font-size: 16px;}
 .class-card_subtitle{
   text-align:left;
   margin-top: -4px;
   padding-top: 0px;
+  font-size: 12px;
+  letter-spacing: 0.15;
+  color: gray;
 }
 
 .class-card_media{
@@ -158,12 +158,17 @@ z-index: 10;
 }
 
 .mdc-card__primary-action{
- padding:8px;
+ padding: 4px 12px;
  pointer-events: none;
 }
 
 .class-card .mdc-card__actions{
   display:none;
+}
+
+.class-card .mdc-typography--body2{
+  font-size: 13px;
+  color: gray;
 }
 
 .full-card{
@@ -173,13 +178,84 @@ z-index: 10;
   top: 0px;
   left: 0px;
   height: 100vh;
-  width: calc(100% - 16px);
+  width: 100%;
   right:0px;
   background-color: white;
   text-align: unset;
   overflow-y: hidden;
-  padding: 8px 8px;
+  /* padding: 8px 24px; */
   z-index: 100;
   opacity:0;
   pointer-events: none;
 }
+
+.full-card-overlay{
+  text-align: left;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: 100%;
+  right:0px;
+  background-color: black;
+  text-align: unset;
+  overflow-y: hidden;
+  /* padding: 8px 19px; */
+  z-index: 100;
+  opacity:0;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+
+.full-card_content{
+  margin: 24px;
+  white-space: nowrap;
+}
+
+.full-card_actions{
+  position: absolute;
+  width: auto;
+  right: 0px;
+  left: 0px;
+  margin: 0px 24px;
+}
+
+.full-card .label{
+  color: #8a8a8a;
+}
+
+.full-card .info-box {
+  display: flex;
+}
+
+.full-card .one {
+  flex: 1;
+}
+
+.full-card .two {
+  flex: 1;
+}
+
+.full-card .three {
+  flex: 1;
+}
+
+.data-info[info="classID"]{
+
+}
+
+.data-info[info="instructorName"]{text-align: left;padding-top: 0px;font-size: 16px;letter-spacing: 0.15;color: #808080;margin-bottom: 32px;}
+.data-info[info="duration"]{font-size: 16px;}
+.data-info[info="status"]{font-size: 15px;text-transform: uppercase;}
+.data-info[info="rating"]{font-size: 16px;}
+.data-info[info="intention"]{
+
+}
+.data-info[info="description"]{white-space: normal;top: 20px;position: relative;}
+
+
+.full-card .start-button{min-width: 49%;display: inline-block;}
+
+.full-card .schedule-button{min-width: 49%;margin-top: 0px;}

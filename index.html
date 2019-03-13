@@ -18,7 +18,7 @@
   <header class=" mdc-top-app-bar mdc-top-app-bar--fixed app-top-bar" data-mdc-auto-init="MDCTopAppBar">
     <div class="mdc-top-app-bar__row">
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
-        <button class="material-icons mdc-top-app-bar__navigation-icon--unbounded" id="top-app-btn-back">back</button>
+        <button class="material-icons mdc-top-app-bar__navigation-icon--unbounded" id="top-app-btn-back">keyboard_arrow_left</button>
         <button class="material-icons mdc-top-app-bar__navigation-icon--unbounded" id="top-app-btn-menu">menu</button>
         <span class="mdc-top-app-bar__title top-app-bar-title">San Francisco, CA</span> </section>
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
@@ -98,8 +98,40 @@
 
 
 
-
+            <div class="full-card-overlay"></div>
             <div class="full-card">
+              <div class="full-card_inner">
+                <div class="mdc-typography full-card_content">
+                  <h2 class="mdc-typography--headline4 data-info" info="classID"></h2>
+
+                  <p class="mdc-typography--subtitle1 data-info" info="instructorName"></p>
+                  <div class="info-box">
+                    <div class="one mdc-typography--overline label" >Duration</div>
+                    <div class="two mdc-typography--overline label" >Rating</div>
+                    <div class="three mdc-typography--overline label">Status</div>
+                  </div>
+                  <div class="info-box">
+                    <div class="one mdc-typography--caption data-info" info="duration">One</div>
+                    <div class="two mdc-typography--caption data-info" info="rating">Two</div>
+                    <div class="three mdc-typography--caption data-info" info="status">Three</div>
+                  </div>
+                  <!--<p class="mdc-typography--subtitle1 data-info" info="duration"></p>
+                  <p class="mdc-typography--subtitle1 data-info" info="status"></p>
+                  <p class="mdc-typography--subtitle1 data-info" info="rating"></p>-->
+                  <p class="mdc-typography--subtitle1 data-info" info="intention"></p>
+                  <p class="mdc-typography--subtitle1 data-info" info="description"></p>
+
+                  <br>
+                  <br>
+                  <br>
+
+                </div>
+                <div class="full-card_actions">
+                  <button class="mdc-button mdc-button--raised start-button" data-mdc-auto-init="MDCRipple">Start Class</button>
+                  <button class="mdc-button  schedule-button"  data-mdc-auto-init="MDCRipple">Schedule</button>
+
+                </div>
+              </div>
 
             </div>
 
