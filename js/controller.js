@@ -97,3 +97,12 @@ function screenChangeTransition(screenName){
         screenChanges.list = true;
       }
 }
+
+
+
+
+/* Load class options */
+
+function loadClass(classID){
+  channel.trigger('client-event', { type: 'pusher', value: val });
+}

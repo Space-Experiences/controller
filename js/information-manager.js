@@ -173,6 +173,14 @@ function populateFullCardInformation(info){
 
 }
 
+/* Listen for start class information */
+
+$('.full-card .start-button').click(function(){
+  let classID = $('.full-card').attr('class-id');
+  loadClass(classID);
+})
+
+
 
 
 

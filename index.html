@@ -99,7 +99,7 @@
 
 
             <div class="full-card-overlay"></div>
-            <div class="full-card">
+            <div class="full-card" class-id="none">
               <div class="full-card_inner">
                 <div class="mdc-typography full-card_content">
                   <h2 class="mdc-typography--headline4 data-info" info="classID"></h2>
@@ -311,8 +311,11 @@ toggleNavigation();
      var channel = pusher.subscribe('private-channel');
      channel.bind('pusher:subscription_succeeded', function() {
        // Indicate controller is on
-       channel.trigger('client-event', {type:"status",id:"controller"});
-       channel.trigger('client-event', {value:'returnAirtableClassData'});
+       //channel.trigger('client-event', {type:"status",id:"controller"});
+       channel.trigger('client-event', {type:'GET',
+                                        value:'returnAirtableClassData',
+                                        params:{classID:'B101',
+                                        startTime:'now'}});
      });
 
      channel.bind('portal-event', function(msg) {
@@ -329,6 +332,11 @@ toggleNavigation();
        var val = $(this).attr('data-value');
        var type = $(this).attr('data-type');
        if(type == 'pusher'){
+
+         channel.trigger('client-event', {type:'GET',
+                                          value:val,
+                                          params:{classID:'B101',
+                                          startTime:'now'}});
                  channel.trigger('client-event', { type: 'pusher', value: val });
        }
 
