@@ -40,19 +40,31 @@ function changeTopAppBarText(text){
 function showScreen(screenName,topAppTitle = false){
 
   var newScreen = $('.screen[data-name="'+screenName+'"]');
-  var oldScreen = $('.screen[data-name="'+screenArray[0]+'"]');
+  var oldScreen = $('.screen.disabled.enabled');
 
-  TweenMax.to(newScreen,$params.transition.in,{opacity:1,pointerEvents:"auto",ease:Expo.easeIn});
-  TweenMax.to(oldScreen,$params.transition.out,{opacity:0,pointerEvents:"none",ease:Expo.easeOut});
+  TweenMax.to(newScreen,$params.transition.in,{opacity:1,pointerEvents:"auto",ease:Expo.easeIn,onStart:function(){
+    screenChangeTransition(screenName); // Do any transitions if they exist.
+  }});
+  TweenMax.to(oldScreen,$params.transition.out,{className:"-=enabled",opacity:0,pointerEvents:"none",ease:Expo.easeOut,onStart:function(){}});
 
-  var newScreenTitle = $(newScreen).data('data-screen-title')
-  alert(newScreenTitle)
+  var newScreenTitle = $('.screen[data-name="'+screenName+'"]').attr('data-screen-title');
+  $('.screen[data-name="list"]').attr('data-screen-title');
+  console.log('new screen title: ' + newScreenTitle)
   if(topAppTitle != false || newScreenTitle != 'undefined'){
-    changeTopAppBarText(topAppTitle);
+    changeTopAppBarText(newScreenTitle);
   }
 
   $(newScreen).addClass('enabled');
   screenArray.unshift(screenName);
   console.log('screenArray:' + screenArray);
 
+}
+
+
+
+function screenChangeTransition(screenName){
+      console.log('screenChangeTransition for ' + screenName);
+      if(screenName == 'list'){
+        TweenMax.staggerFrom('.class-card',.15,{scale:.9,y:10,opacity:0,ease:Quad.easeOut},.1)
+      }
 }

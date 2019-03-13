@@ -9,6 +9,7 @@ function returnClassCard(info){
         h+='<div class="">';
           h+='<h2 class="demo-card__title mdc-typography mdc-typography--headline6 class-card_headline">'+info.classID+'</h2>';
           h+='<h3 class="demo-card__subtitle mdc-typography mdc-typography--subtitle2 class-card_subtitle">'+info.instructorName+'</h3>';
+          h+='   <div class="demo-card__secondary mdc-typography mdc-typography--body2">'+info.description+'</div>';
         h+='</div>';
       h+='</div>';
       h+='<div class="mdc-card__actions">';
@@ -17,7 +18,7 @@ function returnClassCard(info){
           h+='<button class="mdc-button mdc-card__action mdc-card__action--button">Bookmark</button>';
         h+='</div>';
         h+='<div class="mdc-card__action-icons">';
-          h+='<button class="mdc-icon-button mdc-card__action mdc-card__action--icon--unbounded" aria-pressed="false" aria-label="Add to favorites" title="Add to favorites">';
+          h+='<button class="mdc-icon-button mdc-card__action mdc-card__action--icon--unbounded" style="display:none;" aria-pressed="false" aria-label="Add to favorites" title="Add to favorites">';
             h+='<i class="material-icons mdc-icon-button__icon mdc-icon-button__icon--on">favorite</i>';
             h+='<i class="material-icons mdc-icon-button__icon">favorite_border</i>';
           h+='</button>';
@@ -40,5 +41,7 @@ function addClassOverviews(classes){
   });
 
   $(classElements).appendTo('#class-list');
+
+  Draggable.create("#class-list", {type:"scrollTop", edgeResistance:0.1, throwProps:true, lockAxis:true});
 
 }
