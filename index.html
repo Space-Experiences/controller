@@ -75,8 +75,6 @@
                 <div class="screen_inner">
                       <div class="mdc-layout-grid mdc-layout-grid__cell--span-12">
                         <div class="mdc-layout-grid__inner">
-                          <div class="mdc-layout-grid__cell--span-12">Select a class</div>
-                          <br>
                           <div class="mdc-layout-grid__cell--span-12 class-list">
                             <div id="class-list"></div>
                             <button data-type="pusher" class="mdc-button" data-type="pusher" data-value="Prepare Class B101">B101</button>
@@ -87,7 +85,7 @@
                             <button data-type="pusher" class="mdc-button" data-value="Prepare Class B106">B106</button>
                             <button data-type="pusher" class="mdc-button" data-value="Prepare Class B109">B109</button>
                             <button data-type="pusher" class="mdc-button" data-value="Prepare Class B110">B110</button>
-                              <button data-type="pusher" class="mdc-button" data-value="Prepare Class B333">B333</button></div>
+                              <button data-type="pusher" class="mdc-button" data-value="Prepare Class B333">B333</button>
                           </div>
                           <br>
                           <br>
@@ -95,6 +93,15 @@
                         </div>
               </div><!-- End screen_inner -->
             </div><!-- End screen -->
+
+
+
+
+
+
+            <div class="full-card">
+
+            </div>
 
 
 <!-- End screens -->
@@ -148,6 +155,85 @@
 
 
 <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+<script>
+
+
+// Helpers
+// Generate random short uid.
+function genUid(len = 10) {
+   if (len > 16) { // Cap uid length to max number that can be returned.
+      len = 16;
+   }
+   return Math.random().toString(30).substr(2, 2 + len); // Generate random num. and get numbers after decimal point
+}
+
+// convert seconds (duration from file or wavesurger) into hh:mm:ss,ms
+function sec2time(timeInSeconds,formatType = 'custom-default') {
+    var pad = function(num, size) { return ('000' + num).slice(size * -1); },
+    time = parseFloat(timeInSeconds).toFixed(3),
+    hours = Math.floor(time / 60 / 60),
+    minutes = Math.floor(time / 60) % 60,
+    seconds = Math.floor(time - minutes * 60),
+    milliseconds = time.slice(-3);
+
+    if(formatType == 'custom-default'){
+      return pad(minutes, 2) + ':' + pad(seconds, 2);
+
+    }
+     if(formatType == 'hh:mm:ss'){
+          return pad(hours, 2) + ':' +pad(minutes, 2) + ':' + pad(seconds, 2);
+
+    }
+    if(formatType == 'm:ss'){
+              return pad(minutes, 1) + ':' + pad(seconds, 2);
+      }
+    if(formatType == 'seconds'){
+              return pad(seconds, 2);
+      }
+  else{
+      return pad(minutes, 2) + ':' + pad(seconds, 2) + ',' + pad(milliseconds, 3);
+  }
+}
+
+
+/*=================================================================
+=             Get position of element relative to page            =
+=================================================================*/
+
+var getAbsPosition = function(el){ // returns [TOP,LEFT] <-- access by array
+    var el2 = el;
+    var curtop = 0;
+    var curleft = 0;
+    if (document.getElementById || document.all) {
+        do  {
+            curleft += el.offsetLeft-el.scrollLeft;
+            curtop += el.offsetTop-el.scrollTop;
+            el = el.offsetParent;
+            el2 = el2.parentNode;
+            while (el2 != el) {
+                curleft -= el2.scrollLeft;
+                curtop -= el2.scrollTop;
+                el2 = el2.parentNode;
+            }
+        } while (el.offsetParent);
+
+    } else if (document.layers) {
+        curtop += el.y;
+        curleft += el.x;
+    }
+    return {top:curtop, left:curleft};
+};
+
+/*=====  End of   Get position of element relative to page  ======*/
+
+
+/*----------    Convert number to pixels  ----------*/
+function px(number){
+    number = String(number) + "px";
+    return number;
+}
+
+</script>
 <script src="js/information-manager.js"></script>
 <script src="js/socket-manager.js"></script>
 <script src="js/controller.js"></script>

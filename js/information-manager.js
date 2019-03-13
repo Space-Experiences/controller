@@ -3,7 +3,7 @@
 // Returns html element for class overview card.
 function returnClassCard(info){
 
-    var h = '<div class="mdc-card class-card" data-mdc-auto-init="MDCCard">';
+    var h = '<div class="mdc-card class-card" data-mdc-auto-init="MDCCard" id="class-card--'+genUid()+'" data-type="pusher" data-value="Prepare Class B102">';
       h+='<div class="mdc-card__primary-action class-card_action" tabindex="0">';
         h+='<div class="mdc-card__media mdc-card__media--square class-card_media" style="background-image: url(&quot;https://material-components.github.io/material-components-web-catalog/static/media/photos/3x2/2.jpg&quot;);"></div>';
         h+='<div class="">';
@@ -30,6 +30,7 @@ function returnClassCard(info){
 
     return h;
 }
+var abs;
 
 function addClassOverviews(classes){
   console.log('addClassOverviews for ' + classes.length + ' classes')
@@ -40,8 +41,73 @@ function addClassOverviews(classes){
   classElements += returnClassCard(this);
   });
 
+  for(var i = 0; i < 1;i++){
+    classElements += '<div class="mdc-card class-card" style="opacity:0;height:170px;pointer-events:none;"></div>';
+  }
+
   $(classElements).appendTo('#class-list');
+  var h = $('#class-list').height();
+//  TweenMax.set('#class-list',{height:h})
+var dragging = false; // keep track of dragging
+  var drag = Draggable.create(".class-list", {type:"scrollTop" ,edgeResistance:.6, throwProps:true, lockAxis:true,
+  onDrag:function(){
+    dragging = true;
+  },onRelease:function(){
+    setTimeout(function(){
+    dragging = false;
+  },200)
+  }});
 
-  Draggable.create("#class-list", {type:"scrollTop", edgeResistance:0.1, throwProps:true, lockAxis:true});
+       $('.class-card').click(function(){
 
+
+       });
+
+        $('.class-card').on('mousedown',function(){
+          if(dragging == false){
+          TweenMax.to(this,.1,{scale:.95});
+          }
+        });
+
+        $('.class-card').on('mouseup',function(){
+
+          TweenMax.to(this,.1,{scale:1});
+            if(dragging == false){
+          var elemID = $(this).attr('id');
+          var elem = document.getElementById(elemID);
+          abs = getAbsPosition(elem);
+          abs.height = $(elem).height();
+          console.log(abs);
+           var val = $(this).attr('data-value');
+           var type = $(this).attr('data-type');
+           if(type == 'pusher'){
+                //     channel.trigger('client-event', { type: 'pusher', value: val });
+           }
+           toggleFullCard(true,abs);
+
+
+}
+        });
+}
+
+var fullCardShowing = false;
+function toggleFullCard(enable,abs){
+  var fctl = new TimelineMax({});
+var fc = $('.full-card');
+if(fullCardShowing == false){
+  TweenMax.set(fc,{clearProps:"all"});
+TweenMax.set(fc,{opacity:1,top:"0px",left:"0px",height:"100vh",pointerEvents:"all"});
+TweenMax.from(fc,.35,{height:abs.height,top:abs.top,left:abs.left,onComplete:function(){
+  $('.full-card').bind('click.open',function(){
+    toggleFullCard(false,abs);
+  })
+}});
+toggleNavigation();
+}else{
+  //fctl.set(fc,{opacity:1,top:"0px",left:"0px",height:"100vh",pointerEvents:"all"});
+TweenMax.to(fc,.35,{height:abs.height,top:abs.top,left:abs.left,opacity:0,pointerEvents:"none"});
+$('.full-card').unbind('click.open');
+toggleNavigation();
+}
+fullCardShowing = !fullCardShowing;
 }

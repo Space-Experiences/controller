@@ -32,13 +32,13 @@ body.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title{
 body.top-bar-menu.top-bar-back{
 
 }
-.app-top-bar{background-color: white;color: black;}
+.app-top-bar{background-color: white;color: black;z-index: 9999;}
 
 .main{
   display:block;
   position: relative;
   height: calc(100vh - 56px);
-  top: 56px;
+  top: 116px;
 }
 .navigation{
   position:fixed;
@@ -46,11 +46,17 @@ body.top-bar-menu.top-bar-back{
   right:0px;
   width:100%;
   margin:auto;
-  bottom:0px;
   transition:bottom .15s 0s;
   height:50px;
   background-color: white;
   z-index: 9999999;
+  transition:bottom .15s 0s;
+}
+.main.nav-disabled .navigation{
+  bottom:-56px;
+}
+.main.nav-disabled.nav-enabled .navigation{
+  bottom:0px;
 }
 .main.nav-disabled{
 
@@ -58,7 +64,7 @@ height:100vh;
 transition:height .15s 0s;
 }
 .main.nav-disabled.nav-enabled{
-  height: 90vh;
+  height: 100vh;
 }
 .main.nav-disabled .navigation{
   bottom:-10vh;
@@ -101,7 +107,8 @@ z-index: 10;
 
 
 .screen[data-name="loading"]{
-  z-index: 1000 !important;
+  z-index: 100000 !important;
+  background-color: white;
 }
 
 .loading-visual{
@@ -120,7 +127,15 @@ z-index: 10;
   text-align: center;
 }
 .class-list{
-  padding-bottom: 500px;
+  overflow: scroll;
+  height: 60%;
+  overflow: hidden !important;
+}
+
+#class-list{
+  /* padding-bottom: 500px; */
+  /* min-height:100vh; */
+  /* height:auto; */
 }
 .class-list button{
   width: 100%;
@@ -149,4 +164,22 @@ z-index: 10;
 
 .class-card .mdc-card__actions{
   display:none;
+}
+
+.full-card{
+  text-align: left;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: calc(100% - 16px);
+  right:0px;
+  background-color: white;
+  text-align: unset;
+  overflow-y: hidden;
+  padding: 8px 8px;
+  z-index: 100;
+  opacity:0;
+  pointer-events: none;
 }

@@ -61,10 +61,11 @@ function showScreen(screenName,topAppTitle = false){
 }
 
 
-
+var screenChanges = {list:false}; // Keep track of transitions that have occurred.
 function screenChangeTransition(screenName){
       console.log('screenChangeTransition for ' + screenName);
-      if(screenName == 'list'){
-        TweenMax.staggerFrom('.class-card',.15,{scale:.9,y:10,opacity:0,ease:Quad.easeOut},.1)
+      if(screenName == 'list' && screenChanges.list == false){
+        TweenMax.staggerFrom('.class-card',.15,{scale:.9,y:10,opacity:0,ease:Quad.easeOut},.05);
+        screenChanges.list = true;
       }
 }
