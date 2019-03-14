@@ -50,7 +50,11 @@ function setClassControls(type = 'hide'){
 
 
 function toggleNavigation(command){
-  $('.main').toggleClass('nav-enabled');
+  if(command){
+  $('.main').addClass('nav-enabled');
+}else{
+    $('.main').removeClass('nav-enabled');
+}
 }
 
 var appBarTitle = $('.top-app-bar-title');

@@ -56,7 +56,7 @@
               </div><!-- End screen -->
 
 
-              <div class="screen disabled" data-name="home" data-screen-title="Portal overview">
+              <div class="screen disabled" data-name="home" data-screen-title="Portal">
                 <div class="screen_inner">
 
                   <!-- portal state information -->
@@ -68,11 +68,55 @@
                       <div class="pd-info" name="classProgress"></div>
                       <div class="pd-info" name="nextClassCountdown"></div>
                     </div>
+
+                    <div class='graphic'>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+
                   </div>
 
                   <!-- live portal controls -->
                       <div class="portal-live-controls" style="display:none;">
-                    <button class="mdc-button mdc-button--raised"   data-value="Start Class" data-type="pusher" class="mdc-button"   data-mdc-auto-init="MDCRipple" id="start-class-btb">Start Class</button>
+                    <button class="mdc-button mdc-button--raised"   data-value="Start Class" data-type="pusher" class="mdc-button"   data-mdc-auto-init="MDCRipple" id="start-class-btn">Start Class</button>
                       <button data-type="pusher" class="mdc-button"  data-value="Start in 10 Seconds" id="start-delay-btn">Start in 10 seconds</button>
 
                     <button  class="mdc-button mdc-button--raised"   data-value="Pause Class" data-type="pusher" class="mdc-button"   data-mdc-auto-init="MDCRipple" id="pause-class-btn" style="display:none;">Pause</button>
@@ -288,10 +332,7 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
    </script>
 
 <script>
-setTimeout(function(){
-showScreen('home','Portal');
-toggleNavigation();
-},2000);
+
 </script>
 
 <script>mdc.autoInit();</script>
@@ -406,7 +447,12 @@ toggleNavigation();
 
        // Get the
 
-
+       showScreen('home','Portal');
+       setTimeout(function(){
+         if(portalState.state != 'liveClass'){
+       toggleNavigation(true);
+       }
+       },2000);
 
 
 

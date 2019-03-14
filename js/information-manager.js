@@ -85,27 +85,34 @@ var PortalStateView = function(){
 
     if(String(property) == 'state'){
 
+      TweenMax.to('.screen[data-name="home"]',2,{backgroundColor:"#f6f6f6"});
+      $('body').removeClass('visual');
+
         if(value == 'classReady'){
           set('Class is ready.');
           toggleClassControls(true);
           setClassControls('showStart');
         }
         if(value == 'loadingClass'){
-          set('Preparing class');
+          set('Preparing class...');
           toggleClassControls(false);
         }
         if(value == 'liveClass'){
-          set('Class in session');
+          set('Class in session.');
+          $('body').addClass('visual');
+          TweenMax.to('.screen[data-name="home"]',2,{backgroundColor:"rgba(246,246,246,0)"});
           toggleClassControls(true);
           setClassControls('showPause');
+          toggleNavigation(false);
         }
         if(value == 'pausedClass'){
-          set('Class in session');
+          set('Class paused.');
           toggleClassControls(true);
           setClassControls('showStart');
+          toggleNavigation(true);
         }
         if(value == 'standby'){
-          set('Standby')
+          set('Standby.')
           toggleClassControls(false);
         }
         if(value == 'enterClass'){
@@ -117,12 +124,14 @@ var PortalStateView = function(){
           toggleClassControls(false);
         }
     }
-    if(String(property) == 'nextClassCountdown'){
+    else if(String(property) == 'classDuration'){
+      set(value + ' min.')
+    }
+    else if(String(property) == 'nextClassCountdown'){
       if(value != '--'){
         set(sec2time(value));
       }
     }
-
     else{
       set();
     }
@@ -272,7 +281,7 @@ if(fullCardShowing == false){
   TweenMax.to(fcinner,.15,{opacity:1});
   }});
 
-toggleNavigation();
+toggleNavigation(false);
 
 
   changeTopAppBarText('');
@@ -281,6 +290,8 @@ toggleNavigation();
       $(appBarBackButton).unbind('click.back');
       toggleFullCard(false,abs);
       changeTopAppBarText('Classes',false);
+
+      toggleNavigation(true);
     });
 
 }else{
