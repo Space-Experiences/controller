@@ -8,6 +8,7 @@ function rotateScreen(){
 }
 
 var loadingOverlayElement = $('.screen[data-name="loading"]');
+var classControls = $('.portal-live-controls');
 var $params = {
   transition:{in:.2,out:.15},
 }; // global params
@@ -22,6 +23,32 @@ function loadingOverlay(command){
     }
 }
 
+function toggleClassControls(command){
+  if(command){
+    TweenMax.to(classControls,$params.transition.in,{y:0,opacity:1,pointerEvents:"all",ease:Expo.easeIn,onStart:function(){
+      $(classControls).show();
+    }});
+  }
+  if(command == false){
+      TweenMax.to(classControls,$params.transition.in,{y:20,opacity:0,pointerEvents:"none"});
+    }
+}
+toggleClassControls(false);
+
+function setClassControls(type = 'hide'){
+  if(type == 'showStart'){
+    $('#pause-class-btn').hide();
+    $('#start-class-btn').show();
+    $('#start-delay-btn').show();
+  }
+  if(type == 'showPause'){
+    $('#pause-class-btn').show();
+    $('#start-class-btn').hide();
+    $('#start-delay-btn').hide();
+  }
+}
+
+
 function toggleNavigation(command){
   $('.main').toggleClass('nav-enabled');
 }
@@ -30,6 +57,8 @@ var appBarTitle = $('.top-app-bar-title');
 var appBarBackButton = $('#top-app-btn-back');
 var appBarTitleHistory = []; // Store navigation for titles.
 var appBarTitleButtons = {showing:false,button:false};
+
+
 function changeTopAppBarText(text,button = false){
   let tl = new TimelineMax({});
   tl.to(appBarTitle,.15,{opacity:0,x:10,ease:Expo.easeIn});
@@ -53,8 +82,10 @@ function changeTopAppBarText(text,button = false){
       let tl = new TimelineMax({});
       tl.to(appBarTitleButtons.button,.15,{scale:0});
       tl.add(function(){
-        $(appBarTitleButtons.button).hide();
+        if(appBarTitleButtons.button !== false){
         TweenMax.set(appBarTitleButtons.button,{clearProps:"all"});
+        $(appBarTitleButtons.button).hide();
+        }
         appBarTitleButtons.button = false;
         appBarTitleButtons.showing = false;
       });
@@ -66,6 +97,7 @@ function changeTopAppBarText(text,button = false){
 }
 
 function showScreen(screenName,topAppTitle = false){
+  if(screenName != screenArray[0]){
 
   var newScreen = $('.screen[data-name="'+screenName+'"]');
   var oldScreen = $('.screen.disabled.enabled');
@@ -85,7 +117,9 @@ function showScreen(screenName,topAppTitle = false){
   $(newScreen).addClass('enabled');
   screenArray.unshift(screenName);
   console.log('screenArray:' + screenArray);
-
+}else{
+  console.log('screen already showing')
+}
 }
 
 

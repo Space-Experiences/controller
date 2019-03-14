@@ -71,14 +71,11 @@
                   </div>
 
                   <!-- live portal controls -->
-                      <div class="mdc-layout-grid mdc-layout-grid__cell--span-12 portal-live-controls" style="display:none;">
-                        <div class="mdc-layout-grid__inner">
-                          <div class="mdc-layout-grid__cell--span-12">
-                            <button data-type="pusher" class="mdc-button" data-value="Pause Class">Pause</button></div>
-                          <div class="mdc-layout-grid__cell"><button data-type="pusher" class="mdc-button"  data-value="Start Class">Start</button></div>
-                            <div class="mdc-layout-grid__cell"><button data-type="pusher" class="mdc-button"  data-value="Start in 10 Seconds">Start in 10 seconds</button></div>
-                          <div class="mdc-layout-grid__cell"></div>
-                        </div>
+                      <div class="portal-live-controls" style="display:none;">
+                    <button class="mdc-button mdc-button--raised"   data-value="Start Class" data-type="pusher" class="mdc-button"   data-mdc-auto-init="MDCRipple" id="start-class-btb">Start Class</button>
+                      <button data-type="pusher" class="mdc-button"  data-value="Start in 10 Seconds" id="start-delay-btn">Start in 10 seconds</button>
+
+                    <button  class="mdc-button mdc-button--raised"   data-value="Pause Class" data-type="pusher" class="mdc-button"   data-mdc-auto-init="MDCRipple" id="pause-class-btn" style="display:none;">Pause</button>
                       </div>
 
                 </div><!-- End screen_inner -->

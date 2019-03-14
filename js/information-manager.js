@@ -63,17 +63,18 @@ var PortalStateView = function(){
   this.setInfo = function(property,value){
     //portalState[String(property)] = newPortalState[String(property)]
     console.log('portalStateView.setInfo: ' + property + ' ' + value);
+
     function set(txt = value){
       try{
       var elem = psdisplay[property];
-      $(elem).text(txt);
+
       let tl = new TimelineMax({});
-      tl.to(elem,.15,{opacity:0});
+      tl.to(elem,.5,{x:30,opacity:0,ease:Expo.easeIn});
       tl.add(function(){
-        $(elem).text(value);
+        $(elem).text(txt);
       });
-      tl.to(elem,.15,{opacity:1});
-      tl.kill();
+      tl.to(elem,.5,{x:0,opacity:1,ease:Expo.easeOut});
+      //tl.kill();
     }catch(e){
       console.log(e);
     }
@@ -86,25 +87,38 @@ var PortalStateView = function(){
 
         if(value == 'classReady'){
           set('Class is ready.');
+          toggleClassControls(true);
+          setClassControls('showStart');
         }
         if(value == 'loadingClass'){
           set('Preparing class');
+          toggleClassControls(false);
         }
         if(value == 'liveClass'){
           set('Class in session');
+          toggleClassControls(true);
+          setClassControls('showPause');
+        }
+        if(value == 'pausedClass'){
+          set('Class in session');
+          toggleClassControls(true);
+          setClassControls('showStart');
         }
         if(value == 'standby'){
           set('Standby')
+          toggleClassControls(false);
         }
         if(value == 'enterClass'){
           set('Welcome :) ')
+          toggleClassControls(true);
         }
         if(value == 'exitClass'){
           set('Thanks for coming!')
+          toggleClassControls(false);
         }
     }
     if(String(property) == 'nextClassCountdown'){
-      if(value != 'none'){
+      if(value != '--'){
         set(sec2time(value));
       }
     }
@@ -217,7 +231,7 @@ var dragging = false; // keep track of dragging
              }
            }
 
-           toggleFullCard(true,abs,'Overview of ' + $(elem).attr('data-class-id'));
+           toggleFullCard(true,abs,$(elem).attr('data-class-id'));
 
 
 }
@@ -225,13 +239,16 @@ var dragging = false; // keep track of dragging
 }
 
 var fullCardShowing = false;
-function toggleFullCard(enable,abs,title = false){
-
-  var fctl = new TimelineMax({});
 var fc = $('.full-card');
 var fcinner = $('.full-card_inner');
 var fcoverlay = $('.full-card-overlay');
+function toggleFullCard(enable,abs,classID){
+
+  var fctl = new TimelineMax({});
+
 if(fullCardShowing == false){
+
+  $('.full-card').attr('class-id', classID);
 
   // Full card
   TweenMax.set(fcoverlay,{clearProps:"all"});
@@ -240,10 +257,8 @@ if(fullCardShowing == false){
 
   // Full card inner container
   TweenMax.set(fcinner,{opacity:0});
-var setTopAppTitle = '';
-if(title){
-  setTopAppTitle = title;
-}
+
+
 
   TweenMax.to(fcoverlay,.05,{opacity:.3});
 
@@ -253,7 +268,7 @@ if(title){
     width:abs.width,
     ease:Power2.easeInOut,
     onComplete:function(){
-  changeTopAppBarText(setTopAppTitle,'back');
+  changeTopAppBarText('Overview of ' + classID,'back');
   TweenMax.to(fcinner,.15,{opacity:1});
   }});
 
@@ -306,7 +321,8 @@ $('.full-card .start-button').click(function(){
   loadClass(classID,function(){
       loadingOverlay(false);
       appBarBackButton.click();
-      showScreen('home','Portal');
+      $('.nav-btn[data-name="home"]').click();
+      //showScreen('home','Portal');
       toggleNavigation(false);
       $('body').bind('click.showcontrols',function(){
         $(this).unbind('click.showcontrols');
@@ -324,7 +340,7 @@ function loadClass(classID,callback = false){
   // load class
   channel.trigger('client-event', {eventType:'command',
                                       value:'load class',
-                                      params:{classID:'B101',
+                                      params:{classID:classID,
                                       startTime:'now'}});
 
 

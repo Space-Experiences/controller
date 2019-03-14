@@ -269,18 +269,19 @@ z-index: 10;
 .full-card .schedule-button{min-width: 49%;margin-top: 0px;cursor: not-allowed;}
 
 
-.portal-display{text-align: center;font-size: 20px;line-height: 40px;font-weight: 300;}
+.portal-display{text-align: left;font-size: 20px;line-height: 40px;font-weight: 300;padding: 19px;}
 .pd-info{
   
 }
 
 .pd-info[name="state"]{
   font-size: 1.5em;
-  text-transform: uppercase;
-  letter-spacing: 2.15px;
+  text-transform: capitalize;
+  letter-spacing: .5px;
 }
-.pd-info[name="class"]{
-  
+.pd-info[name="classID"]{
+  font-weight: 500;
+  color: gray;
 }
 .pd-info[name="classDuration"]{
   
@@ -289,8 +290,15 @@ z-index: 10;
   
 }
 .pd-info[name="nextClassCountdown"]{
-  
+  display: none;
 }
 .pd-info[name="classSchedule"]{
   
+}
+
+
+.portal-live-controls{display: block;white-space: nowrap;}
+.portal-live-controls button{
+  display: block;
+  margin: 5% 20px;
 }
