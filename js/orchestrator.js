@@ -15,7 +15,7 @@ var screenArray = ['loading'];// push screen names as they appears
 
 function loadingOverlay(command){
   if(command){
-    TweenMax.to(loadingOverlayElement,$params.transition.in,{opacity:1,pointerEvents:"auto",ease:Expo.easeIn});
+    TweenMax.to(loadingOverlayElement,$params.transition.in,{opacity:1,pointerEvents:"all",ease:Expo.easeIn});
   }
   if(command == false){
       TweenMax.to(loadingOverlayElement,$params.transition.in,{opacity:0,pointerEvents:"none"});
@@ -96,13 +96,4 @@ function screenChangeTransition(screenName){
         TweenMax.staggerFrom('.class-card',.15,{scale:.9,y:10,opacity:0,ease:Quad.easeOut},.05);
         screenChanges.list = true;
       }
-}
-
-
-
-
-/* Load class options */
-
-function loadClass(classID){
-  channel.trigger('client-event', { type: 'pusher', value: val });
 }

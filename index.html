@@ -14,13 +14,12 @@
 
 
 <body class="top-bar-menu top-bar-back top-bar-neutral">
-
   <header class=" mdc-top-app-bar mdc-top-app-bar--fixed app-top-bar" data-mdc-auto-init="MDCTopAppBar">
     <div class="mdc-top-app-bar__row">
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
         <button class="material-icons mdc-top-app-bar__navigation-icon--unbounded" id="top-app-btn-back">keyboard_arrow_left</button>
         <button class="material-icons mdc-top-app-bar__navigation-icon--unbounded" id="top-app-btn-menu">menu</button>
-        <span class="mdc-top-app-bar__title top-app-bar-title">San Francisco, CA</span> </section>
+        <span class="mdc-top-app-bar__title top-app-bar-title"></span> </section>
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
         <button class="material-icons mdc-top-app-bar__action-item--unbounded" id="toggle-lock-state-btn" style="opacity:0;" aria-label="lock"><i class="material-icons">lock</i></button>
       </section>
@@ -59,15 +58,29 @@
 
               <div class="screen disabled" data-name="home" data-screen-title="Portal overview">
                 <div class="screen_inner">
-                      <div class="mdc-layout-grid mdc-layout-grid__cell--span-12">
+
+                  <!-- portal state information -->
+                  <div class="portal-display">
+                    <div class="portal-display_inner">
+                      <div class="pd-info" name="state"></div>
+                      <div class="pd-info" name="classID"></div>
+                      <div class="pd-info" name="classDuration"></div>
+                      <div class="pd-info" name="classProgress"></div>
+                      <div class="pd-info" name="nextClassCountdown"></div>
+                    </div>
+                  </div>
+
+                  <!-- live portal controls -->
+                      <div class="mdc-layout-grid mdc-layout-grid__cell--span-12 portal-live-controls" style="display:none;">
                         <div class="mdc-layout-grid__inner">
                           <div class="mdc-layout-grid__cell--span-12">
                             <button data-type="pusher" class="mdc-button" data-value="Pause Class">Pause</button></div>
                           <div class="mdc-layout-grid__cell"><button data-type="pusher" class="mdc-button"  data-value="Start Class">Start</button></div>
-                                <div class="mdc-layout-grid__cell"><button data-type="pusher" class="mdc-button"  data-value="Start in 10 Seconds">Start in 10 seconds</button></div>
+                            <div class="mdc-layout-grid__cell"><button data-type="pusher" class="mdc-button"  data-value="Start in 10 Seconds">Start in 10 seconds</button></div>
                           <div class="mdc-layout-grid__cell"></div>
                         </div>
-                        </div>
+                      </div>
+
                 </div><!-- End screen_inner -->
               </div><!-- End screen -->
 
@@ -268,7 +281,7 @@ function px(number){
 </script>
 <script src="js/information-manager.js"></script>
 <script src="js/socket-manager.js"></script>
-<script src="js/controller.js"></script>
+<script src="js/orchestrator.js"></script>
 
   <script>
 
@@ -298,7 +311,44 @@ toggleNavigation();
 
     // Parse incoming messages from pusher socket.
     var classData = [];
+    var portalState = {
+      state:"...", // loadingClass,classReady,liveClass,standby,enterClass,exitClass,cleanMode,
+      classID:" ", // classID in airtable and production folder
+      classDuration:"...", // Total length of class if one is loaded or live
+      classProgress:"...", // percentage complete for class (calculated on client side for time)
+      nextClassCountdown:"...", // If class is about to start, how much time until next class
+      classSchedule:[] // Schedule of upcoming classes
+    };
     var socketManager = new SocketManager();
+
+    var psm = new PortalStateView();
+
+
+    // Manage pub sub events.
+    var EventBus = {
+      topics: {},
+
+      subscribe: function(topic, listener) {
+        console.log('sub:' + topic);
+        // create the topic if not yet created
+        if(!this.topics[topic]) this.topics[topic] = [];
+
+        // add the listener
+        this.topics[topic].push(listener);
+      },
+
+      publish: function(topic, data) {
+          console.log('pub:' + topic);
+        // return if the topic doesn't exist, or there are no listeners
+        if(!this.topics[topic] || this.topics[topic].length < 1) return;
+
+        // send the event to all listeners
+        this.topics[topic].forEach(function(listener) {
+          listener(data || {});
+        });
+      }
+    };
+
 
      Pusher.logToConsole = true;
 
@@ -312,7 +362,13 @@ toggleNavigation();
      channel.bind('pusher:subscription_succeeded', function() {
        // Indicate controller is on
        //channel.trigger('client-event', {type:"status",id:"controller"});
-       channel.trigger('client-event', {type:'GET',
+
+
+
+        psm.returnPortalState();
+
+
+       channel.trigger('client-event', {eventType:'GET',
                                         value:'returnAirtableClassData',
                                         params:{classID:'B101',
                                         startTime:'now'}});
@@ -337,7 +393,8 @@ toggleNavigation();
                                           value:val,
                                           params:{classID:'B101',
                                           startTime:'now'}});
-                 channel.trigger('client-event', { type: 'pusher', value: val });
+
+         channel.trigger('client-event', { type: 'pusher', value: val });
        }
 
      });
@@ -351,6 +408,9 @@ toggleNavigation();
      $(document).ready(function(){
 
        // Get the
+
+
+
 
 
      });

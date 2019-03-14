@@ -1,3 +1,126 @@
+/*
+// Data returned from portal matches object in cortex.
+var portalState = {
+  state:"none", // loadingClass,classReady,liveClass,standby,enterClass,exitClass,cleanMode,
+  class:"none", // classID in airtable and production folder
+  classDuration:"", // Total length of class if one is loaded or live
+  classProgress:"", // percentage complete for class (calculated on client side for time)
+  nextClassCountdown:"", // If class is about to start, how much time until next class
+  classSchedule:[] // Schedule of upcoming classes
+};
+*/
+
+var PortalStateView = function(){
+  var _this = this;
+  var waitingForResponse = false; // If waiting for response from cortex
+
+  // Elements for portal display
+  var psdisplay = {
+    display:$('.portal-display'),
+    state:$('.pd-info[name="state"]'),
+    classID:$('.pd-info[name="classID"]'),
+    classDuration:$('.pd-info[name="classDuration"]'),
+    classProgress:$('.pd-info[name="classProgress"]'),
+    nextClassCountdown:$('.pd-info[name="nextClassCountdown"]')
+  };
+
+
+
+
+  this.returnPortalState = function(){
+
+    channel.trigger('client-event', {eventType:'GET',
+                                     value:'returnPortalState',
+                                     params:{}});
+
+  }
+
+  this.updateState = function(newPortalState){
+
+  //  newPortalState = getPortalState;
+    console.log('update portalStateView' + ' ' + newPortalState.state)
+    // If new data, loop through and append.
+//    if(newPortalState != portalState){
+
+      // Loop through keys and fix
+      for (var property in portalState) {
+          if (Object.prototype.hasOwnProperty.call(portalState, property)) {
+            console.log('update portalState.' + property); // Object key ('state','classID')
+            console.log('newPortalState[property] = '+ newPortalState[String(property)]);
+            console.log('portalState[property] = ' + portalState[String(property)])
+            if(newPortalState[String(property)] != portalState[String(property)]){
+                _this.setInfo(String(property),newPortalState[String(property)]);
+                portalState[String(property)] = newPortalState[String(property)];
+            }
+          }
+      }
+
+  //  }
+
+  }
+
+
+  this.setInfo = function(property,value){
+    //portalState[String(property)] = newPortalState[String(property)]
+    console.log('portalStateView.setInfo: ' + property + ' ' + value);
+    function set(txt = value){
+      try{
+      var elem = psdisplay[property];
+      $(elem).text(txt);
+      let tl = new TimelineMax({});
+      tl.to(elem,.15,{opacity:0});
+      tl.add(function(){
+        $(elem).text(value);
+      });
+      tl.to(elem,.15,{opacity:1});
+      tl.kill();
+    }catch(e){
+      console.log(e);
+    }
+
+    }
+
+
+
+    if(String(property) == 'state'){
+
+        if(value == 'classReady'){
+          set('Class is ready.');
+        }
+        if(value == 'loadingClass'){
+          set('Preparing class');
+        }
+        if(value == 'liveClass'){
+          set('Class in session');
+        }
+        if(value == 'standby'){
+          set('Standby')
+        }
+        if(value == 'enterClass'){
+          set('Welcome :) ')
+        }
+        if(value == 'exitClass'){
+          set('Thanks for coming!')
+        }
+    }
+    if(String(property) == 'nextClassCountdown'){
+      if(value != 'none'){
+        set(sec2time(value));
+      }
+    }
+
+    else{
+      set();
+    }
+  }
+
+  this.waitForResponseListener = function(callback){
+
+  }
+
+};
+
+
 
 
 // Returns html element for class overview card.
@@ -153,7 +276,7 @@ TweenMax.to(fc,.25,{height:abs.height,top:abs.top,left:abs.left,
   opacity:0,
   ease:Power3.easeInOut,
   pointerEvents:"none"});
-$('.full-card').unbind('click.open');
+
 toggleNavigation();
 }
 fullCardShowing = !fullCardShowing;
@@ -177,11 +300,53 @@ function populateFullCardInformation(info){
 
 $('.full-card .start-button').click(function(){
   let classID = $('.full-card').attr('class-id');
-  loadClass(classID);
+
+  // trigger overlay
+  loadingOverlay(true);
+  loadClass(classID,function(){
+      loadingOverlay(false);
+      appBarBackButton.click();
+      showScreen('home','Portal');
+      toggleNavigation(false);
+      $('body').bind('click.showcontrols',function(){
+        $(this).unbind('click.showcontrols');
+        toggleNavigation(true);
+      })
+  });
+
 })
 
 
+/* Load class options */
+var waitForCallback;
+function loadClass(classID,callback = false){
 
+  // load class
+  channel.trigger('client-event', {eventType:'command',
+                                      value:'load class',
+                                      params:{classID:'B101',
+                                      startTime:'now'}});
+
+
+
+  // Subscribe to listen for return event pub.
+  EventBus.subscribe('responsePortalState', function(){
+
+    if(callback){
+      callback();
+    }
+  });
+
+  setTimeout(function(){
+  // Get portal state
+  /*channel.trigger('client-event', {eventType:'GET',
+                                   value:'returnPortalState',
+                                   params:{}});
+*/
+  },1000); // Give cortex a second to process everything
+
+
+}
 
 
 
