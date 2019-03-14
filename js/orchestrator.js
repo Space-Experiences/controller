@@ -124,8 +124,30 @@ function showScreen(screenName,topAppTitle = false){
 }else{
   console.log('screen already showing')
 }
+
+  // Hide visual bg if switching screen in live class
+  if(screenName != 'home' && portalState.state == 'liveClass'){
+    $('body').removeClass('visual');
+  }
+  if(screenName == 'home' && portalState.state == 'liveClass'){
+      $('body').addClass('visual');
+      setTimeout(function(){
+      toggleNavigation(false);
+      listenForTouchDuringLiveClass();
+    },1000)
+    }
 }
 
+function listenForTouchDuringLiveClass(command = true){
+
+  $('body').unbind('click.shownav');
+  if(command){
+    $('body').bind('click.shownav',function(){
+      $('body').unbind('click.shownav');
+      toggleNavigation(true);
+    })
+  }
+}
 
 var screenChanges = {list:false}; // Keep track of transitions that have occurred.
 function screenChangeTransition(screenName){

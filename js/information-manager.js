@@ -104,12 +104,15 @@ var PortalStateView = function(){
           toggleClassControls(true);
           setClassControls('showPause');
           toggleNavigation(false);
+          listenForTouchDuringLiveClass();
         }
         if(value == 'pausedClass'){
           set('Class paused.');
           toggleClassControls(true);
           setClassControls('showStart');
+          setTimeout(function(){
           toggleNavigation(true);
+        },500)
         }
         if(value == 'standby'){
           set('Standby.')
