@@ -10,6 +10,8 @@ var portalState = {
 };
 */
 
+
+
 var PortalStateView = function(){
   var _this = this;
   var waitingForResponse = false; // If waiting for response from cortex
@@ -85,13 +87,18 @@ var PortalStateView = function(){
 
     if(String(property) == 'state'){
 
-      TweenMax.to('.screen[data-name="home"]',2,{backgroundColor:"#f6f6f6"});
+    //  TweenMax.to('.screen[data-name="home"]',2,{backgroundColor:"#f6f6f6"});
       $('body').removeClass('visual');
 
         if(value == 'classReady'){
           set('Class is ready.');
           toggleClassControls(true);
           setClassControls('showStart');
+          set('Preparing class...');
+        }
+        if(value == 'startClassAfterDelay'){
+          countdown.show();
+          countdown.start();
         }
         if(value == 'loadingClass'){
           set('Preparing class...');
@@ -100,7 +107,7 @@ var PortalStateView = function(){
         if(value == 'liveClass'){
           set('Class in session.');
           $('body').addClass('visual');
-          TweenMax.to('.screen[data-name="home"]',2,{backgroundColor:"rgba(246,246,246,0)"});
+      // /    TweenMax.to('.screen[data-name="home"]',2,{backgroundColor:"rgba(246,246,246,0)"});
           toggleClassControls(true);
           setClassControls('showPause');
           toggleNavigation(false);
@@ -111,8 +118,10 @@ var PortalStateView = function(){
           toggleClassControls(true);
           setClassControls('showStart');
           setTimeout(function(){
-          toggleNavigation(true);
-        },500)
+            if(pageLoaded){
+            toggleNavigation(true);
+            }
+          },500)
         }
         if(value == 'standby'){
           set('Standby.')
@@ -128,6 +137,9 @@ var PortalStateView = function(){
         }
     }
     else if(String(property) == 'classDuration'){
+      if(value == 'false' || value == false){
+        value = '55';
+        }
       set(value + ' min.')
     }
     else if(String(property) == 'nextClassCountdown'){
@@ -278,7 +290,7 @@ if(fullCardShowing == false){
     top:abs.top - 125,
     left:abs.left,
     width:abs.width,
-    ease:Power2.easeInOut,
+    ease:Power3.easeIn,
     onComplete:function(){
   changeTopAppBarText('Overview of ' + classID,'back');
   TweenMax.to(fcinner,.15,{opacity:1});
@@ -352,10 +364,13 @@ var waitForCallback;
 function loadClass(classID,callback = false){
 
   // load class
+
+  var startDelay = $('#delay-select-val').val();
+
   channel.trigger('client-event', {eventType:'command',
                                       value:'load class',
                                       params:{classID:classID,
-                                      startTime:'now'}});
+                                      startTime:startDelay}});
 
 
 
@@ -380,6 +395,60 @@ function loadClass(classID,callback = false){
 
 
 
+
+var StartCountdown = function(){
+  var _this = this;
+
+  var runner = $('#runner');
+  var delayCountdown = $('#delay-countdown');
+  _this.runner = runner;
+
+  var startTime = 0;
+  _this.startTime = startTime;
+  this.setStartTime = function(sec){
+    _this.startTime = sec;
+    $(_this.runner).runner({
+      autostart:false,
+      countdown: true,
+      startAt: _this.startTime * 1000, // alternatively you could just write: 60*1000
+      stopAt: 0
+    }).on('runnerFinish', function(eventObject, info) {
+      _this.hide();
+    });
+  }
+
+  this.start = function(callback = false){
+      $(_this.runner).runner('start');
+  }
+
+  this.show = function(){
+
+    TweenMax.set(delayCountdown,{clearProps:"all"});
+    TweenMax.from(delayCountdown,.3,{y:"100%",ease:Power2.easeOut,onStart:function(){
+      $(delayCountdown).show();
+    }});
+  }
+
+  this.hide = function(){
+
+    TweenMax.to(delayCountdown,.2,{y:"100%",ease:Power2.easeOut,onComplete:function(){
+      $(delayCountdown).hide();
+    }});
+
+      $(_this.runner).runner('stop');
+    }
+    this.clear = function(){
+      $(runner).show();
+    }
+
+}
+
+
+var countdown = new StartCountdown();
+
+$('#cancel-start-class-delay-btn').click(function(){
+  countdown.hide();
+})
 
 
 

@@ -40,11 +40,13 @@ function setClassControls(type = 'hide'){
     $('#pause-class-btn').hide();
     $('#start-class-btn').show();
     $('#start-delay-btn').show();
+    $('#start-class-btn').text('Start');
   }
   if(type == 'showPause'){
     $('#pause-class-btn').show();
     $('#start-class-btn').hide();
     $('#start-delay-btn').hide();
+    $('#start-class-btn').text('Resume');
   }
 }
 
