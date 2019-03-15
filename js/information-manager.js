@@ -348,6 +348,7 @@ $('.full-card .start-button').click(function(){
       loadingOverlay(false);
       appBarBackButton.click();
       $('.nav-btn[data-name="home"]').click();
+      changeTopAppBarText('Portal');
       //showScreen('home','Portal');
       toggleNavigation(false);
       $('body').bind('click.showcontrols',function(){
@@ -425,10 +426,12 @@ var StartCountdown = function(){
       TweenMax.set(runner,{color:"black"});
       TweenMax.to(runner,_this.startTime,{color:"white",ease:Linear.easeNone});
       TweenMax.to(progress,_this.startTime,{x:"0%",ease:Linear.easeNone});
+
+        toggleNavigation(true);
   }
 
   this.show = function(){
-
+    toggleNavigation(false);
     TweenMax.set(delayCountdown,{clearProps:"all"});
     TweenMax.from(delayCountdown,.3,{y:"100%",ease:Power2.easeOut,onStart:function(){
       $(delayCountdown).show();
