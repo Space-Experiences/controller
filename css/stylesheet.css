@@ -375,6 +375,8 @@ z-index: 10;
 
 .mdc-menu-surface--open{
   z-index: 9999999;
+  margin-left: 4%;
+  width: calc(100vw - 16%);
 }
 .mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-floating-label{
   color: #000;
@@ -389,7 +391,22 @@ z-index: 10;
 .mdc-select:not(.mdc-select--disabled) .mdc-floating-label{
 
 }
-#start-delay-btn{max-width: 147px;left: 5px;display: block;border: none;box-shadow: none;/* padding: 0px; *//* height: 36px; */}
+
+.mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-line-ripple{
+  background: none;
+}
+.mdc-select--focused .mdc-select__dropdown-icon{
+  color:black;
+  --mdc-theme-primary: #000;
+}
+.mdc-select:not(.mdc-select--disabled){
+  /* background: #f6f6f6; */
+  opacity: 1;
+}
+.mdc-select:hover::before{
+  background: none;
+}
+#start-delay-btn{max-width: 147px;left: 5px;display: block;border: none;box-shadow: none;/* padding: 0px; *//* height: 36px; */background: none;}
 
 #toggle-lock-state-btn{
   height: 100%;
@@ -398,6 +415,14 @@ width: 60px;
 
 #cancel-start-class-delay-btn{position: absolute;margin: auto;display: block;bottom: 50%;top: unset;left: unset;float: unset;right: 0px;left: 0px;color: black;width: 150px;background: white;}
 
+#delay-countdown-graphic{
+  position: absolute;
+  height: 100%;
+  left: 0px;
+  width: 100%;
+  background: #97d49a;
+  top: 0px;
+}
 
 #delay-countdown{
   position: absolute;
@@ -418,6 +443,7 @@ width: 60px;
   color:white;
   display: none;
   float: unset;
+  background: #f6f6f6;
 }
 
 #delay-countdown_inner{position: relative;width: 100vw;height: 100vh;z-index: 9999999999;}
@@ -429,4 +455,5 @@ width: 60px;
   top: 20%;
   left: 0px;
   right: 0px;
+  color: black;
 }

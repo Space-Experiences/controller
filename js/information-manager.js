@@ -401,6 +401,7 @@ var StartCountdown = function(){
 
   var runner = $('#runner');
   var delayCountdown = $('#delay-countdown');
+  var progress = $('#delay-countdown-graphic');
   _this.runner = runner;
 
   var startTime = 0;
@@ -419,6 +420,11 @@ var StartCountdown = function(){
 
   this.start = function(callback = false){
       $(_this.runner).runner('start');
+
+      TweenMax.set(progress,{x:"-100%"});
+      TweenMax.set(runner,{color:"black"});
+      TweenMax.to(runner,_this.startTime,{color:"white",ease:Linear.easeNone});
+      TweenMax.to(progress,_this.startTime,{x:"0%",ease:Linear.easeNone});
   }
 
   this.show = function(){
