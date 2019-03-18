@@ -454,7 +454,15 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
        }
        setTimeout(function(){
          pageLoaded = true;
-            toggleNavigation(true);
+            if(portalState.state != 'classReady'){
+              if(portalState.state == 'loadingClass'){
+                listenForTouchDuringLiveClass();
+              }else{
+                toggleNavigation(true);
+              }
+            }else{
+                listenForTouchDuringLiveClass();
+            }
         },500);
 
      },2000);

@@ -94,7 +94,8 @@ var PortalStateView = function(){
           set('Class is ready.');
           toggleClassControls(true);
           setClassControls('showStart');
-          set('Preparing class...');
+        
+          countdown.hide();
         }
         if(value == 'startClassAfterDelay'){
           countdown.show();
@@ -103,6 +104,8 @@ var PortalStateView = function(){
         if(value == 'loadingClass'){
           set('Preparing class...');
           toggleClassControls(false);
+          toggleNavigation(false);
+          listenForTouchDuringLiveClass();
         }
         if(value == 'liveClass'){
           set('Class in session.');
@@ -345,6 +348,8 @@ $('.full-card .start-button').click(function(){
   // trigger overlay
   loadingOverlay(true);
   loadClass(classID,function(){
+    window.location.reload();
+    /*
       loadingOverlay(false);
       appBarBackButton.click();
       $('.nav-btn[data-name="home"]').click();
@@ -355,6 +360,7 @@ $('.full-card .start-button').click(function(){
         $(this).unbind('click.showcontrols');
         toggleNavigation(true);
       })
+      */
   });
 
 })
@@ -377,6 +383,7 @@ function loadClass(classID,callback = false){
 
   // Subscribe to listen for return event pub.
   EventBus.subscribe('responsePortalState', function(){
+
 
     if(callback){
       callback();
@@ -420,6 +427,7 @@ var StartCountdown = function(){
   }
 
   this.start = function(callback = false){
+      $(_this.runner).runner('reset');
       $(_this.runner).runner('start');
 
       TweenMax.set(progress,{x:"-100%"});
@@ -431,6 +439,7 @@ var StartCountdown = function(){
   }
 
   this.show = function(){
+
     toggleNavigation(false);
     TweenMax.set(delayCountdown,{clearProps:"all"});
     TweenMax.from(delayCountdown,.3,{y:"100%",ease:Power2.easeOut,onStart:function(){
@@ -446,7 +455,7 @@ var StartCountdown = function(){
 
       $(_this.runner).runner('stop');
     }
-    this.clear = function(){
+  this.clear = function(){
       $(runner).show();
     }
 
