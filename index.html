@@ -222,7 +222,7 @@
             </div>
 
 
-            <div class="climate-display" style="    opacity: 0;transform: matrix(0, 0, 0, 0, 0, 0);" >
+            <div class="climate-display" style="   transform: matrix(1, 0, 0, 1, 0, -50);" >
               <div class="climate-info farenheight"><span class="climate-data" climate-info-type="current" climate-name="f" id="current-farenheight"></span><span class="climate-icon" name="f">F</span></div>
               <div  class="climate-info humidity" ><span class="climate-data" climate-info-type="current" climate-name="h" id="current-humidity"></span><span class="climate-icon" name="h">%</span></div>
             </div>
@@ -230,8 +230,8 @@
 
           <div class="climate-card">
             <div class="mdc-typography">
-                              <h2 class="mdc-typography--headline4 data-info">Climate</h2>
-                              <p class="mdc-typography--subtitle1 data-info" >Current climate:</p>
+                              <h2 class="mdc-typography--headline4 data-info" style="opacity:0;">Climate</h2>
+                              <p class="mdc-typography--subtitle1 data-info" >climate</p>
                               <div class="wrapper">
   <div class="box a">
            <div class="climate-info farenheight"><span class="climate-data" climate-info-type="current" climate-name="f" ></span>
@@ -245,12 +245,41 @@
   </div>
 </div>
   <div class="box e">
-    <div id="knob-container">
+
+<!-- Temp control slider -->
+
+    <div id="knob-container" >
       <div id="current-temp-knob" class="knob"><span>|</span></div>
       <div id="control-knob" class="knob"><span>|</span></div>
 
       <div id="set-temp-to" class="climate-data" climate-info-type="current" climate-name="setTemp">--</div></div>
   </div>
+  <div class="box f">
+<div class="three mdc-typography--overline label">temperature control:</div>
+    <div class="mdc-slider mdc-slider--discrete mdc-slider--display-markers"  tabindex="0" role="slider"
+         aria-valuemin="50" aria-valuemax="90" aria-valuenow="50"
+         data-step="1" aria-label="Select Value">
+         <div class="mdc-slider__track-container">
+          <div class="mdc-slider__track"></div>
+          <div class="mdc-slider__track-marker-container"></div>
+        </div>
+
+ <div class="mdc-slider__track-container">
+   <div class="mdc-slider__track"></div>
+ </div>
+ <div class="mdc-slider__thumb-container">
+   <div class="mdc-slider__pin">
+     <span class="mdc-slider__pin-value-marker"></span>
+   </div>
+   <svg class="mdc-slider__thumb" width="21" height="21">
+     <circle cx="10.5" cy="10.5" r="7.875"></circle>
+   </svg>
+   <div class="mdc-slider__focus-ring"></div>
+ </div>
+</div>
+
+  </div>
+
 </div>
                               <div class="climate-card-info" style="opacity: 0;transform: matrix(0, 0, 0, 0, 0, 0);" >
                                 <div class="climate-info farenheight">
@@ -450,15 +479,21 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
        // Indicate controller is on
        //channel.trigger('client-event', {type:"status",id:"controller"});
 
-
-
         psm.returnPortalState();
 
+        // Sub to returned portal state.
+        var firstListen = EventBus.subscribe('responsePortalState', function(){
 
-       channel.trigger('client-event', {eventType:'GET',
-                                        value:'returnAirtableClassData',
-                                        params:{classID:'B101',
-                                        startTime:'now'}});
+          channel.trigger('client-event', {eventType:'GET',
+                                           value:'returnAirtableClassData',
+                                           params:{classID:'--',
+                                           startTime:'now'}});
+
+        });
+
+
+
+
      });
 
      channel.bind('portal-event', function(msg) {
@@ -472,18 +507,11 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
 
      $('button').click(function(){
 
-
-
        var val = $(this).attr('data-value');
        var type = $(this).attr('data-type');
        if(type == 'pusher'){
-/*
-         channel.trigger('client-event', {type:'GET',
-                                          value:val,
-                                          params:{classID:'B101',
-                                          startTime:'now'}});
-*/
-         channel.trigger('client-event', { type: 'pusher', value: val });
+
+          channel.trigger('client-event', { type: 'pusher', value: val });
        }
 
      });
@@ -537,8 +565,6 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
    //const select = new MDCSelect(document.querySelector('.mdc-select'));
 
 var delaySelect = mdc.select.MDCSelect.attachTo(document.querySelector('.mdc-select'));
-
-
  mdc.autoInit();
    </script>
 

@@ -41,17 +41,20 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
 	background:white;
 	position:fixed;
 	height: 100%;
-	z-index: 100000;
+	z-index: 100;
 	padding: 24px;
 	/* text-align: center; */
 	width: calc(100% - 48px);
 	padding-top: 0px;
 	text-align: center;
+	padding-top: 2rem;
 }
 .climate-card .mdc-typography--subtitle1.data-info{
-	margin-bottom: 0px !important;
+	margin-bottom: 1.4rem !important;
 	/* padding-top:0px !important; */
-	font-size: 1.4rem;
+	font-size: 1.6rem;
+	text-transform: uppercase;
+	font-weight: 400;
 }
 
 .climate-card-info{
@@ -63,12 +66,17 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
   font-size: 20px;
 }
 
-.climate-info{z-index: 1;/* position: relative; *//* display: block; */color: black;/* padding-top: 15px; */font-size: 1.5em;font-weight: 400;text-transform: capitalize;}
+.climate-info{z-index: 1;/* position: relative; *//* display: block; */color: black;/* padding-top: 15px; */font-size: 1.1em;font-weight: 400;text-transform: capitalize;/* text-align: left; *//* padding-left: 26px; */}
 .climate-data[climate-name="f"]{
 	/* color:orange; */
 }
+.climate-display .climate-data{
+	/* position: relative; */
+	/* top: 7px; */
+}
 .climate-data[climate-name="h"]{
-	color:#03A9F4;
+	/* color:#03A9F4; */
+	/* color: black; */
 }
 .climate-info.humidity:after{
 	/* content:"x"; */
@@ -79,7 +87,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
 }
 .climate-display{
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(46%,3fr));
+  grid-template-columns: repeat(auto-fill, minmax(48%,3fr));
   width: 170px;
   /* padding-left: 20px; */
   background: #f6f6f6;
@@ -90,7 +98,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
   /* clip-path: polygon(0% 0%, 100% 0%, 93% 100%, 7% 100%); */
   /* clip-path: none; */
   width: 180px;
-  height: 60px;
+  height: 50px;
   bottom: 20%;
   background: #f6f6f6;
   margin: auto;
@@ -98,7 +106,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
   text-align: center;
   position: fixed;
   bottom: 38px;
-  z-index: 10010;
+  z-index: 100;
   /* background: black; */
   color: white;
   box-shadow: 0px -1px 0px 1px #EEEEEE inset;
@@ -108,10 +116,12 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
   white-space: nowrap;
   font-size: 16px;
   overflow-y: hidden;
-  width: 80vw;
-  bottom: 10vh;
+  width: -webkit-fill-available;
+  bottom: unset;
   background: white;
   clip-path: none;
+  padding: 5px;
+  top: 46px;
 }
 
 .climate-display:before{
@@ -162,7 +172,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
 }
 
 .climate-display .climate-info{
-  padding-top: .25em;
+  padding-top: 0px;
 }
 
 .climate-display .climate-info.farenheight:after{
@@ -177,6 +187,10 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
 	text-transform: uppercase;
 	letter-spacing: 2;
 	opacity: .5;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 2;
+	opacity: .6;
 }
 .climate-display .climate-info.humidity:after{
 	content:"humid.";
@@ -185,10 +199,12 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
 	font-weight:300;
 	text-transform:uppercase;
 	letter-spacing:2;
-	font-weight: 800;
+	font-weight: 500;
 	text-transform: uppercase;
 	letter-spacing: 2;
-	opacity: .5;
+	opacity: .6;
+	/* position: relative; */
+	/* top: -36px; */
 }
 .climate-icon{position: relative;font-size: .6em;top: -.4rem;left: 1px;font-weight: 4500;}
 .climate-icon[name="h"]{
@@ -199,6 +215,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
 }
 .climate-card{
       transform: translate(0%, 100%) matrix(1, 0, 0, 1, 0, 0);
+      transform: translate(0%, -110%) matrix(1, 0, 0, 1, 0, 0);
 }
 .climate-card-info {
   display: grid;
@@ -219,6 +236,7 @@ color: #444;
   position: relative;
   box-shadow: 0px 0px 0px 4px #eaeaea;
   /* background: white; */
+  display: none;
 }
 .knob span{
   top: 0px;
@@ -240,7 +258,7 @@ color: #444;
 }
 .main.heating-room #current-temp-knob span{background: #ffffff99;}
 .main.heating-room #set-temp-to{
-	color:white;
+	color: #FF9800;
 }
 
 .main.heating-room #set-temp-to:before{
@@ -257,6 +275,7 @@ color: #444;
 	height: 190px;
 	/* padding-top: 19px; */
 	background-image: none;
+	height: 100px;
 }
 
 
@@ -269,11 +288,10 @@ color: #444;
 }
 #set-temp-to{
 	position: absolute;
-	top: 22vw;
 	margin: auto;
 	left: 0px;
 	right: 0px;
-	font-size: 10vh;
+	font-size: 5.4rem;
 	font-weight: 700;
 	pointer-events: none;
 }
@@ -282,12 +300,12 @@ color: #444;
 	font-size:11px;
 	font-weight:300;
 	position:absolute;
-	top:-10px;
-width:80px;
-text-align:center;
-margin:auto;
-left:0px;
-right:0px;
+	top: -20px;
+	width:80px;
+	text-align:center;
+	margin:auto;
+	left:0px;
+	right:0px;
 }
 .wrapper {
 		display: grid;
@@ -327,7 +345,14 @@ right:0px;
 		grid-column: col / span 4;
 		grid-row: row 3;
 		text-align: center;
+		margin-top: 0;
 	}
+  .f {
+    grid-column: col / span 4;
+    grid-row: row 4;
+    text-align: center;
+    margin-top: -1rem;
+  }
 body.visual{
   background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
 	background-size:500% 500%;
@@ -376,10 +401,10 @@ body.visual div{
   color:white;
 }
 body.visual div:not(.climate-card) .climate-display{
-	bottom:10vh;
-	font-size:5vh;
+	/* bottom:10vh; */
+	/* font-size:5vh; */
 	background:none !important;
-	min-height:20vh;
+	/* min-height:20vh; */
 	box-shadow: none;
 	font-weight: 300;
 }
@@ -526,7 +551,7 @@ z-index: 10;
 }
 
 /* Class cards */
-.class-card{padding: 16px;margin: 24px -4px;border-radius: 0px;box-shadow: 0px 2px 0px -2px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 4px 15px 0px hsla(0, 0%, 17%, 0.12);transition: none;margin: 20px 0px;}
+.class-card{padding: 16px;margin: 24px -4px;border-radius: 0px;box-shadow: 0px 2px 0px -2px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 4px 15px 0px hsla(0, 0%, 17%, 0.12);transition: none;margin: 20px 0px;}
 
 .class-card_headline{margin-top: 0px;margin-bottom: 0px;/* font-weight: 400; */font-size: 16px;}
 .class-card_subtitle{
@@ -646,7 +671,14 @@ z-index: 10;
 .full-card .schedule-button{min-width: 49%;margin-top: 0px;cursor: not-allowed;}
 
 
-.portal-display{text-align: left;font-size: 20px;line-height: 40px;font-weight: 300;padding: 19px;}
+.portal-display{text-align: left;font-size: 20px;line-height: 40px;font-weight: 300;padding: 19px;margin-bottom: 20px;}
+.screen[data-screen-title="Portal"]{
+	/* margin-top: calc(100% - 310px); */
+}
+.screen[data-screen-title="Portal"] .portal-display{
+	text-align:center;
+	margin-top: calc(50px + 10vh);
+}
 .pd-info{
 
 }
@@ -657,7 +689,7 @@ z-index: 10;
   letter-spacing: .5px;
 }
 .pd-info[name="classID"]{
-  font-weight: 500;
+  font-weight: 400;
   /* color: #929292; */
   margin-top: 12px;
   margin-bottom: 8px;
@@ -678,12 +710,15 @@ z-index: 10;
 .portal-live-controls button{
   display: block;
   margin: 5% 20px;
+  margin: auto;
+  width: 115px;
+  width: 250px;
 }
 
 .mdc-menu-surface--open{
   z-index: 9999999;
-  margin-left: 4%;
-  width: calc(100vw - 16%);
+  margin-left: 3%;
+  width: calc(100vw - 306px);
 }
 .mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-floating-label{
   color: #000;
@@ -713,14 +748,14 @@ z-index: 10;
 .mdc-select:hover::before{
   background: none;
 }
-#start-delay-btn{max-width: 147px;left: 5px;display: block;border: none;box-shadow: none;/* padding: 0px; *//* height: 36px; */background: none;}
+#start-delay-btn{max-width: 140px;display: block;border: none;box-shadow: none;/* padding: 0px; *//* height: 36px; */background: none;margin: auto;margin-top: 15px;}
 
 #toggle-lock-state-btn{
   height: 100%;
 width: 60px;
 }
 
-#cancel-start-class-delay-btn{position: absolute;margin: auto;display: block;bottom: 50%;top: unset;left: unset;float: unset;right: 0px;left: 0px;color: black;width: 150px;background: white;}
+#cancel-start-class-delay-btn{position: absolute;margin: auto;display: block;bottom: 50%;top: unset;left: unset;float: unset;right: 0px;left: 0px;color: black;width: 115px;background: white;}
 
 #delay-countdown-graphic{
   position: absolute;

@@ -28,6 +28,7 @@ var SocketManager = function(){
     if(msg.data.type == 'responseTemperatureSet'){
       portalState.climate.setTemp = Number(msg.data.val);
       EventBus.publish('responseTemperatureSet');
+      setTempSliderValue(portalState.climate.setTemp);
     }
   }
 

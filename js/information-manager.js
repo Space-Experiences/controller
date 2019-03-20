@@ -2,7 +2,7 @@
 // Data returned from portal matches object in cortex.
 var portalState = {
   state:"none", // loadingClass,classReady,liveClass,standby,enterClass,exitClass,cleanMode,
-  class:"none", // classID in airtable and production folder
+    class:"none", // classID in airtable and production folder
   classDuration:"", // Total length of class if one is loaded or live
   classProgress:"", // percentage complete for class (calculated on client side for time)
   nextClassCountdown:"", // If class is about to start, how much time until next class
@@ -79,11 +79,11 @@ var PortalStateView = function(){
       var elem = psdisplay[property];
 
       let tl = new TimelineMax({});
-      tl.to(elem,.5,{x:30,opacity:0,ease:Expo.easeIn});
+      tl.to(elem,.5,{y:-10,opacity:0,ease:Expo.easeIn}); //x:30
       tl.add(function(){
         $(elem).text(txt);
       });
-      tl.to(elem,.5,{x:0,opacity:1,ease:Expo.easeOut});
+      tl.to(elem,.5,{y:0,opacity:1,ease:Expo.easeOut});
       //tl.kill();
     }catch(e){
       console.log(e);
@@ -110,7 +110,7 @@ var PortalStateView = function(){
           countdown.start();
         }
         if(value == 'loadingClass'){
-          set('Preparing class...');
+          set('Preparing class.');
           toggleClassControls(false);
           toggleNavigation(false);
           listenForTouchDuringLiveClass();
@@ -176,6 +176,7 @@ var PortalStateView = function(){
     }
     $(climateElems.setTemp).text(setTempText);
 
+    setTempSliderValue(portalState.climate.setTemp);
 
   }
 
@@ -221,6 +222,7 @@ function returnClassCard(info){
 var abs;
 
 function addClassOverviews(classes){
+  $('#class-list').empty();
   console.log('addClassOverviews for ' + classes.length + ' classes')
   var classElements = '';
 
