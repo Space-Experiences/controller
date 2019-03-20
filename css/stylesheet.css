@@ -37,6 +37,258 @@ body.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title{
   }
 body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
 
+.climate-card{
+	background:white;
+	position:fixed;
+	height: 100%;
+	z-index: 100000;
+	padding: 24px;
+	/* text-align: center; */
+	width: calc(100% - 48px);
+	padding-top: 0px;
+}
+.climate-card .mdc-typography--subtitle1.data-info{
+	margin-bottom: 0px !important;
+	/* padding-top:0px !important; */
+	font-size: 1.4rem;
+}
+
+.climate-card-info{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(46%,3fr));
+  width: 80%;
+  height: 60px;
+  color: black;
+  font-size: 20px;
+}
+
+.climate-info{z-index: 1;/* position: relative; *//* display: block; */color: black;/* padding-top: 15px; */font-size: 1em;font-weight: 500;text-transform: capitalize;}
+.climate-info.humidity:after{
+	/* content:"x"; */
+	/* width:5px; */
+	/* height:20px; */
+	/* background:black; */
+	/* display:block; */
+}
+.climate-display{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(46%,3fr));
+  width: 170px;
+  /* padding-left: 20px; */
+  background: white;
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  /* clip-path: polygon(0 0, 100% 0%, 78% 100%, 0 100%); */
+  /* clip-path: polygon(0% 0%, 100% 0%, 93% 100%, 7% 100%); */
+  /* clip-path: none; */
+  width: 180px;
+  height: 60px;
+  bottom: 20%;
+  background: #f6f6f6;
+  margin: auto;
+  right: 0px;
+  text-align: center;
+  position: fixed;
+  bottom: 38px;
+  z-index: 10010;
+  /* background: black; */
+  color: white;
+  /* box-shadow: 10px 20px 30px 30px #03A9F4; */
+  /* overflow: visible; */
+  background: none;
+  white-space: nowrap;
+  white-space: nowrap;
+  font-size: 16px;
+  overflow-y: hidden;
+}
+
+.climate-display:before{
+  content:" ";
+  display: block;
+  box-shadow: 0px 1px 0px 4px #03A9F4;
+  width: 100%;
+  height: 50px;
+  position: absolute;
+  background: white;
+  /* z-index: 0; */
+  clip-path: polygon(0% -20%, 112% 0%, 94% 100%, 0% 110%, 0% 110%);
+  box-shadow: 0px -1px 0px 0px #cccccc inset, 0px 2px 0px -1px #ffffff inset, 15px 0px 0px -18px black inset;
+  border-radius: 4px;
+  clip-path: polygon(0 85%, 100% 85%, 92% 100%, 6% 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 20%, 100% 80%, 86% 114%, 8% 110%, 0% 80%, 0% 20%);
+  clip-path: polygon(0 0, 100% 0, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+  clip-path: polygon(0 0, 100% 0, 100% 34%, 102% 60%, 89% 100%, 11% 100%, -1% 62%, 0% 20%);
+  clip-path: polygon(100% 0, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0 0);
+  clip-path: polygon(100% 0, 100% 80%, 90% 100%, 10% 100%, 0% 80%, 0 0);
+}.climate-display:after{
+  content:" ";
+  display: block;
+  box-shadow: 0px 1px 0px 4px #f6f6f6, 0px 1px 0px 14px #d2d2d2;
+  width: 102%;
+  height: 50px;
+  position: absolute;
+  /* background: white; */
+  z-index: -2;
+  clip-path: polygon(0% 0%, 100% 0%, 92% 96%, 7% 96%);
+  background: #f6f6f6;
+  left: -1%;
+  top: 5px;
+  /* clip-path: polygon(0 0, 100% 0, 100% 19%, 100% 80%, 91% 100%, 9% 100%, 0% 80%, 0% 20%); */
+  /* clip-path: polygon(0 0, 100% 0, 100% 20%, 100% 90%, 31% 100%, 9% 100%, 0 89%, 0% 20%); */
+  clip-path: polygon(0 0, 100% 0, 100% 36%, 99% 60%, 89% 100%, 10% 99%, -1% 60%, 18% 20%);
+  clip-path: polygon(100% 90%, 91% 100%, 9% 100%, 0 89%);
+  clip-path: polygon(108% 60%, 90% 101%, 15% 101%, -1% 70%);
+  clip-path: polygon(100% 0, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0 0);
+  clip-path: polygon(100% 0, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0 0);
+  clip-path: polygon(100% 0, 100% 80%, 90% 100%, 10% 100%, 0% 80%, 0 0);
+  clip-path: polygon(100% 0, 100% 0, 90% 100%, 10% 100%, 0 0, 0 0);
+  background: #f6f6f6;
+  lip-path: polygon(100% 0, 100% 80%, 90% 100%, 10% 100%, 0% 80%, 0 0);
+  clip-path: polygon(100% 0, 100% 80%, 90% 100%, 10% 100%, 0% 80%, 0 0);
+}
+
+.climate-display .climate-info{
+  padding-top:10px;
+}
+
+.climate-icon{position: relative;font-size: .6em;top: -.4rem;left: 1px;}
+.climate-icon[name="h"]{
+
+}
+.climate-icon[name="f"]{
+
+}
+.climate-card{
+      transform: translate(0%, 100%) matrix(1, 0, 0, 1, 0, 0);
+}
+.climate-card-info {
+  display: grid;
+grid-gap: 10px;
+grid-template-columns: repeat(auto-fill, [col] 100px ) ;
+grid-template-rows: repeat(auto-fill, [row] auto  );
+background-color: #fff;
+color: #444;
+}
+.knob{
+  height: 150px;
+  width: 150px;
+  border-radius:200px;
+  border: 2px solid black;
+  margin:  auto;
+  /* background: white; */
+  top: 12px;
+  position: relative;
+  box-shadow: 0px 0px 0px 4px #dedede;
+  /* background: white; */
+}
+.knob span{
+  top: 0px;
+  position: relative;
+  font-weight: 100;
+  background: #FF9800;
+  color: #ff9e00;
+  width: 6px;
+  height: 24px;
+  font-size: 15px;
+  display: inline-block;
+  pointer-events: none;
+}
+
+.main.heating-room #current-temp-knob{background: #FFA726;}
+.main.heating-room #control-knob span{
+	background:#ffffff;
+	color:white;
+}
+.main.heating-room #current-temp-knob span{background: #ffffff99;}
+.main.heating-room #set-temp-to{
+	color:white;
+}
+
+.main.heating-room #set-temp-to:before{
+	content:"HEAT SET TO";
+}
+
+#knob-container{
+	position: relative;
+	background-image: url(/images/circleTicks.png);
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 51% 54%;
+	/* padding: 18px 0px; */
+	height: 160px;
+	/* padding-top: 19px; */
+	background-image: none;
+}
+
+
+#current-temp-knob{position: absolute;left: 0px;right: 0px;z-index: 9;background: none;pointer-events: none;border: none;box-shadow: none;background: #ffffff;z-index: 0;}
+#current-temp-knob span{background: #ffffff99;height: 20px;top: -2px;color: #e0e0e0;width: 8px;}
+#control-knob{
+  background: none;
+  z-index: 1;
+}
+#set-temp-to{
+	position: absolute;
+	top: 62px;
+	margin: auto;
+	left: 0px;
+	right: 0px;
+	font-size: 60px;
+	font-weight: 700;
+	pointer-events: none;
+}
+#set-temp-to:before{
+	content:"HEAT SET TO";
+	font-size:11px;
+	font-weight:300;
+	position:absolute;
+	top:-10px;
+width:80px;
+text-align:center;
+margin:auto;
+left:0px;
+right:0px;
+}
+.wrapper {
+		display: grid;
+		grid-gap: 10px;
+		grid-template-columns: repeat(auto-fill, [col] 23% );
+		grid-template-rows: repeat(auto-fill, [row] auto  );
+		background-color: #fff;
+		color: #444;
+	}
+
+	.box {
+		/* background-color: #444; */
+		color: inherit;
+		border-radius: 5px;
+		padding: 10px 0px 20px;
+		font-size: 150%;
+	}
+
+	.a {
+		grid-column: col / span 2;
+		grid-row: row ;
+	}
+	.b {
+		grid-column: col 3 / span 2 ;
+		grid-row: row ;
+	}
+	.c {
+		grid-column: col ;
+		grid-row: row 2 ;
+	}
+	.d {
+		grid-column: col 2 / span  3 ;
+		grid-row: row 2 ;
+	}
+
+	.e {
+		grid-column: col / span 4;
+		grid-row: row 3;
+		text-align: center;
+	}
 body.visual{
   background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
 	background-size:500% 500%;

@@ -8,6 +8,14 @@ var SocketManager = function(){
       classData = msg.data.val; // Set array
       addClassOverviews(classData);
     }
+      if(msg.data.type == 'portalClimate'){
+        console.log('portalClimate');
+        console.log(msg.data.data)
+        portalState.climate.f = msg.data.data.f;
+        portalState.climate.h = msg.data.data.h;
+        portalState.climate.setTemp = Number(msg.data.data.setTemp);
+        psm.updatePortalClimate();
+      }
     if(msg.data.type == 'responsePortalState'){
       //getPortalState = msg.data.val;
       //portalState = msg.data.val;
@@ -16,6 +24,10 @@ var SocketManager = function(){
       console.log(portalState);
       EventBus.publish('responsePortalState');
 
+    }
+    if(msg.data.type == 'responseTemperatureSet'){
+      portalState.climate.setTemp = Number(msg.data.val);
+      EventBus.publish('responseTemperatureSet');
     }
   }
 

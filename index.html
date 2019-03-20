@@ -26,7 +26,7 @@
     </div>
   </header>
 
-    <div class="main nav-disabled">
+    <div class="main nav-disabled" active-screen="home">
 
 
 
@@ -114,6 +114,9 @@
 
                             <div id="delay-countdown-graphic"></div>
                     </div>
+
+
+
                 </div><!-- End screen_inner -->
               </div><!-- End screen -->
 
@@ -217,6 +220,59 @@
               </div>
             </div>
             </div>
+
+
+            <div class="climate-display" style="    opacity: 0;transform: matrix(0, 0, 0, 0, 0, 0);" >
+              <div class="climate-info farenheight"><span class="climate-data" climate-info-type="current" climate-name="f" id="current-farenheight"></span><span class="climate-icon" name="f">F</span></div>
+              <div  class="climate-info humidity" ><span class="climate-data" climate-info-type="current" climate-name="h" id="current-humidity"></span><span class="climate-icon" name="h">%</span></div>
+            </div>
+
+
+          <div class="climate-card">
+            <div class="mdc-typography">
+                              <h2 class="mdc-typography--headline4 data-info" style=" text-align: left;">Climate</h2>
+                              <p class="mdc-typography--subtitle1 data-info" >Current climate:</p>
+                              <div class="wrapper">
+  <div class="box a">
+           <div class="climate-info farenheight"><span class="climate-data" climate-info-type="current" climate-name="f" ></span>
+             <span class="climate-icon" name="f">F</span>
+    <div class="three mdc-typography--overline label">temperature</div>
+           </div>
+         </div>
+  <div class="box b"><div  class="climate-info humidity" ><span class="climate-data" climate-info-type="current" climate-name="h" ></span><span class="climate-icon" name="h">%</span>
+
+  <div class="three mdc-typography--overline label">humidity</div>
+  </div>
+</div>
+  <div class="box e">
+    <div id="knob-container">
+      <div id="current-temp-knob" class="knob"><span>|</span></div>
+      <div id="control-knob" class="knob"><span>|</span></div>
+
+      <div id="set-temp-to" class="climate-data" climate-info-type="current" climate-name="setTemp">--</div></div>
+  </div>
+</div>
+                              <div class="climate-card-info" style="opacity: 0;transform: matrix(0, 0, 0, 0, 0, 0);" >
+                                <div class="climate-info farenheight">
+                                  <span class="climate-data" climate-info-type="current" climate-name="f" ></span>
+                                  <span class="climate-icon" name="f">F</span>
+
+                                </div>
+                                <div  class="climate-info humidity" >
+                                  <span class="climate-data" climate-info-type="current" climate-name="h" ></span>
+                                  <span class="climate-icon" name="h">%</span>
+
+                                </div>
+                              </div>
+
+                              <br>
+                              <br>
+                              <br>
+
+          </div>
+          </div>
+
+
 
 <!-- close main -->
     </div><!-- end main -->
@@ -347,7 +403,8 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
       classDuration:"...", // Total length of class if one is loaded or live
       classProgress:"...", // percentage complete for class (calculated on client side for time)
       nextClassCountdown:"...", // If class is about to start, how much time until next class
-      classSchedule:[] // Schedule of upcoming classes
+      classSchedule:[], // Schedule of upcoming classes
+      climate:{f:0,h:0,setTemp:0}
     };
     var socketManager = new SocketManager();
 

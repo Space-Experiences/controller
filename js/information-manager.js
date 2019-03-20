@@ -26,6 +26,11 @@ var PortalStateView = function(){
     nextClassCountdown:$('.pd-info[name="nextClassCountdown"]')
   };
 
+  var climateElems = {
+    f:$('.climate-data[climate-info-type="current"][climate-name="f"]'),
+    h:$('.climate-data[climate-info-type="current"][climate-name="h"]'),
+    setTemp:$('.climate-data[climate-info-type="current"][climate-name="setTemp"]')
+  };
 
 
 
@@ -56,6 +61,9 @@ var PortalStateView = function(){
             }
           }
       }
+
+
+      _this.updatePortalClimate();
 
   //  }
 
@@ -94,7 +102,7 @@ var PortalStateView = function(){
           set('Class is ready.');
           toggleClassControls(true);
           setClassControls('showStart');
-        
+
           countdown.hide();
         }
         if(value == 'startClassAfterDelay'){
@@ -153,6 +161,17 @@ var PortalStateView = function(){
     else{
       set();
     }
+  }
+
+
+  this.updatePortalClimate = function(){
+
+    console.log('updatePortalClimate: ' + portalState.climate.f);
+    $(climateElems.f).text(portalState.climate.f);
+    $(climateElems.h).text(portalState.climate.h);
+    $(climateElems.setTemp).text(portalState.climate.setTemp);
+
+
   }
 
   this.waitForResponseListener = function(callback){
@@ -214,6 +233,7 @@ function addClassOverviews(classes){
 //  TweenMax.set('#class-list',{height:h})
 var dragging = false; // keep track of dragging
   var drag = Draggable.create(".class-list", {type:"scrollTop" ,edgeResistance:.6, throwProps:true, lockAxis:true,
+  minimumMovement:0,
   onDrag:function(){
     dragging = true;
   },onRelease:function(){
@@ -222,16 +242,19 @@ var dragging = false; // keep track of dragging
   },200)
   }});
 
-       $('.class-card').click(function(){
+  $( ".class-card" ).bind( "tap", tapHandler );
 
-
-       });
-
-        $('.class-card').on('mousedown',function(){
+function tapHandler( event ){
+$( event.target ).addClass( "tap" );
+}
+        $('.class-card').mousedown(function() {
+          console.log('class-card mousedown, dragging = ' + dragging)
           if(dragging == false){
-          TweenMax.to(this,.1,{scale:.95});
+            TweenMax.to(this,.1,{scale:.95});
           }
         });
+
+
 
         $('.class-card').on('mouseup',function(){
 
@@ -348,10 +371,10 @@ $('.full-card .start-button').click(function(){
   // trigger overlay
   loadingOverlay(true);
   loadClass(classID,function(){
-    window.location.reload();
-    /*
+
       loadingOverlay(false);
       appBarBackButton.click();
+        $(appBarBackButton).unbind('click.back');
       $('.nav-btn[data-name="home"]').click();
       changeTopAppBarText('Portal');
       //showScreen('home','Portal');
@@ -360,7 +383,7 @@ $('.full-card .start-button').click(function(){
         $(this).unbind('click.showcontrols');
         toggleNavigation(true);
       })
-      */
+
   });
 
 })
