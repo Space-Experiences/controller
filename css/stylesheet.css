@@ -171,8 +171,8 @@ background-color: #fff;
 color: #444;
 }
 .knob{
-  height: 150px;
-  width: 150px;
+  height: 170px;
+  width: 170px;
   border-radius:200px;
   border: 2px solid black;
   margin:  auto;
@@ -216,14 +216,14 @@ color: #444;
 	background-repeat: no-repeat;
 	background-position: 51% 54%;
 	/* padding: 18px 0px; */
-	height: 160px;
+	height: 190px;
 	/* padding-top: 19px; */
 	background-image: none;
 }
 
 
 #current-temp-knob{position: absolute;left: 0px;right: 0px;z-index: 9;background: none;pointer-events: none;border: none;box-shadow: none;background: #ffffff;z-index: 0;}
-#current-temp-knob span{background: #ffffff99;height: 20px;top: -2px;color: #e0e0e0;width: 8px;}
+#current-temp-knob span{background: #E0E0E0;height: 20px;top: -2px;color: #e0e0e0;width: 8px;}
 #control-knob{
   background: none;
   z-index: 1;
