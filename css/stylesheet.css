@@ -374,7 +374,7 @@ body.visual{
 body.visual div{
   color:white;
 }
-body.visual .climate-display{
+body.visual div:not(.climate-card) .climate-display{
 	bottom:10vh;
 	font-size:5vh;
 	background:none !important;

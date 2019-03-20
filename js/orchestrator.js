@@ -188,7 +188,7 @@ function toggleClimateDisplay(command){
 
 function toggleClimateCard(){
 if(climateCardShowing == false){
-
+  $('body').removeClass('visual');
   TweenMax.to('.climate-card',.25,{y:"0%",ease:Power3.easeOut});
   climateCardShowing = true;
   changeTopAppBarText('Climate','back');
