@@ -169,7 +169,12 @@ var PortalStateView = function(){
     console.log('updatePortalClimate: ' + portalState.climate.f);
     $(climateElems.f).text(portalState.climate.f);
     $(climateElems.h).text(portalState.climate.h);
-    $(climateElems.setTemp).text(portalState.climate.setTemp);
+
+    let setTempText = portalState.climate.setTemp;
+    if(setTempText == 0){
+      setTempText = '--';
+    }
+    $(climateElems.setTemp).text(setTempText);
 
 
   }
