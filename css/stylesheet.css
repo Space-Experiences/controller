@@ -62,9 +62,9 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
   font-size: 20px;
 }
 
-.climate-info{z-index: 1;/* position: relative; *//* display: block; */color: black;/* padding-top: 15px; */font-size: 1.2em;font-weight: 400;text-transform: capitalize;}
+.climate-info{z-index: 1;/* position: relative; *//* display: block; */color: black;/* padding-top: 15px; */font-size: 1.5em;font-weight: 400;text-transform: capitalize;}
 .climate-data[climate-name="f"]{
-	color:orange;
+	/* color:orange; */
 }
 .climate-data[climate-name="h"]{
 	color:#03A9F4;
@@ -100,8 +100,8 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
   z-index: 10010;
   /* background: black; */
   color: white;
-  /* box-shadow: 10px 20px 30px 30px #03A9F4; */
-  /* overflow: visible; */
+  box-shadow: 0px -1px 0px 1px #EEEEEE inset;
+  overflow: visible;
   background: none;
   white-space: nowrap;
   white-space: nowrap;
@@ -161,7 +161,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
 }
 
 .climate-display .climate-info{
-  padding-top: .2em;
+  padding-top: .25em;
 }
 
 .climate-display .climate-info.farenheight:after{
@@ -208,15 +208,15 @@ background-color: #fff;
 color: #444;
 }
 .knob{
-  height: 70vw;
-  width: 70vw;
+  height: 60vw;
+  width: 60vw;
   border-radius:200px;
-  border: 2px solid black;
+  border: 2px solid #757575;
   margin:  auto;
   /* background: white; */
   top: 12px;
   position: relative;
-  box-shadow: 0px 0px 0px 4px #dedede;
+  box-shadow: 0px 0px 0px 4px #eaeaea;
   /* background: white; */
 }
 .knob span{
@@ -232,7 +232,7 @@ color: #444;
   pointer-events: none;
 }
 
-.main.heating-room #current-temp-knob{background: #FFA726;}
+.main.heating-room #current-temp-knob{background: #ffc249;}
 .main.heating-room #control-knob span{
 	background:#ffffff;
 	color:white;
@@ -263,11 +263,12 @@ color: #444;
 #current-temp-knob span{background: #E0E0E0;height: 20px;top: -2px;color: #e0e0e0;width: 8px;}
 #control-knob{
   background: none;
+
   z-index: 1;
 }
 #set-temp-to{
 	position: absolute;
-	top: 28vw;
+	top: 22vw;
 	margin: auto;
 	left: 0px;
 	right: 0px;
@@ -377,7 +378,9 @@ body.visual .climate-display{
 	bottom:10vh;
 	font-size:5vh;
 	background:none !important;
-min-height:20vh;
+	min-height:20vh;
+	box-shadow: none;
+	font-weight: 300;
 }
 body.visual .climate-display:before{
 	display:none;
