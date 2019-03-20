@@ -264,6 +264,9 @@ function toggleClimateCard() {
         changeTopAppBarText('Climate', 'back');
         //resetTempControlKnob();
         psm.updatePortalClimate();
+
+        var cc = new ClimateChart();
+        cc.example();
         $(appBarBackButton).bind('click.closeClimateCard', function() {
             $(this).unbind('click.closeClimateCard');
             toggleClimateCard();
@@ -448,6 +451,83 @@ function setPortalTemperature(deg) {
     }
 
     triggerCountForSetPortalTemperature++;
+}
+
+
+
+var ClimateChart = function(){
+this.example = function(){
+  var add_minutes =  function (dt, minutes) {
+      return new Date(dt.getTime() + minutes*60000);
+  }
+
+  var data = {ts:[],f:[],h:[]};
+  var d = new Date(2014,10,2);
+  console.log();
+  var f = 68,h = 50;
+  for(var i = 0; i < 140; i++){
+
+  data.ts.push(add_minutes(d, 5).getTime());
+  f+=(Math.random() * .5);
+
+  if(f >= 70){
+    f = 70 + Math.random();
+  }
+  data.f.push(f)
+
+  h+= Math.random();
+  h-= Math.random();
+  if(h < 49){
+    h = 50;
+  }
+  data.h.push(h)
+  }
+
+  var labelData = [];
+
+  var lcount = 0;
+  for(var z = 0;z < data.ts;z++){
+
+
+  if(lcount == 1 || lcount == 9){
+
+  lcount+=1;
+
+  labelData.push(data.ts[z]);
+
+  if(lcount == 18){
+  lcount = 0;
+  }
+
+  }
+
+  }
+
+  new Chartist.Line('.ct-chart', {
+    labels: labelData,
+    series: [
+      data.h,
+      data.f
+    ]
+  }, {
+    high: 100,
+    low: 40,
+    showArea: true,
+    showLine: false,
+    showPoint: false,
+    fullWidth: true,
+    axisX: {
+      showLabel: false,
+      showGrid: false
+    },
+    axisY: {
+      showLabel: true,
+      showGrid: false
+    }
+
+  });
+
+  }
 }
 
 $(document).ready(function() {
