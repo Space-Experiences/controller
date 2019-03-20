@@ -189,8 +189,8 @@ background-color: #fff;
 color: #444;
 }
 .knob{
-  height: 170px;
-  width: 170px;
+  height: 70vw;
+  width: 70vw;
   border-radius:200px;
   border: 2px solid black;
   margin:  auto;
@@ -248,7 +248,7 @@ color: #444;
 }
 #set-temp-to{
 	position: absolute;
-	top: 62px;
+	top: 30vw;
 	margin: auto;
 	left: 0px;
 	right: 0px;
