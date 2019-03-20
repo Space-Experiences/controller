@@ -102,6 +102,7 @@ var PortalStateView = function(){
           set('Class is ready.');
           toggleClassControls(true);
           setClassControls('showStart');
+          toggleLoadClassIndicator(false);
 
           countdown.hide();
         }
@@ -114,6 +115,8 @@ var PortalStateView = function(){
           toggleClassControls(false);
           toggleNavigation(false);
           listenForTouchDuringLiveClass();
+          toggleLoadClassIndicator(true);
+          
         }
         if(value == 'liveClass'){
           set('Class in session.');
@@ -459,6 +462,8 @@ var StartCountdown = function(){
   }
 
   this.start = function(callback = false){
+    toggleClimateDisplay(false);
+    toggleClimateCard(false);
       $(_this.runner).runner('reset');
       $(_this.runner).runner('start');
 
@@ -503,7 +508,28 @@ $('#cancel-start-class-delay-btn').click(function(){
 
 
 
+function toggleLoadClassIndicator(command = false){
+  if(command){
+    function resumeLine(timeLine, time)
+{
+  TweenMax.delayedCall(time, function()
+  {
+    timeLine.play();
+  });
+}
+if(tl){
+tl = null;
+}
+  loadProgressBar.open();
+          var tl = new TimelineMax({});
+	//	tl.pause();
+          tl.add(function(){loadProgressBar.foundation_.setProgress(0)});
+          loadProgressBar.foundation_.setBuffer(0);
+setTimeout(function(){loadProgressBar.foundation_.setBuffer(1)},1000);
+setTimeout(function(){loadProgressBar.foundation_.setDeterminate(0)},2000);
 
+}else{loadProgressBar.close();}
+}
 
 
 

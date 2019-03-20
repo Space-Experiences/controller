@@ -857,3 +857,12 @@ width: 60px;
   right: 0px;
   color: black;
 }
+
+
+
+.load-class-progress{
+	max-width: 207px;
+	margin: auto;
+	padding: 0px 24px;
+	margin-top: 20%;
+}

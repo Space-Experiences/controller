@@ -70,12 +70,24 @@
                       <div class="pd-info" name="classProgress"></div>
                       <div class="pd-info" name="nextClassCountdown"></div>
                     </div>
-
+                    <div class="load-class-progress not-active active">
+                      <div role="progressbar" data-mdc-auto-init="MDCLinearProgress" class="mdc-linear-progress">
+                    <div class="mdc-linear-progress__buffering-dots"></div>
+                    <div class="mdc-linear-progress__buffer"></div>
+                    <div class="mdc-linear-progress__bar mdc-linear-progress__primary-bar">
+                      <span class="mdc-linear-progress__bar-inner"></span>
+                    </div>
+                    <div class="mdc-linear-progress__bar mdc-linear-progress__secondary-bar">
+                      <span class="mdc-linear-progress__bar-inner"></span>
+                    </div>
+                  </div>
+                    </div>
 
                   </div>
 
                   <!-- live portal controls -->
                       <div class="portal-live-controls" style="display:none;">
+
                     <button class="mdc-button mdc-button--raised"   data-value="Start Class" data-type="pusher" class="mdc-button"   data-mdc-auto-init="MDCRipple" id="start-class-btn">Start</button>
 
                     <!--<div data-type="pusher" class="mdc-button"  data-value="Start in 10 Seconds" id="start-delay-btn">Start in 10 seconds</button>-->
@@ -674,11 +686,20 @@ var delaySelect = mdc.select.MDCSelect.attachTo(document.querySelector('.mdc-sel
  mdc.autoInit();
 
 
+ var loadProgressBar = mdc.linearProgress.MDCLinearProgress.attachTo(document.querySelector('.mdc-linear-progress'));
+loadProgressBar.initialize();
+loadProgressBar.close();
+
+
+
+
+
+
  /*
  * Snackbar notifications
  */
 
- var snackbar = mdc.snackbar.MDCSnackbar.attachTo(document.querySelector('.mdc-snackbar'));
+   var snackbar = mdc.snackbar.MDCSnackbar.attachTo(document.querySelector('.mdc-snackbar'));
 
  var elemSnackbarInner = $('.mdc-snackbar .mdc-snackbar__surface');
  var keepBarOpenInterval;
