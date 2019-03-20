@@ -2,7 +2,7 @@
   --mdc-theme-primary: #000000;
   --mdc-theme-secondary: #676767;
   --mdc-theme-background: #fff;
-  font-size: 16px;
+  font-size: 18px;
 }
 html{
 
@@ -35,7 +35,7 @@ body.top-bar-menu.top-bar-back.top-bar-neutral #top-app-btn-menu,
 body.top-bar-menu.top-bar-back.top-bar-neutral #top-app-btn-back{display: none;background: unset;border: none;}
 body.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title{
   }
-body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
+body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;font-size: 1.8rem;}
 
 .climate-card{
 	background:white;
@@ -177,6 +177,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
 
 .climate-display .climate-info{
   padding-top: 0px;
+  /* font-weight: 300; */
 }
 
 .climate-display .climate-info.farenheight:after{
@@ -209,6 +210,19 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
 	opacity: .6;
 	/* position: relative; */
 	/* top: -36px; */
+}
+body.visual .climate-display .climate-info:after{
+	color:white !important;
+	position: relative;
+	top: 3px;
+}
+body.visual .climate-display{
+	opacity:.7 !important;
+margin-top:3vh;
+}
+body.visual .climate-display .climate-data{
+	font-weight:100;
+
 }
 .climate-icon{position: relative;font-size: .6em;top: -.4rem;left: 1px;font-weight: 4500;}
 .climate-icon[name="h"]{
@@ -409,11 +423,12 @@ body.visual div{
 }
 body.visual div:not(.climate-card) .climate-display{
 	/* bottom:10vh; */
-	/* font-size:5vh; */
+	font-size: 4vh;
 	background:none !important;
 	/* min-height:20vh; */
 	box-shadow: none;
-	font-weight: 300;
+	height: auto;
+	font-weight: 100;
 }
 body.visual .climate-display:before{
 	display:none;
@@ -436,9 +451,7 @@ body.visual #pause-class-btn{
   box-shadow:0px 1px 1px 0px rgba(255,255,255,.3);
   min-width: 20%;
 }
-.app-top-bar{background-color: white;color: black;z-index: 9999;
-transition: background-color 1s 0s;
-}
+.app-top-bar{background-color: white;color: black;z-index: 9999;transition: background-color 1s 0s;/* box-shadow: 0px -2px 0px -1.5px #BDBDBD inset; */}
 
 .main{
   display:block;
@@ -458,6 +471,7 @@ transition: background-color 1s 0s;
   z-index: 9999999;
   transition:bottom .15s 0s;
   box-shadow: 0px -3px 0px -2px #EEEEEE;
+  height: 5.556vh;
 }
 .navigation .mdc-tab-indicator__content--underline{
       align-self: flex-start;
@@ -563,9 +577,9 @@ z-index: 10;
 }
 
 /* Class cards */
-.class-card{padding: 16px;margin: 24px -4px;border-radius: 0px;box-shadow: 0px 2px 0px -2px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 4px 15px 0px hsla(0, 0%, 17%, 0.12);transition: none;margin: 20px 0px;}
+.class-card{padding: 16px;margin: 24px -4px;border-radius: 0px;box-shadow: 0px 2px 0px -2px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 4px 15px 0px hsla(0, 0%, 17%, 0.12);transition: none;margin: 20px 0px;font-size: 1rem;}
 
-.class-card_headline{margin-top: 0px;margin-bottom: 0px;/* font-weight: 400; */font-size: 16px;}
+.class-card_headline{margin-top: 0px;margin-bottom: 0px;/* font-weight: 400; */font-size: 16px;font-size: 1rem;}
 .class-card_subtitle{
   text-align:left;
   margin-top: -4px;
@@ -573,6 +587,7 @@ z-index: 10;
   font-size: 12px;
   letter-spacing: 0.15;
   color: gray;
+  font-size: .67rem;
 }
 
 .class-card_media{
@@ -591,6 +606,7 @@ z-index: 10;
 .class-card .mdc-typography--body2{
   font-size: 13px;
   color: gray;
+  font-size: .72rem;
 }
 
 .full-card{
@@ -696,7 +712,7 @@ z-index: 10;
 }
 
 .pd-info[name="state"]{
-  font-size: 1.5em;
+  font-size: 1.9rem;
   text-transform: capitalize;
   letter-spacing: .5px;
 }
@@ -705,10 +721,10 @@ z-index: 10;
   /* color: #929292; */
   margin-top: 12px;
   margin-bottom: 8px;
-  font-size: 25px;
+  font-size: 1.6rem;
   letter-spacing: 1.15px;
 }
-.pd-info[name="classDuration"]{/* font-weight: 500; */font-size: 17px;/* color: #b1b1b1; */}
+.pd-info[name="classDuration"]{/* font-weight: 500; */font-size: 17px;/* color: #b1b1b1; */font-size: 1rem;}
 .pd-info[name="classProgress"]{display: none;}
 .pd-info[name="nextClassCountdown"]{
   display: none;
