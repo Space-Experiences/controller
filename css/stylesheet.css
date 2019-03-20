@@ -248,11 +248,11 @@ color: #444;
 }
 #set-temp-to{
 	position: absolute;
-	top: 30vw;
+	top: 28vw;
 	margin: auto;
 	left: 0px;
 	right: 0px;
-	font-size: 60px;
+	font-size: 10vh;
 	font-weight: 700;
 	pointer-events: none;
 }
