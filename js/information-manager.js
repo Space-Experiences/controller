@@ -412,12 +412,13 @@ function loadClass(classID,callback = false){
 
 
   // Subscribe to listen for return event pub.
-  EventBus.subscribe('responsePortalState', function(){
+var confirmCallback =  EventBus.subscribe('responsePortalState', function(){
 
 
     if(callback){
       callback();
     }
+    confirmCallback = false;
   });
 
   setTimeout(function(){

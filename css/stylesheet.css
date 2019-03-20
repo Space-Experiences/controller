@@ -2,7 +2,7 @@
   --mdc-theme-primary: #000000;
   --mdc-theme-secondary: #676767;
   --mdc-theme-background: #fff;
-  font-size: 18px;
+  font-size: 16px;
 }
 html{
 
@@ -40,14 +40,14 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;font-size: 
 .climate-card{
 	background:white;
 	position:fixed;
-	height: 100%;
+	height: 100vh;
 	z-index: 100;
 	padding: 24px;
 	/* text-align: center; */
 	width: calc(100% - 48px);
 	padding-top: 0px;
 	text-align: center;
-	padding-top: 2rem;
+	padding-top: 0rem;
 }
 .climate-card .mdc-typography--subtitle1.data-info{
 	margin-bottom: 1.4rem !important;
@@ -57,6 +57,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;font-size: 
 	font-weight: 400;
 	letter-spacing: 2;
 	color: #424242;
+	display: none;
 }
 .climate-card .climate-info .label{
       color: #808080;
@@ -125,7 +126,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;font-size: 
   background: white;
   clip-path: none;
   padding: 5px;
-  top: 54px;
+  top: 56px;
 }
 
 .climate-display:before{
@@ -231,7 +232,7 @@ body.visual .climate-display .climate-data{
 .climate-icon[name="f"]{/* margin-left: -9px; */}
 .climate-card{
       transform: translate(0%, 100%) matrix(1, 0, 0, 1, 0, 0);
-      transform: translate(0%, -110%) matrix(1, 0, 0, 1, 0, 0);
+      transform: translate(0%, -124vh) matrix(1, 0, 0, 1, 0, 0);
 }
 .climate-card-info {
   display: grid;
@@ -327,7 +328,7 @@ color: #444;
 		display: grid;
 		grid-gap: 10px;
 		grid-template-columns: repeat(auto-fill, [col] 23% );
-		grid-template-rows: repeat(auto-fill, [row] auto  );
+		grid-template-rows: repeat(auto-fill, [row] auto );
 		background-color: #fff;
 		color: #444;
 	}
@@ -373,6 +374,12 @@ color: #444;
         color: #404040;
         border-top:;
         font-weight: 700;
+  }
+  .g {
+    grid-column: col / span 4;
+    grid-row: row 5;
+    text-align: center;
+    margin-top: -1rem;
   }
 body.visual{
   background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);

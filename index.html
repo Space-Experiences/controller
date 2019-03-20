@@ -7,11 +7,13 @@
   <link rel="manifest" href="manifest.json" />
 
     <title>Portal</title>
+
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+   <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/&#10;css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"> <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
     <link rel="stylesheet" href="css/stylesheet.css">
-
 
 <body class="top-bar-menu top-bar-back top-bar-neutral">
   <header class=" mdc-top-app-bar mdc-top-app-bar--fixed app-top-bar" data-mdc-auto-init="MDCTopAppBar">
@@ -24,7 +26,7 @@
         <button class="material-icons mdc-top-app-bar__action-item--unbounded" id="toggle-lock-state-btn" style="opacity:0;" aria-label="lock"><i class="material-icons">lock</i></button>
       </section>
     </div>
-  </header>
+</header>
 
     <div class="main nav-disabled" active-screen="home">
 
@@ -230,7 +232,7 @@
 
           <div class="climate-card">
             <div class="mdc-typography">
-                              <h2 class="mdc-typography--headline4 data-info" style="opacity:0;">Climate</h2>
+
                               <p class="mdc-typography--subtitle1 data-info" >climate</p>
                               <div class="wrapper">
   <div class="box a">
@@ -279,6 +281,12 @@
 </div>
 
   </div>
+
+  <!-- temp chart -->
+  <div class="box g">
+    <div class="ct-chart ct-perfect-fourth"></div>
+  </div>
+  <!-- end temp chart -->
 
 </div>
                               <div class="climate-card-info" style="opacity: 0;transform: matrix(0, 0, 0, 0, 0, 0);" >
@@ -489,6 +497,8 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
                                            params:{classID:'--',
                                            startTime:'now'}});
 
+
+                                           firstListen = false;
         });
 
 

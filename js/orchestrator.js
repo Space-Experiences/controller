@@ -256,7 +256,7 @@ function toggleClimateCard() {
     if (climateCardShowing == false) {
         $('body').removeClass('visual');
         TweenMax.to('.climate-card', .25, {
-            y: "0%",
+            y: "0vh",
             ease: Power3.easeOut
         });
         toggleNavigation(false);
@@ -272,7 +272,7 @@ function toggleClimateCard() {
     } else if (climateCardShowing == true) {
         toggleNavigation(true);
         TweenMax.to('.climate-card', .15, {
-            y: "-110%"
+            y: "-100vh"
         });
         climateCardShowing = false;
     }
