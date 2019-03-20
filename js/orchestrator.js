@@ -234,15 +234,15 @@ var climateDisplay = $('.climate-display');
 function toggleClimateDisplay(command) {
 
     if (command == true) {
-        TweenMax.to(climateDisplay, .3, {
+        TweenMax.to(climateDisplay, .35, {
             y: 0,
             ease: Expo.easeOut,
             opacity: 1
         });
         console.log('show climate')
     } else {
-        TweenMax.to(climateDisplay, .15, {
-            y: -70,
+        TweenMax.to(climateDisplay, .25, {
+            y: -60,
             ease:Expo.easeOut
         });
         console.log('hide climate')
@@ -256,7 +256,7 @@ function toggleClimateCard() {
     if (climateCardShowing == false) {
         $('body').removeClass('visual');
         TweenMax.to('.climate-card', .25, {
-            y: "0vh",
+            y: 0,
             ease: Power3.easeOut
         });
         toggleNavigation(false);
@@ -275,7 +275,7 @@ function toggleClimateCard() {
     } else if (climateCardShowing == true) {
         toggleNavigation(true);
         TweenMax.to('.climate-card', .15, {
-            y: "-100vh"
+            y: -1000
         });
         climateCardShowing = false;
     }

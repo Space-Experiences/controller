@@ -3,6 +3,8 @@ var getPortalState;
 var SocketManager = function(){
 
   this.parsePortalEvent = function(msg){
+
+    try{
     if(msg.data.type == 'responseAirtableClassData'){
       //...
       classData = msg.data.val; // Set array
@@ -30,6 +32,11 @@ var SocketManager = function(){
       EventBus.publish('responseTemperatureSet');
       setTempSliderValue(portalState.climate.setTemp);
     }
+  }catch(e){
+    console.log(e);
   }
+
+
+}
 
 };

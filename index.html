@@ -258,7 +258,7 @@
   </div>
   <div class="box f">
 <div class="three mdc-typography--overline label">temperature control:</div>
-    <div class="mdc-slider mdc-slider--discrete mdc-slider--display-markers"  tabindex="0" role="slider"
+    <div class="mdc-slider mdc-slider--discrete mdc-slider--display-markers" id="set-temp-slider" tabindex="0" role="slider"
          aria-valuemin="50" aria-valuemax="90" aria-valuenow="50"
          data-step="1" aria-label="Select Value">
          <div class="mdc-slider__track-container">
@@ -313,6 +313,25 @@
 
 <!-- close main -->
     </div><!-- end main -->
+
+
+
+    <!-- notification snackbars -->
+    <div class="mdc-snackbar" id="primary-snackbar">
+      <div class="mdc-snackbar__surface">
+        <div class="mdc-snackbar__label"
+             role="status"
+             aria-live="polite">
+          Message text.
+        </div>
+        <div class="mdc-snackbar__actions" style="display:none;">
+          <button type="button" class="mdc-button mdc-snackbar__action">Label</button>
+        </div>
+        <button class="mdc-icon-button mdc-snackbar__dismiss material-icons" title="Dismiss">close</button>
+      </div>
+    </div>
+    <!-- end notification snackbar -->
+
 </body>
 
 <script src="jquery-slim.js"></script>
@@ -449,6 +468,55 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
 
 
     // Manage pub sub events.
+
+    var EventBus = {};
+    (function(q) {
+        var topics = {}, subUid = -1;
+        q.subscribe = function(topic, func) {
+            if (!topics[topic]) {
+                topics[topic] = [];
+            }
+            var token = (++subUid).toString();
+            topics[topic].push({
+                token: token,
+                func: func
+            });
+            return token;
+        };
+
+        q.publish = function(topic, args) {
+            if (!topics[topic]) {
+                return false;
+            }
+            setTimeout(function() {
+                var subscribers = topics[topic],
+                    len = subscribers ? subscribers.length : 0;
+
+                while (len--) {
+                    subscribers[len].func(topic, args);
+                }
+            }, 0);
+            return true;
+
+        };
+
+        q.unsubscribe = function(token) {
+            for (var m in topics) {
+                if (topics[m]) {
+                    for (var i = 0, j = topics[m].length; i < j; i++) {
+                        if (topics[m][i].token === token) {
+                            topics[m].splice(i, 1);
+                            return token;
+                        }
+                    }
+                }
+            }
+            return false;
+        };
+    }(EventBus));
+
+
+    /* Working
     var EventBus = {
       topics: {},
 
@@ -473,6 +541,7 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
       }
     };
 
+*/
 
      Pusher.logToConsole = true;
 
@@ -483,6 +552,17 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
      });
 
      var channel = pusher.subscribe('private-channel');
+
+
+          var firstLoadTimeout = setTimeout(function(){
+                 offlineStatus();
+                  showScreen('home','Portal');
+                  setTimeout(function(){
+                  toggleClimateDisplay(false);
+                },500);
+           },6000);
+
+
      channel.bind('pusher:subscription_succeeded', function() {
        // Indicate controller is on
        //channel.trigger('client-event', {type:"status",id:"controller"});
@@ -490,7 +570,12 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
         psm.returnPortalState();
 
         // Sub to returned portal state.
+
         var firstListen = EventBus.subscribe('responsePortalState', function(){
+
+          clearTimeout(firstLoadTimeout);
+
+          firstLoad();
 
           channel.trigger('client-event', {eventType:'GET',
                                            value:'returnAirtableClassData',
@@ -498,7 +583,13 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
                                            startTime:'now'}});
 
 
-                                           firstListen = false;
+
+                            //loadComplete = true;
+
+          EventBus.unsubscribe(firstListen);
+
+
+
         });
 
 
@@ -506,11 +597,49 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
 
      });
 
+
+
+     function firstLoad(){
+      clearTimeout(firstLoadTimeout);
+       $(document).ready(function(){
+
+         // Get the
+
+
+
+         setTimeout(function(){
+           showScreen('home','Portal');
+
+           if(portalState.state != 'liveClass'){
+
+         }
+         setTimeout(function(){
+           pageLoaded = true;
+              if(portalState.state != 'classReady'){
+                if(portalState.state == 'loadingClass'){
+                  listenForTouchDuringLiveClass();
+                }else{
+                  toggleNavigation(true);
+                }
+              }else{
+                  listenForTouchDuringLiveClass();
+              }
+          },1000);
+
+       },0000);
+
+
+         $('#toggle-lock-state-btn').click(function(){
+            window.location.reload(true);
+         });
+
+       });
+     }
+
+
      channel.bind('portal-event', function(msg) {
        socketManager.parsePortalEvent(msg);
      });
-
-
 
 
 
@@ -535,39 +664,6 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
 
      var pageLoaded = false;
 
-     $(document).ready(function(){
-
-       // Get the
-
-
-
-       setTimeout(function(){
-         showScreen('home','Portal');
-
-         if(portalState.state != 'liveClass'){
-
-       }
-       setTimeout(function(){
-         pageLoaded = true;
-            if(portalState.state != 'classReady'){
-              if(portalState.state == 'loadingClass'){
-                listenForTouchDuringLiveClass();
-              }else{
-                toggleNavigation(true);
-              }
-            }else{
-                listenForTouchDuringLiveClass();
-            }
-        },500);
-
-     },2000);
-
-
-       $('#toggle-lock-state-btn').click(function(){
-          window.location.reload(true);
-       });
-
-     });
 
    </script>
 
@@ -576,6 +672,44 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
 
 var delaySelect = mdc.select.MDCSelect.attachTo(document.querySelector('.mdc-select'));
  mdc.autoInit();
+
+
+ /*
+ * Snackbar notifications
+ */
+
+ var snackbar = mdc.snackbar.MDCSnackbar.attachTo(document.querySelector('.mdc-snackbar'));
+
+ var elemSnackbarInner = $('.mdc-snackbar .mdc-snackbar__surface');
+ var keepBarOpenInterval;
+ function notification(snackbarText = 'Done.',type = 'default',closeInMs = 1500,hideButton = false){
+
+   clearInterval(keepBarOpenInterval);
+   snackbar.close();
+
+   snackbar.labelText = snackbarText;
+   elemSnackbarInner.removeClass(['error','success','default']);
+   elemSnackbarInner.addClass(type);
+
+
+   snackbar.open();
+
+   if(closeInMs > 10000){
+
+    keepBarOpenInterval = setInterval(function () {
+      snackbar.open();
+      console.log('keepBarOpenInterval...');
+    }, 5000);
+
+   }
+   setTimeout(function(){
+
+     clearInterval(keepBarOpenInterval);
+     snackbar.close();
+
+   },closeInMs)
+
+ }
    </script>
 
 
@@ -583,6 +717,7 @@ var delaySelect = mdc.select.MDCSelect.attachTo(document.querySelector('.mdc-sel
 
    function changeDelayStartTime(){
      var startBtn = $('#start-class-btn');
+
      var startBtnValue = 'Start Class';
         var delay = $('#delay-select-val').val();
 
@@ -607,6 +742,26 @@ var delaySelect = mdc.select.MDCSelect.attachTo(document.querySelector('.mdc-sel
    }
    delaySelect.listen('MDCSelect:change', changeDelayStartTime);
 
+
+
+
+function offlineStatus(callback = false){
+
+ notification('The portal cortex is offline.','error',100000);
+
+ toggleClimateDisplay(false);
+
+  var confirmCallback =  EventBus.subscribe('responsePortalState', function(){
+
+    notification('Conencted to the Portal.','success');
+    toggleClimateDisplay(true);
+
+      if(callback){
+        callback();
+      }
+        EventBus.unsubscribe(confirmCallback);
+    });
+}
 </script>
 
 

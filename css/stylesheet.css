@@ -37,6 +37,20 @@ body.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title{
   }
 body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;font-size: 1.8rem;}
 
+
+#primary-snackbar{
+  z-index: 10000000;
+  bottom: 57px;
+}
+
+.mdc-snackbar .mdc-snackbar__surface.error{
+  background-color: #F44336;
+  color:white;
+}
+.mdc-snackbar .mdc-snackbar__surface.success{
+  background-color: #03A9F4;
+  color:white;
+}
 .climate-card{
 	background:white;
 	position:fixed;
@@ -89,6 +103,13 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;font-size: 
 	/* height:20px; */
 	/* background:black; */
 	/* display:block; */
+}
+
+#set-temp-slider{
+  margin: 15px 0px;
+  width: 84%;
+  margin-left: auto;
+  margin-right: auto;
 }
 .climate-display{
   display: grid;

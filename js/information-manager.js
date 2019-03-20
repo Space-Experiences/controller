@@ -385,7 +385,7 @@ $('.full-card .start-button').click(function(){
       $('.nav-btn[data-name="home"]').click();
       changeTopAppBarText('Portal');
       //showScreen('home','Portal');
-      toggleNavigation(false);
+      toggleNavigation(true);
       $('body').bind('click.showcontrols',function(){
         $(this).unbind('click.showcontrols');
         toggleNavigation(true);
@@ -411,23 +411,24 @@ function loadClass(classID,callback = false){
 
 
 
+  var catchDisconnection = setTimeout(function(){
+    offlineStatus();
+    if(callback){
+      callback();
+    }
+  },6000); // Give cortex a second to process everything
+
+
   // Subscribe to listen for return event pub.
 var confirmCallback =  EventBus.subscribe('responsePortalState', function(){
-
+  clearTimeout(catchDisconnection);
 
     if(callback){
       callback();
     }
-    confirmCallback = false;
+      EventBus.unsubscribe(confirmCallback);
   });
 
-  setTimeout(function(){
-  // Get portal state
-  /*channel.trigger('client-event', {eventType:'GET',
-                                   value:'returnPortalState',
-                                   params:{}});
-*/
-  },1000); // Give cortex a second to process everything
 
 
 }
