@@ -46,6 +46,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
 	/* text-align: center; */
 	width: calc(100% - 48px);
 	padding-top: 0px;
+	text-align: center;
 }
 .climate-card .mdc-typography--subtitle1.data-info{
 	margin-bottom: 0px !important;
