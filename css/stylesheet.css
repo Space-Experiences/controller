@@ -354,6 +354,20 @@ body.visual{
 body.visual div{
   color:white;
 }
+body.visual .climate-display{
+	bottom:20%;
+	font-size:5vh;
+	background:none !important;
+min-height:20vh;
+}
+body.visual .climate-display:before{
+	display:none;
+	background:none !important;
+}
+body.visual .climate-display:after{
+	display:none;
+	background:none !important;
+}
 body.visual .app-top-bar{
   background-color: rgba(246,246,246,0)
 }
