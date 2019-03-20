@@ -7,7 +7,7 @@
 html{
 
 }
-body{color:black;background-color: white;padding: 0px;margin: 0px;font-family: Roboto;overflow: hidden;user-select: none;background-color: #f6f6f6;}
+body{color:black;background-color: white;padding: 0px;margin: 0px;font-family: Roboto;overflow: hidden;user-select: none;background-color: #FAFAFB;}
 body div{
   /* color:inherit; */
   /* background-color: inherit; */
@@ -55,8 +55,12 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
 	font-size: 1.6rem;
 	text-transform: uppercase;
 	font-weight: 400;
+	letter-spacing: 2;
+	color: #424242;
 }
-
+.climate-card .climate-info .label{
+      color: #808080;
+}
 .climate-card-info{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(46%,3fr));
@@ -109,7 +113,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
   z-index: 100;
   /* background: black; */
   color: white;
-  box-shadow: 0px -1px 0px 1px #EEEEEE inset;
+  box-shadow: 0px -2px 0px -1.5px #BDBDBD inset;
   overflow: visible;
   background: none;
   white-space: nowrap;
@@ -210,9 +214,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;}
 .climate-icon[name="h"]{
 
 }
-.climate-icon[name="f"]{
-
-}
+.climate-icon[name="f"]{/* margin-left: -9px; */}
 .climate-card{
       transform: translate(0%, 100%) matrix(1, 0, 0, 1, 0, 0);
       transform: translate(0%, -110%) matrix(1, 0, 0, 1, 0, 0);
@@ -298,9 +300,9 @@ color: #444;
 #set-temp-to:before{
 	content:"HEAT SET TO";
 	font-size:11px;
-	font-weight:300;
+	font-weight: 900;
 	position:absolute;
-	top: -20px;
+	top: -10px;
 	width:80px;
 	text-align:center;
 	margin:auto;
@@ -352,6 +354,11 @@ color: #444;
     grid-row: row 4;
     text-align: center;
     margin-top: -1rem;
+  }
+  .f .label{
+        color: #404040;
+        border-top:;
+        font-weight: 700;
   }
 body.visual{
   background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
@@ -450,6 +457,11 @@ transition: background-color 1s 0s;
   background-color: white;
   z-index: 9999999;
   transition:bottom .15s 0s;
+  box-shadow: 0px -3px 0px -2px #EEEEEE;
+}
+.navigation .mdc-tab-indicator__content--underline{
+      align-self: flex-start;
+      background-color: #505050;
 }
 .main.nav-disabled .navigation{
   bottom:-56px;
@@ -712,7 +724,7 @@ z-index: 10;
   margin: 5% 20px;
   margin: auto;
   width: 115px;
-  width: 250px;
+  /* width: 130px; */
 }
 
 .mdc-menu-surface--open{
@@ -755,7 +767,7 @@ z-index: 10;
 width: 60px;
 }
 
-#cancel-start-class-delay-btn{position: absolute;margin: auto;display: block;bottom: 50%;top: unset;left: unset;float: unset;right: 0px;left: 0px;color: black;width: 115px;background: white;}
+#cancel-start-class-delay-btn{position: absolute;margin: auto;display: block;bottom: 53%;top: unset;left: unset;float: unset;right: 0px;left: 0px;color: black;width: 115px;background: white;}
 
 #delay-countdown-graphic{
   position: absolute;
