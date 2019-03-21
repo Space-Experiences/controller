@@ -285,12 +285,17 @@ function toggleClimateCard(command) {
         })
 
     } else if (command == false) {
-      bodyVisualCheck(false,true);
+
 
         TweenMax.to(climateCardElem, .15, {
             y: (-1 * $(climateCardElem).outerHeight() - 60 )
         ,onComplete:function(){
-          toggleNavigation(false);
+          if(portalState.state == 'liveClass'){
+              $('body').addClass('visual');
+              toggleNavigation(true);
+          }else{
+            toggleNavigation(true)
+          }
         }});
         climateCardShowing = false;
     }
