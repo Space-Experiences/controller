@@ -742,7 +742,7 @@ z-index: 10;
 .portal-display{text-align: left;font-size: 20px;line-height: 40px;font-weight: 300;padding: 19px;margin-bottom: 20px;}
 .screen[data-screen-title="Portal"]{
 	/* margin-top: calc(100% - 310px); */
-	background: white;
+	/* background: white; */
 }
 .screen[data-screen-title="Portal"] .portal-display{
 	text-align:center;
@@ -753,7 +753,7 @@ z-index: 10;
 }
 
 .pd-info[name="state"]{
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   text-transform: capitalize;
   letter-spacing: .5px;
 }
