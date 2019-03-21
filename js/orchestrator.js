@@ -242,7 +242,7 @@ function toggleClimateDisplay(command) {
         console.log('show climate')
     } else {
         TweenMax.to(climateDisplay, .25, {
-            y: -60,
+            y: -90,
             ease:Expo.easeOut
         });
         console.log('hide climate')

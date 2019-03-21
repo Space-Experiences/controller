@@ -148,6 +148,8 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;font-size: 
   clip-path: none;
   padding: 5px;
   top: 56px;
+  padding-top: 16px;
+  box-shadow: rgb(234, 234, 234) 0px -6px 2px -4.5px inset;
 }
 
 .climate-display:before{
@@ -330,7 +332,7 @@ color: #444;
 	left: 0px;
 	right: 0px;
 	font-size: 5.4rem;
-	font-weight: 700;
+	font-weight: 400;
 	pointer-events: none;
 }
 #set-temp-to:before{
@@ -479,9 +481,7 @@ body.visual #pause-class-btn{
   box-shadow:0px 1px 1px 0px rgba(255,255,255,.3);
   min-width: 20%;
 }
-.app-top-bar{background-color: white;color: black;z-index: 9999;transition: background-color 1s 0s;/* box-shadow: 0px -2px 0px -1.5px #BDBDBD inset; */
-
-}
+.app-top-bar{background-color: white;color: black;z-index: 9999;transition: background-color 1s 0s;/* box-shadow: 0px -2px 0px -1.5px #BDBDBD inset; */box-shadow: 0px -2px 0px -1.5px #E0E0E0 inset;}
 
 .main{
   display:block;
@@ -735,7 +735,7 @@ z-index: 10;
 }
 .screen[data-screen-title="Portal"] .portal-display{
 	text-align:center;
-	margin-top: calc(50px + 10vh);
+	margin-top: calc(50px + 8vh);
 }
 .pd-info{
 
@@ -861,8 +861,12 @@ width: 60px;
 
 
 .load-class-progress{
-	max-width: 207px;
+	max-width: 59%;
 	margin: auto;
 	padding: 0px 24px;
 	margin-top: 20%;
+}
+
+.load-class-progress .mdc-linear-progress{
+	width:unset;
 }

@@ -116,7 +116,26 @@ var PortalStateView = function(){
           toggleNavigation(false);
           listenForTouchDuringLiveClass();
           toggleLoadClassIndicator(true);
-          
+
+
+        // Remove timeout on prepare class complete
+        var linearProgressCatch;
+        var catchLoadingError = setTimeout(function(){
+            console.log('catchLoadingError')
+          set('Something went wrong...')
+          toggleClassControls(false);
+          offlineStatus();
+                  toggleLoadClassIndicator(false);
+        },30000);
+
+        setTimeout(function(){
+        linearProgressCatch = EventBus.subscribe('responsePortalState',function(){
+  console.log('clearedLoadCatch')
+          clearTimeout(catchLoadingError)
+          EventBus.unsubscribe(linearProgressCatch);
+        });
+      },5000);
+
         }
         if(value == 'liveClass'){
           set('Class in session.');
@@ -520,7 +539,7 @@ function toggleLoadClassIndicator(command = false){
 if(tl){
 tl = null;
 }
-  loadProgressBar.open();
+          loadProgressBar.open();
           var tl = new TimelineMax({});
 	//	tl.pause();
           tl.add(function(){loadProgressBar.foundation_.setProgress(0)});
