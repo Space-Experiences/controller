@@ -254,16 +254,17 @@ function toggleClimateDisplay(command) {
 
 
 var climateCardElem = $('.climate-card');
-function toggleClimateCard(command = climateCardShowing) {
 
-    if (climateCardShowing == false) {
+function toggleClimateCard(command) {
+
+    if (command == true) {
       //  TweenMax.set(climateCardElem,{height:windowParams.height})
         $('body').removeClass('visual');
         TweenMax.to(climateCardElem, .35, {
             y: 0,
             ease: Power3.easeOut
         });
-        toggleNavigation(false);
+
         climateCardShowing = true;
         changeTopAppBarText('Climate', 'back');
         //resetTempControlKnob();
@@ -272,29 +273,33 @@ function toggleClimateCard(command = climateCardShowing) {
         var cc = new ClimateChart();
         cc.example();
 
-        bodyVisualCheck(true); // Checks if should remove .visual class from body
-
+        bodyVisualCheck(true,true); // Checks if should remove .visual class from body
+        toggleNavigation(false);
         $(appBarBackButton).bind('click.closeClimateCard', function() {
 
-          bodyVisualCheck(false);
             $(this).unbind('click.closeClimateCard');
-            toggleClimateCard();
+            toggleClimateCard(false);
             changeTopAppBarText('Portal');
+                      bodyVisualCheck(false);
 
         })
 
-    } else if (climateCardShowing == true) {
-        toggleNavigation(true);
+    } else if (command == false) {
+      bodyVisualCheck(false,true);
+
         TweenMax.to(climateCardElem, .15, {
-            y: (-1 * $(climateCardElem).outerHeight())
-        });
+            y: (-1 * $(climateCardElem).outerHeight() - 60 )
+        ,onComplete:function(){
+          toggleNavigation(false);
+        }});
         climateCardShowing = false;
     }
     console.log(climateCardShowing)
 }
 
-$(climateDisplay).click(toggleClimateCard);
-
+$(climateDisplay).click(function(){
+toggleClimateCard(true);
+});
 
 var rotationSnap = 6;
 var climateDial;
@@ -543,18 +548,26 @@ this.example = function(){
 }
 
 // Checks if should remove .visual class from body
-function bodyVisualCheck(leavingHomeScreen = false){
+function bodyVisualCheck(leavingHomeScreen = false,hideNav = false){
 
   if (currentScreen == 'home' && portalState.state == 'liveClass') {
     if(leavingHomeScreen){
       $('body').removeClass('visual');
     }else{
         $('body').addClass('visual');
+        setTimeout(function(){
+        listenForTouchDuringLiveClass();
+        toggleNavigation(false);
+      },500)
     }
   }
   else if (currentScreen != 'home' && portalState.state == 'liveClass') {
     $('body').removeClass('visual');
 
+    }
+
+    if(hideNav){
+      toggleNavigation(false);
     }
 }
 $(document).ready(function() {
