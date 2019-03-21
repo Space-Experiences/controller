@@ -361,6 +361,19 @@
 <script>
 
 
+var windowParams = {
+  height:$(window).height(),
+  width:$(window).width()
+};
+
+$(window).resize(function(){
+  windowParams = {
+    height:$(window).height(),
+    width:$(window).width()
+  };
+  console.log('resize event');
+})
+
 // Helpers
 // Generate random short uid.
 function genUid(len = 10) {
@@ -631,7 +644,9 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
                 if(portalState.state == 'loadingClass'){
                   listenForTouchDuringLiveClass();
                 }else{
+                  if(portalState.state != 'liveClass'){
                   toggleNavigation(true);
+                }
                 }
               }else{
                   listenForTouchDuringLiveClass();
@@ -767,6 +782,8 @@ loadProgressBar.close();
 
 
 function offlineStatus(callback = false){
+
+  toggleNavigation(true);
 
  notification('The portal cortex is offline.','error',100000);
 

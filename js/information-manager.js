@@ -481,8 +481,11 @@ var StartCountdown = function(){
   }
 
   this.start = function(callback = false){
+
     toggleClimateDisplay(false);
-    toggleClimateCard(false);
+
+  //  toggleClimateCard(false);
+
       $(_this.runner).runner('reset');
       $(_this.runner).runner('start');
 
@@ -491,7 +494,7 @@ var StartCountdown = function(){
       TweenMax.to(runner,_this.startTime,{color:"white",ease:Linear.easeNone});
       TweenMax.to(progress,_this.startTime,{x:"0%",ease:Linear.easeNone});
 
-        toggleNavigation(true);
+        toggleNavigation(false);
   }
 
   this.show = function(){
@@ -522,6 +525,7 @@ var countdown = new StartCountdown();
 
 $('#cancel-start-class-delay-btn').click(function(){
   countdown.hide();
+  toggleClimateDisplay(true);
 })
 
 
@@ -539,7 +543,7 @@ function toggleLoadClassIndicator(command = false){
 if(tl){
 tl = null;
 }
-          loadProgressBar.open();
+  loadProgressBar.open();
           var tl = new TimelineMax({});
 	//	tl.pause();
           tl.add(function(){loadProgressBar.foundation_.setProgress(0)});

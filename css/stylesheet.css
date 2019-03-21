@@ -150,6 +150,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;font-size: 
   top: 56px;
   padding-top: 16px;
   box-shadow: rgb(234, 234, 234) 0px -6px 2px -4.5px inset;
+  background: #fdfdfd;
 }
 
 .climate-display:before{
@@ -469,7 +470,8 @@ body.visual .climate-display:after{
 	background:none !important;
 }
 body.visual .app-top-bar{
-  background-color: rgba(246,246,246,0)
+  background-color: black;
+  box-shadow: none;
 }
 body.visual .pd-info[name="classID"]{
   color:white;
@@ -480,6 +482,9 @@ body.visual #pause-class-btn{
   border-color:white;
   box-shadow:0px 1px 1px 0px rgba(255,255,255,.3);
   min-width: 20%;
+}
+body.visual.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title{
+	color:white;
 }
 .app-top-bar{background-color: white;color: black;z-index: 9999;transition: background-color 1s 0s;/* box-shadow: 0px -2px 0px -1.5px #BDBDBD inset; */box-shadow: 0px -2px 0px -1.5px #E0E0E0 inset;}
 
@@ -502,6 +507,7 @@ body.visual #pause-class-btn{
   transition:bottom .15s 0s;
   box-shadow: 0px -3px 0px -2px #EEEEEE;
   height: 5.556vh;
+  min-height: 50px;
 }
 .navigation .mdc-tab-indicator__content--underline{
       align-self: flex-start;
@@ -865,6 +871,9 @@ width: 60px;
 	margin: auto;
 	padding: 0px 24px;
 	margin-top: 20%;
+	width: 150%;
+	/* height: 20px; */
+	margin-bottom: -13%;
 }
 
 .load-class-progress .mdc-linear-progress{
