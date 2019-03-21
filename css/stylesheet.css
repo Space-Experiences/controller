@@ -152,7 +152,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;font-size: 
   padding: 5px;
   top: 56px;
   padding-top: 16px;
-  box-shadow: rgb(234, 234, 234) 0px -6px 2px -4.5px inset;
+  box-shadow: rgb(234, 234, 234) 0px -5px 2px -4.5px inset, rgb(234, 234, 234) 0px 5px 2px -4.5px inset;
   background: #fdfdfd;
 }
 
@@ -742,6 +742,7 @@ z-index: 10;
 .portal-display{text-align: left;font-size: 20px;line-height: 40px;font-weight: 300;padding: 19px;margin-bottom: 20px;}
 .screen[data-screen-title="Portal"]{
 	/* margin-top: calc(100% - 310px); */
+	background: white;
 }
 .screen[data-screen-title="Portal"] .portal-display{
 	text-align:center;
@@ -877,7 +878,7 @@ width: 60px;
 	margin-top: 20%;
 	width: 150%;
 	/* height: 20px; */
-	margin-bottom: -13%;
+	margin-bottom: -63px;
 }
 
 .load-class-progress .mdc-linear-progress{
