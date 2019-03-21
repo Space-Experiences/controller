@@ -55,7 +55,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;font-size: 
 	background:white;
 	position:fixed;
 	height: 100vh;
-	z-index: 9998;
+	z-index: 100;
 	padding: 24px;
 	/* text-align: center; */
 	width: calc(100% - 48px);

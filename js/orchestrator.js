@@ -262,7 +262,9 @@ function toggleClimateCard(command) {
         $('body').removeClass('visual');
         TweenMax.to(climateCardElem, .35, {
             y: 0,
-            ease: Power3.easeOut
+            ease: Power3.easeOut,onComplete:function(){
+                toggleNavigation(false);
+            }
         });
 
         climateCardShowing = true;
@@ -274,13 +276,13 @@ function toggleClimateCard(command) {
         cc.example();
 
         bodyVisualCheck(true,true); // Checks if should remove .visual class from body
-        toggleNavigation(false);
+
         $(appBarBackButton).bind('click.closeClimateCard', function() {
 
-            $(this).unbind('click.closeClimateCard');
+            $(this).unbind();
             toggleClimateCard(false);
             changeTopAppBarText('Portal');
-                      bodyVisualCheck(false);
+            bodyVisualCheck(false);
 
         })
 
