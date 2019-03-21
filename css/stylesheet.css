@@ -63,6 +63,8 @@ body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;font-size: 
 	text-align: center;
 	padding-top: 0rem;
 	/* z-index: 10000; */
+	max-height: 100vh;
+	overflow: scroll;
 }
 .climate-card .mdc-typography--subtitle1.data-info{
 	margin-bottom: 1.4rem !important;
