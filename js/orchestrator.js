@@ -62,9 +62,11 @@ function setClassControls(type = 'hide') {
         $('#pause-class-btn').hide();
         $('#start-class-btn').show();
         $('#start-delay-btn').show();
+        $('#onboard-class-btn').show();
         $('#start-class-btn').text('Start');
     }
     if (type == 'showPause') {
+      $('#onboard-class-btn').hide();
         $('#pause-class-btn').show();
         $('#start-class-btn').hide();
         $('#start-delay-btn').hide();
