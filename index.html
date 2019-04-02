@@ -21,7 +21,7 @@
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
         <button class="material-icons mdc-top-app-bar__navigation-icon--unbounded" id="top-app-btn-back">keyboard_arrow_left</button>
         <button class="material-icons mdc-top-app-bar__navigation-icon--unbounded" id="top-app-btn-menu">menu</button>
-        <span class="mdc-top-app-bar__title top-app-bar-title"></span> </section>
+        <span class="mdc-top-app-bar__title top-app-bar-title"></span> <div style="    width: 50%;    height: 20px;    margin: auto;" id="invert-btn"></div></section>
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
         <button class="material-icons mdc-top-app-bar__action-item--unbounded" id="toggle-lock-state-btn" style="opacity:0;" aria-label="lock"><i class="material-icons">lock</i></button>
       </section>
@@ -87,9 +87,9 @@
 
                   <!-- live portal controls -->
                       <div class="portal-live-controls" style="display:none;">
+                        <button class="mdc-button mdc-button--raised secondary-btn"   data-value="Onboard" data-type="pusher" class="mdc-button"   data-mdc-auto-init="MDCRipple" id="onboard-class-btn">Onboard</button>
 
                     <button class="mdc-button mdc-button--raised"   data-value="Start Class" data-type="pusher" class="mdc-button"   data-mdc-auto-init="MDCRipple" id="start-class-btn">Start</button>
-                    <button class="mdc-button mdc-button--raised"   data-value="Onboard" data-type="pusher" class="mdc-button"   data-mdc-auto-init="MDCRipple" id="onboard-class-btn">Onboard</button>
                     <!--<div data-type="pusher" class="mdc-button"  data-value="Start in 10 Seconds" id="start-delay-btn">Start in 10 seconds</button>-->
                     <div class="mdc-select"   id="start-delay-btn">
                       <input type="hidden" name="enhanced-select" id="delay-select-val" >
@@ -798,6 +798,12 @@ function offlineStatus(callback = false){
         EventBus.unsubscribe(confirmCallback);
     });
 }
+
+
+$('#invert-btn').click(function(){
+$('html').attr('style','filter:invert(1);background:black;');
+$('#onboard-class-btn').attr('style','filter:invert(1);')
+})
 </script>
 
 

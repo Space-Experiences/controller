@@ -780,10 +780,13 @@ z-index: 10;
   display: block;
   margin: 5% 20px;
   margin: auto;
-  width: 115px;
+  width: 87%;
   /* width: 130px; */
+  margin-top: 5%;
 }
-
+.portal-live-controls button.secondary-btn{
+	background-color:blue;
+}
 .mdc-menu-surface--open{
   z-index: 9999999;
   margin-left: 3%;
