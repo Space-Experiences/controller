@@ -245,6 +245,7 @@ var abs;
 
 function addClassOverviews(classes){
   $('#class-list').empty();
+  TweenMax.set('#class-list',{height:2500});
   console.log('addClassOverviews for ' + classes.length + ' classes')
   var classElements = '';
 
@@ -261,8 +262,9 @@ function addClassOverviews(classes){
   var h = $('#class-list').height();
 //  TweenMax.set('#class-list',{height:h})
 var dragging = false; // keep track of dragging
-  var drag = Draggable.create(".class-list", {type:"scrollTop" ,edgeResistance:.6, throwProps:true, lockAxis:true,
+  var drag = Draggable.create(".class-list", {type:"scrollTop" ,edgeResistance:0, throwProps:true, lockAxis:true,
   minimumMovement:0,
+  bounds:{height:5000},
   onDrag:function(){
     dragging = true;
   },onRelease:function(){

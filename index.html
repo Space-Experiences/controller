@@ -779,6 +779,7 @@ loadProgressBar.close();
 
 
 
+
 function offlineStatus(callback = false){
 
   toggleNavigation(true);
@@ -803,6 +804,10 @@ function offlineStatus(callback = false){
 $('#invert-btn').click(function(){
 $('html').attr('style','filter:invert(1);background:black;');
 $('#onboard-class-btn').attr('style','filter:invert(1);')
+})
+
+$('#onboard-class-btn').click(function(){
+    countdown.setStartTime(120);
 })
 </script>
 
