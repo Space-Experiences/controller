@@ -7,7 +7,7 @@
 html{
 
 }
-body{color:black;background-color: white;padding: 0px;margin: 0px;font-family: Roboto;overflow: hidden;user-select: none;background-color: #ffffff;}
+body{color:black;background-color: white;padding: 0px;margin: 0px;font-family: Roboto;overflow: hidden;/* user-select: none; */background-color: #ffffff;}
 body div{
   /* color:inherit; */
   /* background-color: inherit; */
@@ -25,9 +25,12 @@ body.top-bar-back{}
 body.top-bar-neutral{}
 
 .top-app-bar-title{
-  font-size: .8em;color: #000;text-transform: uppercase;letter-spacing: 0.1em;
+  font-size: .8em;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   font-weight:600;
-
+  text-overflow: unset;
 }
 
 /* When top app bar is on screen with no back button or menu*/
@@ -35,7 +38,7 @@ body.top-bar-menu.top-bar-back.top-bar-neutral #top-app-btn-menu,
 body.top-bar-menu.top-bar-back.top-bar-neutral #top-app-btn-back{display: none;background: unset;border: none;}
 body.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title{
   }
-body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;font-size: 1.8rem;}
+body.top-bar-menu.top-bar-back #top-app-btn-back{margin-right: -13px;font-size: 2rem;}
 
 
 #primary-snackbar{
@@ -511,7 +514,7 @@ body.visual.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title{
   transition:bottom .15s 0s;
   box-shadow: 0px -3px 0px -2px #EEEEEE;
   height: 5.556vh;
-  min-height: 50px;
+  min-height: 70px;
 }
 .navigation .mdc-tab-indicator__content--underline{
       align-self: flex-start;
@@ -519,6 +522,10 @@ body.visual.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title{
 }
 .main.nav-disabled .navigation{
   bottom:-56px;
+}
+
+body .navigation .mdc-tab{
+	height: 70px !important;
 }
 .main.nav-disabled.nav-enabled .navigation{
   bottom:0px;
@@ -559,7 +566,7 @@ transition:height .15s 0s;
   background-color: inherit;
   text-align: unset;
   overflow-y: hidden;
-  padding: 8px 8px;
+  /* padding: 8px 8px; */
 }
 .screen.disabled{
 z-index: 0;
@@ -570,7 +577,7 @@ pointer-events: none;
 z-index: 10;
 }
 
-.screen[data-name="list"]{background:#f9f9f9;background: #fdfdfd;}
+.screen[data-name="list"]{background:#f9f9f9;background: #fdfdfd;height: 2500px;}
 .screen[data-name="loading"]{
   z-index: 100000 !important;
   background-color: white;
@@ -617,7 +624,7 @@ z-index: 10;
 }
 
 /* Class cards */
-.class-card{padding: 16px;margin: 24px -4px;border-radius: 3px;box-shadow: 0px 2px 0px -2px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 4px 15px 0px hsla(0, 0%, 17%, 0.12);transition: none;margin: 20px 0px;font-size: 1rem;border: 1px solid #ececec;}
+.class-card{padding: 16px;margin: 24px -4px;border-radius: 3px;box-shadow: 0px 2px 0px -2px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 4px 15px 0px hsla(0, 0%, 17%, 0.12);transition: none;margin: 20px 0px;font-size: 1rem;border: 1px solid #ececec;min-height: 170px;}
 
 .class-card_headline{margin-top: 0px;margin-bottom: 0px;/* font-weight: 400; */font-size: 16px;font-size: 1rem;}
 .class-card_subtitle{
@@ -733,8 +740,30 @@ z-index: 10;
 }
 .data-info[info="description"]{white-space: normal;top: 20px;position: relative;}
 
+/* Dark mode */
+body.dark div,body.dark span{
+	background:#212121;
+	color:white !important;
+	border-color:#000000;
+	/* background: inherit; */
+}
 
-.full-card .start-button{min-width: 49%;display: inline-block;}
+body.dark .class-card{
+	border-radius:0px;
+	box-shadow:none;
+	border-color:#000000;
+	background:#252525;
+}
+body.dark .mdc-card__primary-action:first-child, body.dark .mdc-card__primary-action div{
+	background:inherit;
+}
+
+body.dark #top-app-btn-back{
+	color:#FAFAFA !important;
+}
+body.dark .mdc-button--raised:not(:disabled), .mdc-button--unelevated:not(:disabled){background: rgb(255, 255, 255);color: #2196F3;}
+/* end dark mode styling */
+.full-card .start-button{min-width: 49%;display: inline-block;width: 98%;margin: auto;min-height: 48px;font-weight: 600;}
 
 .full-card .schedule-button{min-width: 49%;margin-top: 0px;cursor: not-allowed;}
 
@@ -834,7 +863,7 @@ width: 60px;
   height: 100%;
   left: 0px;
   width: 100%;
-  background: #97d49a;
+  background: #616161;
   top: 0px;
 }
 
@@ -870,6 +899,7 @@ width: 60px;
   left: 0px;
   right: 0px;
   color: black;
+opacity:0;
 }
 
 

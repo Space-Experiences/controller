@@ -195,6 +195,11 @@ function showScreen(screenName, topAppTitle = false) {
     }
 
     currentScreen = screenName;
+
+
+    setTimeout(function(){
+    //  $('html').click();
+    })
 }
 
 function listenForTouchDuringLiveClass(command = true) {

@@ -605,31 +605,21 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
                                            params:{classID:'--',
                                            startTime:'now'}});
 
-
-
-                            //loadComplete = true;
-
           EventBus.unsubscribe(firstListen);
 
-
-
         });
-
-
-
 
      });
 
 
 
-     function firstLoad(){
+
+ function firstLoad(){
+
       clearTimeout(firstLoadTimeout);
        $(document).ready(function(){
 
          // Get the
-
-
-
          setTimeout(function(){
            showScreen('home','Portal');
 
@@ -652,7 +642,6 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
           },1000);
 
        },0000);
-
 
          $('#toggle-lock-state-btn').click(function(){
             window.location.reload(true);
@@ -782,17 +771,13 @@ loadProgressBar.close();
 
 function offlineStatus(callback = false){
 
-  toggleNavigation(true);
-
+ toggleNavigation(true);
  notification('The portal cortex is offline.','error',100000);
-
  toggleClimateDisplay(false);
 
   var confirmCallback =  EventBus.subscribe('responsePortalState', function(){
-
     notification('Conencted to the Portal.','success');
     toggleClimateDisplay(true);
-
       if(callback){
         callback();
       }
@@ -802,12 +787,11 @@ function offlineStatus(callback = false){
 
 
 $('#invert-btn').click(function(){
-$('html').attr('style','filter:invert(1);background:black;');
-$('#onboard-class-btn').attr('style','filter:invert(1);')
+$('body').toggleClass('dark');
 })
 
 $('#onboard-class-btn').click(function(){
-    countdown.setStartTime(120);
+    countdown.setStartTime(140);
 })
 </script>
 
