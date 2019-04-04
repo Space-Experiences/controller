@@ -587,7 +587,7 @@ pointer-events: none;
 z-index: 10;
 }
 
-.screen[data-name="list"]{background:#f9f9f9;background: #fdfdfd;height: 2000px;}
+.screen[data-name="list"]{background:#f9f9f9;background: #fdfdfd;}
 .screen[data-name="loading"]{
   z-index: 100000 !important;
   background-color: white;
