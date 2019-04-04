@@ -7,6 +7,10 @@
 html{
 
 }
+
+html.dark:root{
+	background: rgb(33, 33, 33);
+}
 body{color:black;background-color: white;padding: 0px;margin: 0px;font-family: Roboto;overflow: hidden;/* user-select: none; */background-color: #ffffff;}
 body div{
   /* color:inherit; */
@@ -520,6 +524,12 @@ body.visual.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title{
       align-self: flex-start;
       background-color: #505050;
 }
+body.dark .navigation .mdc-tab-indicator__content--underline{
+	background-color:#2196F3;
+}
+body.dark .mdc-tab--active .mdc-tab__text-label, .mdc-tab--active .mdc-tab__icon{
+	color:#03A9F4 !important;
+}
 .main.nav-disabled .navigation{
   bottom:-56px;
 }
@@ -561,7 +571,7 @@ transition:height .15s 0s;
   top: 0px;
   left: 0px;
   height: 100vh;
-  width: calc(100% - 16px);
+  width: 100%;
   right:0px;
   background-color: inherit;
   text-align: unset;
@@ -577,7 +587,7 @@ pointer-events: none;
 z-index: 10;
 }
 
-.screen[data-name="list"]{background:#f9f9f9;background: #fdfdfd;height: 2500px;}
+.screen[data-name="list"]{background:#f9f9f9;background: #fdfdfd;height: 2000px;}
 .screen[data-name="loading"]{
   z-index: 100000 !important;
   background-color: white;
