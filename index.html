@@ -139,6 +139,7 @@
                         <div class="mdc-layout-grid__inner">
                           <div class="mdc-layout-grid__cell--span-12 class-list">
                             <div id="class-list"></div>
+                            <!--
                             <button data-type="pusher" class="mdc-button" data-type="pusher" data-value="Prepare Class B101">B101</button>
                             <button data-type="pusher" class="mdc-button" data-value="Prepare Class B102">B102</button>
                             <button data-type="pusher" class="mdc-button" data-value="Prepare Class B103">B103</button>
@@ -148,6 +149,7 @@
                             <button data-type="pusher" class="mdc-button" data-value="Prepare Class B109">B109</button>
                             <button data-type="pusher" class="mdc-button" data-value="Prepare Class B110">B110</button>
                               <button data-type="pusher" class="mdc-button" data-value="Prepare Class B333">B333</button>
+                            -->
                           </div>
                           <br>
                           <br>
@@ -580,7 +582,7 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
           var firstLoadTimeout = setTimeout(function(){
                  offlineStatus();
                   showScreen('home','Portal');
-                  setTimeout(function(){
+                setTimeout(function(){
                   toggleClimateDisplay(false);
                 },500);
            },6000);
@@ -662,7 +664,14 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
 
        var val = $(this).attr('data-value');
        var type = $(this).attr('data-type');
+
+
        if(type == 'pusher'){
+
+         $(this).addClass('disabled');
+         setTimeout(function(){
+           $(this).removeClass('disabled');
+         },3000)
 
           channel.trigger('client-event', { type: 'pusher', value: val });
        }

@@ -519,6 +519,7 @@ body.visual.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title{
   box-shadow: 0px -3px 0px -2px #EEEEEE;
   height: 5.556vh;
   min-height: 70px;
+  touch-action: auto;
 }
 .navigation .mdc-tab-indicator__content--underline{
       align-self: flex-start;
@@ -575,8 +576,9 @@ transition:height .15s 0s;
   right:0px;
   background-color: inherit;
   text-align: unset;
-  overflow-y: hidden;
+  overflow:hidden;
   /* padding: 8px 8px; */
+  overscroll-behavior: none;
 }
 .screen.disabled{
 z-index: 0;
@@ -587,7 +589,9 @@ pointer-events: none;
 z-index: 10;
 }
 
-.screen[data-name="list"]{background:#f9f9f9;background: #fdfdfd;}
+.screen[data-name="list"]{background:#f9f9f9;background: #fdfdfd;
+overflow-y: scroll;
+}
 .screen[data-name="loading"]{
   z-index: 100000 !important;
   background-color: white;
@@ -618,7 +622,7 @@ z-index: 10;
 }
 .class-list{
   overflow: scroll;
-  height: 60%;
+  height: auto;
   overflow: hidden !important;
 }
 
