@@ -10,7 +10,8 @@
 
     <link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
    <script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/&#10;css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"> <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/&#10;css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
 
     <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
     <link rel="stylesheet" href="css/stylesheet.css">
@@ -140,9 +141,13 @@
                           <div class="mdc-layout-grid__cell--span-12 class-list">
                             <div id="class-list"></div>
 
-                            <button data-type="lobbyMusic" data-value="enableLobbyMusic">Lobby Music: On</button>
-                            <button data-type="lobbyMusic" data-value="disableLobbyMusic">Lobby Music: Off</button>
 
+
+                            <br>
+                              <br>
+                                <br>
+                                  <br>
+                                    <br>
                             <!--
                             <button data-type="pusher" class="mdc-button" data-type="pusher" data-value="Prepare Class B101">B101</button>
                             <button data-type="pusher" class="mdc-button" data-value="Prepare Class B102">B102</button>
@@ -163,7 +168,32 @@
             </div><!-- End screen -->
 
 
+            <div class="screen disabled" data-name="controller" data-screen-title="Studio Controller">
+              <div class="screen_inner">
+                    <div class="mdc-layout-grid mdc-layout-grid__cell--span-12">
+                      <div class="mdc-layout-grid__inner">
 
+                        <div class="mdc-layout-grid__cell--span-12">
+                          <ul class="mdc-list control-list">
+                            <li class="mdc-list-item list-title">
+                              Lobby Music
+                            </li>
+                            <li class="mdc-list-item">
+                              <button data-type="pusher" data-value="enableLobbyMusic">On</button>
+                            </li>
+                            <li class="mdc-list-item">
+                              <button data-type="pusher" data-value="disableLobbyMusic">Off</button>
+                            </li>
+
+                          </ul>
+
+                        </div>
+                        <br>
+                        <br>
+                      </div>
+                      </div>
+            </div><!-- End screen_inner -->
+            </div><!-- End screen -->
 
 
             <div class="full-card-overlay"></div>
@@ -213,7 +243,7 @@
                     <!-- Nav tab -->
                     <button class="mdc-tab mdc-tab--active nav-btn" role="tab" data-name="home"  aria-selected="true" tabindex="0">
                       <span class="mdc-tab__content">
-                          <span class="mdc-tab__icon material-icons" aria-hidden="true">assessment</span>
+                          <span class="mdc-tab__icon material-icons-outlined" aria-hidden="true">assessment</span>
                         <span class="mdc-tab__text-label"></span>
                       </span>
                       <span class="mdc-tab-indicator mdc-tab-indicator--active">
@@ -225,7 +255,19 @@
                     <!-- Nav tab -->
                     <button class="mdc-tab  nav-btn" role="tab" aria-selected="false" data-name="list" data-screen-name="Classes" tabindex="1">
                       <span class="mdc-tab__content">
-                        <span class="mdc-tab__icon material-icons" aria-hidden="true">list</span>
+                        <span class="mdc-tab__icon material-icons-outlined" aria-hidden="true">view_agenda_outline</span>
+                        <span class="mdc-tab__text-label"></span>
+                      </span>
+                      <span class="mdc-tab-indicator">
+                        <span class="mdc-tab-indicator__content mdc-tab-indicator__content--underline"></span>
+                      </span>
+                      <span class="mdc-tab__ripple"></span>
+                    </button>
+
+                    <!-- Nav tab -->
+                    <button class="mdc-tab  nav-btn" role="tab" aria-selected="false" data-name="controller" data-screen-name="Studio Controller" tabindex="1">
+                      <span class="mdc-tab__content">
+                        <span class="mdc-tab__icon material-icons-outlined" aria-hidden="true">settings_remote</span>
                         <span class="mdc-tab__text-label"></span>
                       </span>
                       <span class="mdc-tab-indicator">
@@ -679,9 +721,7 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
           channel.trigger('client-event', { type: 'pusher', value: val });
        }
 
-       if(type == 'lobbyMusic'){
-          channel.trigger('client-event', { type: val, value: "none" });
-       }
+
 
      });
 
