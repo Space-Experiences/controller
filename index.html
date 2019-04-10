@@ -139,6 +139,10 @@
                         <div class="mdc-layout-grid__inner">
                           <div class="mdc-layout-grid__cell--span-12 class-list">
                             <div id="class-list"></div>
+
+                            <button data-type="lobbyMusic" data-value="enableLobbyMusic">Lobby Music: On</button>
+                            <button data-type="lobbyMusic" data-value="disableLobbyMusic">Lobby Music: Off</button>
+
                             <!--
                             <button data-type="pusher" class="mdc-button" data-type="pusher" data-value="Prepare Class B101">B101</button>
                             <button data-type="pusher" class="mdc-button" data-value="Prepare Class B102">B102</button>
@@ -659,7 +663,6 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
 
 
 
-
      $('button').click(function(){
 
        var val = $(this).attr('data-value');
@@ -674,6 +677,10 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
          },3000)
 
           channel.trigger('client-event', { type: 'pusher', value: val });
+       }
+
+       if(type == 'lobbyMusic'){
+          channel.trigger('client-event', { type: val, value: "none" });
        }
 
      });
