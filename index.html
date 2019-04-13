@@ -404,6 +404,7 @@
 
 
 <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+
 <script>
 
 
@@ -626,12 +627,14 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
 
 
           var firstLoadTimeout = setTimeout(function(){
-                 offlineStatus();
+
+                  offlineStatus();
                   showScreen('home','Portal');
+
                 setTimeout(function(){
                   toggleClimateDisplay(false);
                 },500);
-           },6000);
+           },10000);
 
 
      channel.bind('pusher:subscription_succeeded', function() {
