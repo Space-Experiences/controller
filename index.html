@@ -24,6 +24,42 @@
         <button class="material-icons mdc-top-app-bar__navigation-icon--unbounded" id="top-app-btn-menu">menu</button>
         <span class="mdc-top-app-bar__title top-app-bar-title"></span> <div style="    width: 50%;    height: 20px;    margin: auto;" id="invert-btn"></div></section>
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-end">
+
+
+<!-- menu -->
+<div id="bar-menu" class="mdc-menu-surface--anchor" style="display:none;">
+  <button id="menu-button"><i class="material-icons">
+more_vert
+</i></button>
+</div>
+<div class="mdc-menu mdc-menu-surface" id="demo-menu">
+  <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+    <li>
+      <ul class="mdc-menu__selection-group">
+        <li class="mdc-list-item" role="menuitem">
+          <span class="mdc-list-item__graphic mdc-menu__selection-group-icon">
+            ...
+          </span>
+          <span class="mdc-list-item__text">Single</span>
+        </li>
+        <li class="mdc-list-item" role="menuitem">
+          <span class="mdc-list-item__graphic mdc-menu__selection-group-icon">
+           ...
+          </span>
+          <span class="mdc-list-item__text">1.15</span>
+        </li>
+      </ul>
+    </li>
+    <li class="mdc-list-divider" role="separator"></li>
+    <li class="mdc-list-item" role="menuitem">
+      <span class="mdc-list-item__text">Add space before paragraph</span>
+    </li>
+    ...
+  </ul>
+</div>
+<!-- end menu -->
+
+
         <button class="material-icons mdc-top-app-bar__action-item--unbounded" id="toggle-lock-state-btn" style="opacity:0;" aria-label="lock"><i class="material-icons">lock</i></button>
       </section>
     </div>
@@ -31,12 +67,7 @@
 
     <div class="main nav-disabled" active-screen="home">
 
-
-
-
         <!-- Sections are seperate screens -->
-
-
             <!-- screen -->
 
             <!--
@@ -752,6 +783,15 @@ loadProgressBar.initialize();
 loadProgressBar.close();
 
 
+// Top bar menu MDC init
+
+var menu = new mdc.menu.MDCMenu(document.querySelector('.mdc-menu'));
+menu.open = false;
+
+var menuButton = document.querySelector('#menu-button');
+$(menuButton).click(function(){
+  menu.open = !menu.open;
+})
 
 
 

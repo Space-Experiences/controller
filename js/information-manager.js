@@ -214,7 +214,7 @@ var PortalStateView = function(){
 // Returns html element for class overview card.
 function returnClassCard(info){
 
-    var h = '<div  class="mdc-card class-card" data-mdc-auto-init="MDCCard" data-class-id="'+info.classID+'" id="class-card--'+genUid()+'" data-type="pusher" data-value="Prepare Class B102">';
+    var h = '<div data-mdc-auto-init="MDCRipple" class="mdc-card class-card" data-mdc-auto-init="MDCCard" data-class-id="'+info.classID+'" id="class-card--'+genUid()+'" data-type="pusher" data-value="Prepare Class B102">';
       h+='<div class="mdc-card__primary-action class-card_action" tabindex="0">';
         h+='<div class="mdc-card__media mdc-card__media--square class-card_media"></div>';
         h+='<div class="">';
@@ -260,6 +260,7 @@ function addClassOverviews(classes){
 
   $(classElements).appendTo('#class-list');
   var h = $('#class-list').height();
+
 //  TweenMax.set('#class-list',{height:h})
 var dragging = false; // keep track of dragging
 /*
@@ -279,26 +280,36 @@ var dragging = false; // keep track of dragging
 function tapHandler( event ){
 $( event.target ).addClass( "tap" );
 }
-        $('.class-card').mousedown(function() {
+
+
+        var touchingCard = false;
+        $('.class-card').on({ 'touchstart' : function(){
           console.log('class-card mousedown, dragging = ' + dragging)
-          if(dragging == false){
+          if(dragging == false){  }
             TweenMax.to(this,.1,{scale:.95});
-          }
+            touchingCard = $(this);
+
+        }});
+        $(document).on('touchmove', function() {
+            detectTap = false; //Excludes the scroll events from touch events
+            if(touchingCard){
+                  TweenMax.to('.class-card',.1,{scale:1});
+            }
         });
 
 
 
         $('.class-card').on('mouseup',function(){
 
-          TweenMax.to(this,.1,{scale:1});
+          TweenMax.to(this,.4,{scale:1});
             if(dragging == false){
               TweenMax.to(this,.1,{scale:1.05});
               TweenMax.to(this,0,{scale:1,delay:.2})
           var elemID = $(this).attr('id');
           var elem = document.getElementById(elemID);
           abs = getAbsPosition(elem);
-          abs.height = $(elem).height();
-          abs.width = $(elem).width();
+          abs.height = $(elem).outerHeight();
+          abs.width = $(elem).outerWidth();
           console.log(abs);
            var val = $(this).attr('data-value');
            var type = $(this).attr('data-type');
@@ -345,14 +356,17 @@ if(fullCardShowing == false){
   TweenMax.to(fcoverlay,.05,{opacity:.3});
 
   TweenMax.from(fc,.3,{height:abs.height,
-    top:abs.top - 125,
-    left:abs.left,
+    top:abs.top - 60,
+    left:16,//abs.left,
     width:abs.width,
-    ease:Power3.easeIn,
+    ease:Power3.easeOut,
+    borderRadius:2,
     onComplete:function(){
-  changeTopAppBarText('Overview of ' + classID,'back');
-  TweenMax.to(fcinner,.15,{opacity:1});
+      changeTopAppBarText('Overview of ' + classID,'back');
+
   }});
+
+  TweenMax.to(fcinner,.25,{delay:.15,opacity:1});
 
 toggleNavigation(false);
 

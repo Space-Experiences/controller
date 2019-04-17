@@ -642,7 +642,7 @@ body.visual.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title {
 
 .navigation .mdc-tab-indicator__content--underline {
   align-self: flex-start;
-  background-color: #505050;
+  background-color: rgb(52, 184, 245);
 }
 
 body.dark .navigation .mdc-tab-indicator__content--underline {
@@ -707,7 +707,7 @@ body .navigation .mdc-tab {
 }
 .screen_inner{
   height: 90vh;
-  padding-top: 5vh;
+  padding-top: 0px;
 }
 .screen.disabled {
   z-index: 0;
@@ -754,9 +754,9 @@ body .navigation .mdc-tab {
 }
 
 .class-list {
-  overflow: scroll;
+  /* overflow: scroll; */
   height: auto;
-  overflow: hidden !important;
+  /* overflow-x: auto; */
 }
 
 #class-list {
@@ -781,7 +781,7 @@ body .navigation .mdc-tab {
   margin: 20px 0px;
   font-size: 1rem;
   border: 1px solid #ececec;
-  min-height: 170px;
+  min-height: 208px;
 }
 
 .class-card_headline {
@@ -950,7 +950,10 @@ body.dark .mdc-button--raised:not(:disabled), .mdc-button--unelevated:not(:disab
   background: rgb(255, 255, 255);
   color: #2196F3;
 }
-
+body.dark #start-class-btn{
+  color:white;
+  box-shadow: 0px 0px 0px 1px white;
+}
 /* end dark mode styling */
 .full-card .start-button {
   min-width: 49%;
@@ -969,11 +972,12 @@ body.dark .mdc-button--raised:not(:disabled), .mdc-button--unelevated:not(:disab
 
 .portal-display {
   text-align: left;
-  font-size: 20px;
+  font-size: 25px;
   line-height: 40px;
   font-weight: 300;
   padding: 19px;
   margin-bottom: 20px;
+  /* height: 76vh; */
 }
 
 .screen[data-screen-title="Portal"] {
@@ -983,13 +987,13 @@ body.dark .mdc-button--raised:not(:disabled), .mdc-button--unelevated:not(:disab
 
 .screen[data-screen-title="Portal"] .portal-display {
   text-align: center;
-  margin-top: calc(50px + 8vh);
+  margin-top: calc(50px + 5vh);
 }
 
 .pd-info {}
 
 .pd-info[name="state"] {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   text-transform: capitalize;
   letter-spacing: .5px;
 }
@@ -1023,6 +1027,11 @@ body.dark .mdc-button--raised:not(:disabled), .mdc-button--unelevated:not(:disab
 .portal-live-controls {
   display: block;
   white-space: nowrap;
+  position: absolute;
+  bottom: 160px;
+  margin: auto;
+  left: 0px;
+  right: 0px;
 }
 
 .portal-live-controls button {
@@ -1032,16 +1041,28 @@ body.dark .mdc-button--raised:not(:disabled), .mdc-button--unelevated:not(:disab
   width: 87%;
   /* width: 130px; */
   margin-top: 5%;
+  height: 48px;
+}
+
+#start-class-btn{
+  background: none;
+  box-shadow: 0px 0px 0px 1px #E0E0E0 inset;
+  color: black;
+  margin-bottom: 24px;
+  display: inline-block;
+  width: 42%;
+  left: 26px;
 }
 
 .portal-live-controls button.secondary-btn {
-  background-color: blue;
+  background-color: #212121;
 }
 
 .mdc-menu-surface--open {
   z-index: 9999999;
   margin-left: 3%;
-  width: calc(100vw - 306px);
+  width: 89%;
+  text-align: right;
 }
 
 .mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-floating-label {
@@ -1081,7 +1102,7 @@ body.dark .mdc-button--raised:not(:disabled), .mdc-button--unelevated:not(:disab
 }
 
 #start-delay-btn {
-  max-width: 140px;
+  /* max-width: 140px; */
   display: block;
   border: none;
   box-shadow: none;
@@ -1089,7 +1110,14 @@ body.dark .mdc-button--raised:not(:disabled), .mdc-button--unelevated:not(:disab
   /* height: 36px; */
   background: none;
   margin: auto;
-  margin-top: 15px;
+  margin-top: 35px;
+  margin: 0px 0px;
+  display: inl;
+  display: inline-block;
+  width: 42%;
+  margin-top: 5%;
+  float: left;
+  left: 16px;
 }
 
 #toggle-lock-state-btn {
