@@ -766,11 +766,10 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
 
      });
 
-     $('.nav-btn').on( "tap",function(){
+     $('.nav-btn').mousedown(function(){
        var sectionName = $(this).attr('data-name');
        showScreen(sectionName);
      });
-
 
 
      var pageLoaded = false;
