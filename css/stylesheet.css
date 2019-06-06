@@ -788,7 +788,7 @@ body .navigation .mdc-tab {
   text-align: center;
   top: unset;
   height: 896px;
-  background: url(/images/spinning-custom-loader.gif);
+  background: url(/controller/images/spinning-custom-loader.gif);
   background-position: center;
   overflow: hidden;
   top: -56px;
