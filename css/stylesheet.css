@@ -652,7 +652,8 @@ body.visual.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title {
   display: block;
   position: relative;
   height: calc(100vh - 56px);
-  top: 56px;
+  /* top: 56px; */
+  height: calc(100vh - 40px) !important;
 }
 
 .navigation {
@@ -746,8 +747,8 @@ body .navigation .mdc-tab {
   overscroll-behavior: none;
 }
 .screen_inner{
-  height: 90vh;
-  padding-top: 0px;
+  height: calc(100vh - 56px);
+  padding-top: 56px;
 }
 .screen.disabled {
   z-index: 0;
@@ -769,6 +770,8 @@ body .navigation .mdc-tab {
   z-index: 100000 !important;
   background-color: white;
   position: fixed;
+  /* top: -56px; */
+  min-height: 100vh;
 }
 
 .loading-visual {
@@ -788,6 +791,7 @@ body .navigation .mdc-tab {
   background: url(/images/spinning-custom-loader.gif);
   background-position: center;
   overflow: hidden;
+  top: -56px;
 }
 
 .loading-visual img {
