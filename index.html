@@ -85,7 +85,7 @@ more_vert
               <!-- loading screen -->
               <div class="screen disabled enabled" style="opacity:1;" data-name="loading">
                 <div class="screen_inner">
-                <div class="loading-visual"><img src="images/loadingblob.gif"></div>
+                <div class="loading-visual"><img src="images/spinning-custom-loader.gif"></div>
               </div><!-- End screen_inner -->
               </div><!-- End screen -->
 
@@ -347,6 +347,12 @@ more_vert
   </div>
   <div class="box f">
 <div class="three mdc-typography--overline label">temperature control:</div>
+
+<div class="onoffswitch">
+    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
+    <label class="onoffswitch-label" for="myonoffswitch"></label>
+</div>
+
     <div class="mdc-slider mdc-slider--discrete mdc-slider--display-markers" id="set-temp-slider" tabindex="0" role="slider"
          aria-valuemin="50" aria-valuemax="90" aria-valuenow="50"
          data-step="1" aria-label="Select Value">
@@ -721,6 +727,7 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
               }else{
                   listenForTouchDuringLiveClass();
               }
+              toggleNavigation(true);
           },1000);
 
        },0000);

@@ -383,6 +383,38 @@ body.visual .climate-display .climate-data {
 .main.heating-room #set-temp-to:before {
   content: "HEAT SET TO";
 }
+.onoffswitch {
+    position: relative; width: 119px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    height: 46px; padding: 0; line-height: 46px;
+    border: 2px solid #8F8F8F; border-radius: 46px;
+    background-color: #EEEEEE;
+    transition: background-color 0.3s ease-in;
+}
+.onoffswitch-label:before {
+    content: "";
+    display: block; width: 46px; margin: 0px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    right: 71px;
+    border: 2px solid #8F8F8F; border-radius: 46px;
+    transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+    background-color: #FF9900;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+   border-color: #FF9900;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    right: 0px; 
+}
 
 #knob-container {
   position: relative;
@@ -645,12 +677,20 @@ body.visual.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title {
   background-color: rgb(52, 184, 245);
 }
 
+
+.navigation .mdc-tab__ripple{
+  display:none;
+}
+.navigation .mdc-tab-indicator .mdc-tab-indicator__content--underline{
+  border-color: #03A9F4;
+}
+
 body.dark .navigation .mdc-tab-indicator__content--underline {
   background-color: #2196F3;
 }
 
 body.dark .mdc-tab--active .mdc-tab__text-label, .mdc-tab--active .mdc-tab__icon {
-  color: #03A9F4 !important;
+  color: #03a9f4 !important;
 }
 
 .main.nav-disabled .navigation {
@@ -743,6 +783,11 @@ body .navigation .mdc-tab {
   width: auto;
   height: auto;
   text-align: center;
+  top: unset;
+  height: 896px;
+  background: url(/images/spinning-custom-loader.gif);
+  background-position: center;
+  overflow: hidden;
 }
 
 .loading-visual img {
@@ -750,6 +795,7 @@ body .navigation .mdc-tab {
   height: auto;
   margin: auto;
   margin-top: 19vh;
+  display: none;
   position: relative;
 }
 
