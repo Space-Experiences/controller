@@ -485,6 +485,36 @@ function setPortalTemperature(deg) {
 }
 
 
+/*
+* Toggle switch for portal heat.
+*/
+$('#heatToggleSwitch input').change(function() {
+    console.log($(this).is(":checked"));
+
+    var deg = 50;
+
+    if($(this).is(":checked")) {
+      // Turn ON heat.
+      deg = 90;
+      console.log('Turn ON heat.');
+
+    }else{
+      // Turn OFF heat.
+    //  setPortalTemperature(60);
+      console.log('Turn OFF heat.');
+    }
+
+    channel.trigger('client-event', {
+        eventType: 'command',
+        value: 'setTemperature',
+        params: {
+            deg: deg,
+            wemos: false
+        }
+    });
+
+});
+
 
 var ClimateChart = function(){
 this.example = function(){
@@ -560,6 +590,42 @@ this.example = function(){
 
   }
 }
+
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+
+  type: 'line',
+
+  data: {
+
+    datasets: [{
+
+      data: []
+
+    }, {
+
+      data: []
+
+    }]
+
+  },
+
+  options: {
+
+    scales: {
+
+      xAxes: [{
+
+        type: 'realtime'
+
+      }]
+
+    }
+
+  }
+
+});
 
 // Checks if should remove .visual class from body
 function bodyVisualCheck(leavingHomeScreen = false,hideNav = false){

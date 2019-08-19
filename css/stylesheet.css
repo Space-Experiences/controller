@@ -25,15 +25,15 @@ body {
 body div {
   /* color:inherit; */
   /* background-color: inherit; */
-  cursor: none !important;
+  /*cursor: none !important;*/
 }
 
 body span {
-  cursor: none !important;
+  /*cursor: none !important;*/
 }
 
 body input {
-  cursor: none !important;
+  /*cursor: none !important;*/
 }
 
 body.top-bar-menu {}
@@ -96,6 +96,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back {
   /* z-index: 10000; */
   max-height: 100vh;
   overflow: scroll;
+  padding-top: 56px;
 }
 
 .climate-card .mdc-typography--subtitle1.data-info {
@@ -162,6 +163,8 @@ body.top-bar-menu.top-bar-back #top-app-btn-back {
   width: 84%;
   margin-left: auto;
   margin-right: auto;
+  max-width: 680px;
+  
 }
 
 .climate-display {
@@ -384,36 +387,53 @@ body.visual .climate-display .climate-data {
   content: "HEAT SET TO";
 }
 .onoffswitch {
-    position: relative; width: 119px;
-    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+    position: relative;
+    width: 119px;
+    margin: auto;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select: none;
+    margin-top: 30px;
+    display: none !important;
 }
 .onoffswitch-checkbox {
     display: none;
 }
 .onoffswitch-label {
-    display: block; overflow: hidden; cursor: pointer;
-    height: 46px; padding: 0; line-height: 46px;
-    border: 2px solid #8F8F8F; border-radius: 46px;
-    background-color: #EEEEEE;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    height: 46px;
+    padding: 0;
+    line-height: 46px;
+    border: 2px solid #e7e7e7;
+    border-radius: 46px;
+    background-color: rgb(251, 251, 251);
     transition: background-color 0.3s ease-in;
 }
 .onoffswitch-label:before {
     content: "";
-    display: block; width: 46px; margin: 0px;
+    display: block;
+    width: 46px;
+    margin: 0px;
     background: #FFFFFF;
-    position: absolute; top: 0; bottom: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
     right: 71px;
-    border: 2px solid #8F8F8F; border-radius: 46px;
-    transition: all 0.3s ease-in 0s; 
+    border: 2px solid #d8d8d8;
+    border-radius: 46px;
+    transition: all 0.3s ease-in 0s;
+    box-shadow: 0px 2px 3px #d8d8d8;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label {
     background-color: #FF9900;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
-   border-color: #FF9900;
+   border-color: #ff803f;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label:before {
-    right: 0px; 
+    right: 0px;
 }
 
 #knob-container {
@@ -909,8 +929,10 @@ body .navigation .mdc-tab {
 }
 
 .full-card_content {
+
   margin: 24px;
   white-space: nowrap;
+  margin-top: 86px;
 }
 
 .full-card_actions {
