@@ -116,6 +116,7 @@ var PortalStateView = function(){
           toggleNavigation(false);
           listenForTouchDuringLiveClass();
           toggleLoadClassIndicator(true);
+          showScreen('home');
 
 
         // Remove timeout on prepare class complete

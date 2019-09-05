@@ -124,9 +124,13 @@ more_vert
 
                   <!-- live portal controls -->
                       <div class="portal-live-controls" style="display:none;">
+                        <!--
+                        Onboard button
                         <button class="mdc-button mdc-button--raised secondary-btn"   data-value="Onboard" data-type="pusher" class="mdc-button"   data-mdc-auto-init="MDCRipple" id="onboard-class-btn">Onboard</button>
-
-                    <button class="mdc-button mdc-button--raised"   data-value="Start Class" data-type="pusher" class="mdc-button"   data-mdc-auto-init="MDCRipple" id="start-class-btn">Start</button>
+                      -->
+                        <button class="mdc-button mdc-button--raised secondary-btn"   data-value="Start Class" data-type="pusher" data-mdc-auto-init="MDCRipple" id="start-class-btn">Start</button>
+                    <!-- small start button -->
+                    <!--<button class="mdc-button mdc-button--raised"   data-value="Start Class" data-type="pusher" class="mdc-button"   data-mdc-auto-init="MDCRipple" id="start-class-btn">Start</button>-->
                     <!--<div data-type="pusher" class="mdc-button"  data-value="Start in 10 Seconds" id="start-delay-btn">Start in 10 seconds</button>-->
                     <div class="mdc-select"   id="start-delay-btn">
                       <input type="hidden" name="enhanced-select" id="delay-select-val" >
@@ -291,7 +295,7 @@ more_vert
                     <!-- Nav tab -->
                     <button class="mdc-tab  nav-btn" role="tab" aria-selected="false" data-name="list" data-screen-name="Classes" tabindex="1">
                       <span class="mdc-tab__content">
-                        <span class="mdc-tab__icon material-icons-outlined" aria-hidden="true">view_agenda_outline</span>
+                        <span style="max-width: 24px;" class="mdc-tab__icon material-icons-outlined" aria-hidden="true">view_agenda_outline</span>
                         <span class="mdc-tab__text-label"></span>
                       </span>
                       <span class="mdc-tab-indicator">

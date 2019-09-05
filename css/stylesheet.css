@@ -164,7 +164,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back {
   margin-left: auto;
   margin-right: auto;
   max-width: 680px;
-  
+
 }
 
 .climate-display {
@@ -205,8 +205,11 @@ body.top-bar-menu.top-bar-back #top-app-btn-back {
   padding: 5px;
   top: 56px;
   padding-top: 16px;
+  padding-top: 42px;
   box-shadow: rgb(234, 234, 234) 0px -5px 2px -4.5px inset, rgb(234, 234, 234) 0px 4px 2px -4.5px inset;
   background: #fdfdfd;
+  box-shadow: none;
+  background: white;
 }
 
 .climate-display:before {
@@ -304,7 +307,6 @@ body.visual .climate-display .climate-info:after {
 
 body.visual .climate-display {
   opacity: .7 !important;
-  margin-top: 3vh;
 }
 
 body.visual .climate-display .climate-data {
@@ -639,12 +641,15 @@ body.visual .climate-display:after {
 }
 
 body.visual .app-top-bar {
-  background-color: #ffffff1c;
+  background-color: #ffffff00;
   box-shadow: none;
 }
 
 body.visual .pd-info[name="classID"] {
   color: white;
+}
+body.visual .pd-info[name="classDuration"]{
+  background:#ffffff40;
 }
 
 body.visual #pause-class-btn {
@@ -653,6 +658,11 @@ body.visual #pause-class-btn {
   border-color: white;
   box-shadow: 0px 1px 1px 0px rgba(255, 255, 255, .3);
   min-width: 20%;
+  height: 60px;
+  max-width: 480px;
+  max-width: 420px;
+  height: 63px;
+  bottom: 52px;
 }
 
 body.visual.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title {
@@ -784,6 +794,9 @@ body .navigation .mdc-tab {
   background: #f9f9f9;
   background: #fdfdfd;
   overflow-y: scroll;
+  overflow: hidden;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch !important;
 }
 
 .screen[data-name="loading"] {
@@ -1073,10 +1086,11 @@ body.dark #start-class-btn{
 .pd-info[name="classID"] {
   font-weight: 400;
   /* color: #929292; */
-  margin-top: 12px;
-  margin-bottom: 8px;
-  font-size: 1.6rem;
+  margin-top: 72px;
+  margin-bottom: 48px;
+  font-size: 4.6rem;
   letter-spacing: 1.15px;
+  font-weight: 300;
 }
 
 .pd-info[name="classDuration"] {
@@ -1084,6 +1098,16 @@ body.dark #start-class-btn{
   font-size: 17px;
   /* color: #b1b1b1; */
   font-size: 1rem;
+  background: #00d8fb;
+  max-width: fit-content;
+  margin: auto;
+  padding: 0px 15px;
+  border-radius: 43px;
+  color: white;
+  font-weight: 500;
+  font-size: 15px;
+  padding-top: 0px;
+  line-height: 29px;
 }
 
 .pd-info[name="classProgress"] {
@@ -1100,7 +1124,7 @@ body.dark #start-class-btn{
   display: block;
   white-space: nowrap;
   position: absolute;
-  bottom: 160px;
+  bottom: 200px;
   margin: auto;
   left: 0px;
   right: 0px;
@@ -1117,6 +1141,7 @@ body.dark #start-class-btn{
 }
 
 #start-class-btn{
+  /*
   background: none;
   box-shadow: 0px 0px 0px 1px #E0E0E0 inset;
   color: black;
@@ -1124,6 +1149,10 @@ body.dark #start-class-btn{
   display: inline-block;
   width: 42%;
   left: 26px;
+  */
+  max-width: 420px;
+  height: 63px;
+  font-size: 21px;
 }
 
 .portal-live-controls button.secondary-btn {
@@ -1132,8 +1161,8 @@ body.dark #start-class-btn{
 
 .mdc-menu-surface--open {
   z-index: 9999999;
-  margin-left: 3%;
-  width: 89%;
+  margin-left: 0%;
+  width: 200px;
   text-align: right;
 }
 
@@ -1190,6 +1219,16 @@ body.dark #start-class-btn{
   margin-top: 5%;
   float: left;
   left: 16px;
+  max-width: unset;
+  width: auto;
+  display: block;
+  margin: auto;
+  float: unset;
+  left: 0px;
+  width: 200px;
+  top: 40px;
+  border: 1px solid hsla(0, 0%, 65%, 1);
+  border-radius: 3px;
 }
 
 #toggle-lock-state-btn {
