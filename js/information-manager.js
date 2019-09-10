@@ -586,7 +586,11 @@ function portalLightSwitchCountdown(elem){
   }
   var cdtl = new TimelineMax({repeat:0});
   $('.screen-info').addClass('enabled');
-  $(countdownValue).text(3);
+  $(countdownValue).text(4);
+  cdtl.to(countdownValue,1,{opacity:0,onComplete:function(){
+    $(countdownValue).text(3);
+	TweenMax.set(countdownValue,{opacity:1});
+  }});
   cdtl.to(countdownValue,1,{opacity:0,onComplete:function(){
     $(countdownValue).text(2);
 	TweenMax.set(countdownValue,{opacity:1});
@@ -594,11 +598,11 @@ function portalLightSwitchCountdown(elem){
   cdtl.to(countdownValue,1,{opacity:0,onComplete:function(){
     $(countdownValue).text(1);
 	TweenMax.set(countdownValue,{opacity:1});
-  }});
+    }});
   cdtl.to(countdownValue,1,{opacity:0,onComplete:function(){
     $(countdownValue).text(0);
-	TweenMax.set(countdownValue,{opacity:1});
-  $('.screen-info').removeClass('enabled');
+    TweenMax.set(countdownValue,{opacity:1});
+    $('.screen-info').removeClass('enabled');
     cdtl.kill();
     cdtl = null;
   }})
