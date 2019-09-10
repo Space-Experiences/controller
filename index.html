@@ -212,7 +212,21 @@ more_vert
               <div class="screen_inner">
                     <div class="mdc-layout-grid mdc-layout-grid__cell--span-12">
                       <div class="mdc-layout-grid__inner">
+                        <div class="mdc-layout-grid__cell--span-12">
+                          <ul class="mdc-list control-list">
+                            <li class="mdc-list-item list-title">
+                              Portal Light
+                            </li>
+                            <li class="mdc-list-item">
+                              <button data-type="pusher" data-value="enablePortalLight" onclick="portalLightSwitchCountdown(this);">ON</button>
+                            </li>
+                            <li class="mdc-list-item">
+                              <button data-type="pusher" data-value="disablePortalLight" onclick="portalLightSwitchCountdown(this);">OFF</button>
+                            </li>
+                          </ul>
+                        </div>
 
+<!--
                         <div class="mdc-layout-grid__cell--span-12">
                           <ul class="mdc-list control-list">
                             <li class="mdc-list-item list-title">
@@ -224,10 +238,9 @@ more_vert
                             <li class="mdc-list-item">
                               <button data-type="pusher" data-value="disableLobbyMusic">Off</button>
                             </li>
-
                           </ul>
-
                         </div>
+                      -->
                         <br>
                         <br>
                       </div>
@@ -438,6 +451,13 @@ more_vert
     <!-- end notification snackbar -->
 
 </body>
+
+<div class="screen-info disabled" id="countdown-info">
+
+  <div class="info-header">Activating Portal Lights</div>
+  <div class="countdown-value">3</div>
+
+</div>
 
 <script src="jquery-slim.js"></script>
 <script src="js/jquery.runner-min.js"></script>

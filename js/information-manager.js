@@ -573,4 +573,37 @@ setTimeout(function(){loadProgressBar.foundation_.setDeterminate(0)},2000);
 
 
 
+
+
+var countdownValue = $('.countdown-value');
+
+function portalLightSwitchCountdown(elem){
+  let onOrOff = $(elem).attr('data-value');
+  if(onOrOff == 'enablePortalLight'){
+    $('.info-header').text('Activating Portal Light');
+  }else{
+    $('.info-header').text('Deactivating Portal Light');
+  }
+  var cdtl = new TimelineMax({repeat:0});
+  $('.screen-info').addClass('enabled');
+  $(countdownValue).text(3);
+  cdtl.to(countdownValue,1,{opacity:0,onComplete:function(){
+    $(countdownValue).text(2);
+	TweenMax.set(countdownValue,{opacity:1});
+  }});
+  cdtl.to(countdownValue,1,{opacity:0,onComplete:function(){
+    $(countdownValue).text(1);
+	TweenMax.set(countdownValue,{opacity:1});
+  }});
+  cdtl.to(countdownValue,1,{opacity:0,onComplete:function(){
+    $(countdownValue).text(0);
+	TweenMax.set(countdownValue,{opacity:1});
+  $('.screen-info').removeClass('enabled');
+    cdtl.kill();
+    cdtl = null;
+  }})
+
+}
+
+
 /* */

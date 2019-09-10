@@ -1333,3 +1333,17 @@ body.dark #start-class-btn{
     font-weight: 600;
     padding-left: 24px;
 }
+
+
+.screen-info{position: fixed;height: 100%;width: 100%;left: 0px;right: 0px;background: white;color: #424242;top: 0px;z-index: 1000;padding: 54px 0px;text-align: center;font-size:24px;transition: top .15s 0s;}
+.screen-info.disabled{top: 100%;}
+.screen-info.disabled.enabled{top: 0%;}
+
+.info-header{
+margin-top:20%;
+margin-bottom:250px;
+}
+.countdown-value{
+  font-size:50px;
+
+}
