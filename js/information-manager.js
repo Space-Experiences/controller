@@ -577,8 +577,8 @@ setTimeout(function(){loadProgressBar.foundation_.setDeterminate(0)},2000);
 
 var countdownValue = $('.countdown-value');
 
-function portalLightSwitchCountdown(elem){
-  let onOrOff = $(elem).attr('data-value');
+function portalLightSwitchCountdown(onOrOff){
+
   if(onOrOff == 'enablePortalLight'){
     $('.info-header').text('Activating Portal Light');
   }else{
@@ -612,4 +612,42 @@ function portalLightSwitchCountdown(elem){
 }
 
 
-/* */
+/* Handle Switch Events*/
+
+
+function handleSwitchEvent(switchName,value){
+
+    if(switchName == "togglePortalLight"){
+        portalLightSwitchCountdown(value);
+    }
+}
+
+$('.mdc-switch').click(function(){
+
+//data-switch="togglePortalLight" data-active-value="enablePortalLight" data-inactive-value="disablePortalLight" data-is-active="false"
+
+         var sendValue = "";
+         var type = $(this).attr('data-type');
+         var isActive = $(this).attr('data-is-active');
+         isActive = Number(isActive);
+         isActive = Boolean(isActive);
+
+         console.log(isActive);
+
+         if(isActive == true){
+            sendValue = $(this).attr('data-inactive-value');
+             $(this).attr('data-is-active','0');
+         }else{
+            sendValue = $(this).attr('data-active-value');
+            $(this).attr('data-is-active','1');
+         }
+
+         console.log(sendValue);
+
+         console.log('new switch value: ' + !!isActive);
+
+         channel.trigger('client-event', { type: 'pusher', value: sendValue });
+
+         handleSwitchEvent($(this).attr('data-switch'),sendValue);
+
+});

@@ -1351,3 +1351,9 @@ margin-bottom:250px;
   font-size:50px;
     color: #03A9F4;
 }
+
+
+.list-with-switches{
+  width: auto;
+grid-column-end: span 12;
+}

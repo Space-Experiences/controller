@@ -212,6 +212,8 @@ more_vert
               <div class="screen_inner">
                     <div class="mdc-layout-grid mdc-layout-grid__cell--span-12">
                       <div class="mdc-layout-grid__inner">
+
+                        <!--
                         <div class="mdc-layout-grid__cell--span-12">
                           <ul class="mdc-list control-list">
                             <li class="mdc-list-item list-title">
@@ -225,6 +227,63 @@ more_vert
                             </li>
                           </ul>
                         </div>
+
+              <div class="mdc-layout-grid mdc-layout-grid__cell--span-12">
+                        <div class="mdc-switch"  data-mdc-auto-init="MDCSwitch">
+  <div class="mdc-switch__track"></div>
+  <div class="mdc-switch__thumb-underlay">
+    <div class="mdc-switch__thumb">
+        <input type="checkbox" id="basic-switch" class="mdc-switch__native-control" role="switch">
+    </div>
+  </div>
+</div>
+<label for="basic-switch">off/on</label>
+
+</div>
+-->
+
+
+<ul  class="mdc-list list-with-switches" role="group" aria-label="List with switch items">
+  <li class="mdc-list-item" role="switch" aria-checked="false">
+    <label class="mdc-list-item__text" for="demo-list2-switch-item-1">Light</label>
+    <span class="mdc-list-item__meta">
+      <div class="mdc-switch" data-mdc-auto-init="MDCSwitch" data-type="pusher" data-switch="togglePortalLight" data-active-value="enablePortalLight" data-inactive-value="disablePortalLight" data-is-active="0" >
+        <div class="mdc-switch__track"></div>
+        <div class="mdc-switch__thumb-underlay">
+          <div class="mdc-switch__thumb">
+            <input type="checkbox" id="demo-list2-switch-item-1" class="mdc-switch__native-control">
+          </div>
+        </div>
+      </div>
+    </span>
+  </li>
+  <li class="mdc-list-item" role="switch" aria-checked="true" tabindex="0">
+    <label class="mdc-list-item__text" for="demo-list2-switch-item-2">Option 2</label>
+    <span class="mdc-list-item__meta">
+      <div class="mdc-switch" data-mdc-auto-init="MDCSwitch">
+        <div class="mdc-switch__track"></div>
+        <div class="mdc-switch__thumb-underlay">
+          <div class="mdc-switch__thumb">
+            <input type="checkbox" id="demo-list2-switch-item-2" class="mdc-switch__native-control" checked>
+          </div>
+        </div>
+      </div>
+    </span>
+  </li>
+  <li class="mdc-list-item" role="switch" aria-checked="false">
+    <label class="mdc-list-item__text" for="demo-list2-switch-item-3">Option 3</label>
+    <span class="mdc-list-item__meta">
+      <div class="mdc-switch" data-mdc-auto-init="MDCSwitch">
+        <div class="mdc-switch__track"></div>
+        <div class="mdc-switch__thumb-underlay">
+          <div class="mdc-switch__thumb">
+            <input type="checkbox" id="demo-list2-switch-item-3" class="mdc-switch__native-control">
+          </div>
+        </div>
+      </div>
+    </span>
+  </li>
+</ul>
 
 <!--
                         <div class="mdc-layout-grid__cell--span-12">
@@ -811,10 +870,10 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
    //const select = new MDCSelect(document.querySelector('.mdc-select'));
 
 var delaySelect = mdc.select.MDCSelect.attachTo(document.querySelector('.mdc-select'));
- mdc.autoInit();
+mdc.autoInit();
 
 
- var loadProgressBar = mdc.linearProgress.MDCLinearProgress.attachTo(document.querySelector('.mdc-linear-progress'));
+var loadProgressBar = mdc.linearProgress.MDCLinearProgress.attachTo(document.querySelector('.mdc-linear-progress'));
 loadProgressBar.initialize();
 loadProgressBar.close();
 
