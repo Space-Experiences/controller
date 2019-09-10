@@ -244,6 +244,9 @@ more_vert
 
 
 <ul  class="mdc-list list-with-switches" role="group" aria-label="List with switch items">
+  <li class="mdc-list-item list-title">
+    Light
+  </li>
   <li class="mdc-list-item" role="switch" aria-checked="false">
     <label class="mdc-list-item__text" for="demo-list2-switch-item-1">Light</label>
     <span class="mdc-list-item__meta">
@@ -257,32 +260,50 @@ more_vert
       </div>
     </span>
   </li>
+  <li class="mdc-list-item list-title">
+    Climate
+  </li>
   <li class="mdc-list-item" role="switch" aria-checked="true" tabindex="0">
-    <label class="mdc-list-item__text" for="demo-list2-switch-item-2">Option 2</label>
+    <label class="mdc-list-item__text" for="demo-list2-switch-item-2">Humidifiers & Space Heaters</label>
     <span class="mdc-list-item__meta">
-      <div class="mdc-switch" data-mdc-auto-init="MDCSwitch">
+      <div class="mdc-switch" data-mdc-auto-init="MDCSwitch" data-type="pusher" data-switch="toggleTemperature" data-active-value="wemosOn" data-inactive-value="wemosOff" data-is-active="0" >
         <div class="mdc-switch__track"></div>
         <div class="mdc-switch__thumb-underlay">
           <div class="mdc-switch__thumb">
-            <input type="checkbox" id="demo-list2-switch-item-2" class="mdc-switch__native-control" checked>
+            <input type="checkbox" id="demo-list2-switch-item-1" class="mdc-switch__native-control">
+          </div>
+        </div>
+      </div>
+    </span>
+  </li>
+  <!--
+  <li class="mdc-list-item" role="switch" aria-checked="true" tabindex="0">
+    <label class="mdc-list-item__text" for="demo-list2-switch-item-2">Humidifiers</label>
+    <span class="mdc-list-item__meta">
+      <div class="mdc-switch" data-mdc-auto-init="MDCSwitch" data-type="pusher" data-switch="toggleTemperature" data-active-value="enableHumidifiers" data-inactive-value="disableHumidifiers" data-is-active="0" >
+        <div class="mdc-switch__track"></div>
+        <div class="mdc-switch__thumb-underlay">
+          <div class="mdc-switch__thumb">
+            <input type="checkbox" id="demo-list2-switch-item-1" class="mdc-switch__native-control">
           </div>
         </div>
       </div>
     </span>
   </li>
   <li class="mdc-list-item" role="switch" aria-checked="false">
-    <label class="mdc-list-item__text" for="demo-list2-switch-item-3">Option 3</label>
+    <label class="mdc-list-item__text" for="demo-list2-switch-item-3">Space Heaters</label>
     <span class="mdc-list-item__meta">
-      <div class="mdc-switch" data-mdc-auto-init="MDCSwitch">
+      <div class="mdc-switch" data-mdc-auto-init="MDCSwitch" data-type="pusher" data-switch="toggleTemperature" data-active-value="enableSpaceHeaters" data-inactive-value="disableSpaceHeaters" data-is-active="0" >
         <div class="mdc-switch__track"></div>
         <div class="mdc-switch__thumb-underlay">
           <div class="mdc-switch__thumb">
-            <input type="checkbox" id="demo-list2-switch-item-3" class="mdc-switch__native-control">
+            <input type="checkbox" id="demo-list2-switch-item-1" class="mdc-switch__native-control">
           </div>
         </div>
       </div>
     </span>
   </li>
+-->
 </ul>
 
 <!--
