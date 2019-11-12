@@ -908,6 +908,42 @@ body .navigation .mdc-tab {
   font-size: .72rem;
 }
 
+.flatpickr-calendar{
+  z-index: 10000 !important;
+}
+
+.schedule-card{
+  text-align: left;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100vh;
+  width: 100%;
+  right: 0px;
+  background-color: white;
+  text-align: unset;
+  overflow-y: hidden;
+  /* padding: 8px 24px; */
+  z-index: 100000;
+opacity: 1;
+}
+#schedule-close-button{
+  color: black;
+  font-size: 25px;
+      margin: 8px;
+}
+
+.schedule-card.disabled{
+  top:110%;
+  transition: top .25s 0s;
+  pointer-events: none;
+}
+.schedule-card.disabled.enabled{
+  top:0%;
+  pointer-events: all;
+}
+
 .full-card {
   text-align: left;
   height: 100%;

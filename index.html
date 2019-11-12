@@ -14,8 +14,16 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/3.2.0/material-components-web.min.css">
-    <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="css/flatpickr.css">
+    <link rel="stylesheet" href="css/flatpickr_material_blue.css">
 
+
+     <link rel="stylesheet" href="css/stylesheet.css">
+
+<style>
+
+</style>
+</head>
     <!-- ChartJS for live stream of temp data [https://github.com/nagix/chartjs-plugin-streaming] -->
     <!--chartjs-plugin-streaming.min.js
      end chartjs scripts -->
@@ -373,11 +381,47 @@ more_vert
                 </div>
                 <div class="full-card_actions">
                   <button class="mdc-button mdc-button--raised start-button" data-mdc-auto-init="MDCRipple">Load Class</button>
+                  <br>
+                  <br>
+                  <br>
+                    <button class="mdc-button mdc-button--raised schedule-button" data-mdc-auto-init="MDCRipple">Schedule Class</button>
                   <!--<button class="mdc-button  schedule-button"  data-mdc-auto-init="MDCRipple">Schedule</button>-->
                 </div>
               </div>
 
             </div>
+
+
+            <div class="schedule-card disabled">
+              <button class="mdc-icon-button mdc-snackbar__dismiss material-icons" title="Dismiss" id="schedule-close-button">close</button>
+              <div class="full-card_inner" style="opacity: 1;">
+                  <div class="mdc-typography full-card_content">
+                    <h2 class="mdc-typography--headline4 data-info" info="classID">B333</h2>
+                    <p class="mdc-typography--subtitle1 data-info" info="description">A short demo of our class, with an intention based on changing the way you think about what's possible in life.</p>
+                    <br>
+                    <br>
+                    <br>
+
+                  </div>
+                  <div class="full-card_actions">
+                    <ul class="mdc-list">
+  <li class="mdc-list-item" tabindex="0">
+    <span class="mdc-list-item__text">Single-line item</span>
+  </li>
+  <li class="mdc-list-item">
+    <span class="mdc-list-item__text">Single-line item</span>
+  </li>
+  <li class="mdc-list-item">
+    <span class="mdc-list-item__text">Single-line item</span>
+  </li>
+</ul>
+                    <input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.." data-id="datetime" readonly="readonly">
+                  </div>
+                </div>
+
+
+            </div>
+
 
 
 <!-- End screens -->
@@ -565,6 +609,7 @@ more_vert
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/3.2.0/material-components-web.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
@@ -1025,6 +1070,22 @@ $('html').toggleClass('dark');
 $('#onboard-class-btn').click(function(){
     countdown.setStartTime(140);
 })
+
+
+// Scheduling.
+
+$('.schedule-button').click(function(){
+  $('.schedule-card').addClass('enabled');
+});
+$('#schedule-close-button').click(function(){
+  $('.schedule-card').removeClass('enabled');
+});
+
+$(".flatpickr").flatpickr({
+    enableTime: true,
+    dateFormat: "Y-m-d H:i",
+});
+
 </script>
 
 
