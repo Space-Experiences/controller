@@ -944,6 +944,20 @@ opacity: 1;
   pointer-events: all;
 }
 
+
+.schedule-card .full-card_inner{border: 1px solid;margin: 15px;padding: 0px;}
+.schedule-card h2[info="classID"]{line-height: 0;font-size: 20px;}
+.schedule-card p[info="description"]{font-size: 12px;top: 4px;color: gray;}
+
+.schedule-card .full-card_content{
+  margin-top: 24px;
+}
+
+#datetime{
+
+}
+
+
 .full-card {
   text-align: left;
   height: 100%;
