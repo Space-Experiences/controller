@@ -408,15 +408,18 @@ more_vert
       </li>
       <li class="mdc-list-item">
         <label class="mdc-list-item__text">Date and time</label>
-      
         <span class="mdc-list-item__meta">
-          <input class="flatpickr flatpickr-input" type="text" onchange="showDate(this)"placeholder="Select Date.." data-id="datetime" readonly="readonly">
+          <input class="flatpickr flatpickr-input" type="text" onchange="showDate(this)"placeholder="Select Date.." id="event-date-time-input" data-id="datetime" readonly="readonly">
         </span>
       </li>
+
+      <li class="mdc-list-item">
+        <button class="mdc-button mdc-button--raised small-action-button" id="focus-date-time-trigger" onclick="focusOnDateAndTimeInput()"style="background: blue;float: right;margin: 15px;" data-mdc-auto-init="MDCRipple">Input press</button>
+      </li>
+
     </ul>
   </div>
 
-</ul>
 <!--
 
   <div class="mdc-layout-grid__cell--span-12" style="  border-top: 1px solid #EEEEEE;" id="review-schedule-event">
@@ -1117,6 +1120,9 @@ function showDate(input){
 alert(input.value)
 }
 
+function focusOnDateAndTimeInput(){
+  document.getElementById("event-date-time-input").focus();
+}
 
 </script>
 
