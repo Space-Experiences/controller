@@ -74,6 +74,7 @@ more_vert
 
 
         <button class="material-icons mdc-top-app-bar__action-item--unbounded" id="toggle-lock-state-btn" style="opacity:0;" aria-label="lock"><i class="material-icons">lock</i></button>
+<button class="mdc-icon-button material-icons">favorite</button>
       </section>
     </div>
 </header>
@@ -404,7 +405,7 @@ more_vert
       </li>
       <li class="mdc-list-item" tabindex="0">
         <label class="mdc-list-item__text">Class ID</label>
-        <span class="mdc-list-item__meta data-info" info="classID">--</span>
+        <span class="mdc-list-item__meta data-info" info="classID" id="schedule-event-class-id">--</span>
       </li>
       <li class="mdc-list-item">
         <label class="mdc-list-item__text">Date and time</label>
@@ -1119,19 +1120,36 @@ alert(input.value)
 }
 
 
-var scheduleEventManager = function(){
 
-//this.confirmValueAndSave =
-
-
+function scheduleEvent(eventDate,classID){
+  console.log('schedule date for ' + eventDate + ' for class ' + classID);
 }
 
 
-$('#save-schedule-event-button').click(function(){
-var dateTime = document.getElementById("datetime").value;
-$('#showdate').text(dateTime);
+function isValidDate(d) {
+  return d instanceof Date && !isNaN(d);
+}
 
+$('#save-schedule-event-button').click(function(){
+var dateTime = new Date(document.getElementById("datetime").value);
+  if(isValidDate(dateTime)){
+    let classID = $('#schedule-event-class-id').text();
+    console.log(dateTime);
+    notification('Class scheduled for ' + dateTime,'success');
+    scheduleEvent(dateTime,classID);
+    $('#schedule-close-button').click();
+    appBarBackButton.click();
+    showScreen('home','Portal');
+    changeTopAppBarText('Portal');
+    $('.mdc-tab.nav-btn[data-name="home"').click();
+
+  }else{
+    notification('No date selected.','error');
+  }
 });
+
+
+
 
 </script>
 
