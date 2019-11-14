@@ -74,7 +74,7 @@ more_vert
 
 
         <button class="material-icons mdc-top-app-bar__action-item--unbounded" id="toggle-lock-state-btn" style="opacity:0;" aria-label="lock"><i class="material-icons">lock</i></button>
-<button class="mdc-icon-button material-icons">favorite</button>
+<button class="mdc-icon-button material-icons">calendar_today</button>
       </section>
     </div>
 </header>
@@ -1121,8 +1121,14 @@ alert(input.value)
 
 
 
-function scheduleEvent(eventDate,classID){
-  console.log('schedule date for ' + eventDate + ' for class ' + classID);
+function scheduleEvent(eventDate,_classID){
+  console.log('schedule date for ' + eventDate + ' for class ' + _classID);
+
+  channel.trigger('client-event', {eventType:'GET',
+                                   value:'scheduleClass',
+                                   params:{classID:_classID,
+                                   dateAndTime:eventDate}
+                                 });
 }
 
 
