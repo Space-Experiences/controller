@@ -630,6 +630,8 @@ more_vert
 <script src="greensock-business/src/minified/plugins/ThrowPropsPlugin.min.js"></script>
 <script src="greensock-business/src/minified/utils/GSDevTools.min.js"></script>
 <script src="greensock-business/src/minified/jquery.gsap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/airtable@0.7.2/lib/airtable.min.js"></script>
 <!--
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 -->
@@ -1121,14 +1123,17 @@ alert(input.value)
 
 
 
-function scheduleEvent(eventDate,_classID){
+function scheduleEvent(eventDate,_classID,_recordId){
   console.log('schedule date for ' + eventDate + ' for class ' + _classID);
 
   channel.trigger('client-event', {eventType:'GET',
                                    value:'scheduleClass',
                                    params:{classID:_classID,
+                                  classRecordId:_recordId,
                                    dateAndTime:eventDate}
                                  });
+
+
 }
 
 
@@ -1140,9 +1145,10 @@ $('#save-schedule-event-button').click(function(){
 var dateTime = new Date(document.getElementById("datetime").value);
   if(isValidDate(dateTime)){
     let classID = $('#schedule-event-class-id').text();
+    let recordId = $('.data-info[info="classID"]').attr('data-recordId');
     console.log(dateTime);
     notification('Class scheduled for ' + dateTime,'success');
-    scheduleEvent(dateTime,classID);
+    scheduleEvent(dateTime,classID,recordId);
     $('#schedule-close-button').click();
     appBarBackButton.click();
     showScreen('home','Portal');

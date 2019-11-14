@@ -407,6 +407,8 @@ function populateFullCardInformation(info){
     $('.data-info[info="intention"]').text(info.staintentiontus);
     $('.data-info[info="description"]').text(info.description);
 
+    $('.data-info[info="classID"]').attr('data-recordId',info.recordId);
+
 
 }
 
