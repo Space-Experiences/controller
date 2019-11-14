@@ -395,11 +395,11 @@ more_vert
             <div class="schedule-card disabled">
               <button class="mdc-icon-button material-icons" title="Dismiss" id="schedule-close-button">close</button>
 
-              <button class="mdc-button mdc-button--raised save-schedule-event-button small-action-button" style="background: blue;float: right;margin: 15px;" data-mdc-auto-init="MDCRipple">Save</button>
+              <button class="mdc-button mdc-button--raised save-schedule-event-button small-action-button" id="save-schedule-event-button" style="background: blue;float: right;margin: 15px;" data-mdc-auto-init="MDCRipple">Save</button>
 
 <div class="mdc-layout-grid__cell--span-12" style="  border-top: 1px solid #EEEEEE;" id="add-schedule-event">
     <ul class="mdc-list control-list">
-      <li class="mdc-list-item list-title">
+      <li class="mdc-list-item list-title" id="showdate">
         Schedule a class
       </li>
       <li class="mdc-list-item" tabindex="0">
@@ -410,7 +410,9 @@ more_vert
         <label class="mdc-list-item__text">Date and time</label>
         <span class="mdc-list-item__meta">
 
-          <input class="flatpickr flatpickr-input" style="    background: none;  font-size: 20px;" type="text" onchange="showDate(this)"placeholder="Select Date.." data-id="datetime" readonly="readonly">
+        <!--  <input class="flatpickr flatpickr-input" style="    background: none;  font-size: 20px;" type="text" onchange="showDate(this)"placeholder="Select Date.." id="schedule-date-time-input" data-id="datetime" readonly="readonly">
+        -->
+        <input type="datetime-local" name="datetime" id="datetime">
         </span>
       </li>
     </ul>
@@ -631,7 +633,7 @@ more_vert
 <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/material-components-web/3.2.0/material-components-web.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
 
@@ -1106,17 +1108,30 @@ $('#schedule-close-button').click(function(){
 });
 
 
-$(".flatpickr").flatpickr({
+var dateandtime = $(".flatpickr").flatpickr({
     enableTime: true,
     dateFormat: "Y-m-d H:i",
 });
 
 
 function showDate(input){
-
 alert(input.value)
 }
 
+
+var scheduleEventManager = function(){
+
+//this.confirmValueAndSave =
+
+
+}
+
+
+$('#save-schedule-event-button').click(function(){
+var dateTime = document.getElementById("datetime").value;
+$('#showdate').text(dateTime);
+
+});
 
 </script>
 
