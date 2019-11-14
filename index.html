@@ -384,7 +384,7 @@ more_vert
                   <br>
                   <br>
                   <br>
-                    <button class="mdc-button mdc-button--raised schedule-button" data-mdc-auto-init="MDCRipple">Schedule Class</button>
+                    <button class="mdc-button mdc-button--outlined schedule-button" data-mdc-auto-init="MDCRipple">Schedule Class</button>
                   <!--<button class="mdc-button  schedule-button"  data-mdc-auto-init="MDCRipple">Schedule</button>-->
                 </div>
               </div>
@@ -397,7 +397,7 @@ more_vert
 
               <button class="mdc-button mdc-button--raised save-schedule-event-button small-action-button" style="background: blue;float: right;margin: 15px;" data-mdc-auto-init="MDCRipple">Save</button>
 
-              <div class="mdc-layout-grid__cell--span-12" style="  border-top: 1px solid #EEEEEE;">
+<div class="mdc-layout-grid__cell--span-12" style="  border-top: 1px solid #EEEEEE;" id="add-schedule-event">
     <ul class="mdc-list control-list">
       <li class="mdc-list-item list-title">
         Schedule a class
@@ -408,12 +408,36 @@ more_vert
       </li>
       <li class="mdc-list-item">
         <label class="mdc-list-item__text">Date and time</label>
+      
         <span class="mdc-list-item__meta">
-          <input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.." data-id="datetime" readonly="readonly">
+          <input class="flatpickr flatpickr-input" type="text" onchange="showDate(this)"placeholder="Select Date.." data-id="datetime" readonly="readonly">
         </span>
       </li>
     </ul>
   </div>
+
+</ul>
+<!--
+
+  <div class="mdc-layout-grid__cell--span-12" style="  border-top: 1px solid #EEEEEE;" id="review-schedule-event">
+      <ul class="mdc-list control-list">
+        <li class="mdc-list-item list-title">
+          Schedule
+      </li>
+      <ul class="mdc-list scheduled-event">
+        <li class="mdc-list-item" tabindex="0">
+          <label class="mdc-list-item__text">Class ID</label>
+          <span class="mdc-list-item__meta">--</span>
+        </li>
+        <li class="mdc-list-item">
+          <label class="mdc-list-item__text">Date and time</label>
+          <span class="mdc-list-item__meta">
+            <input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.." data-id="datetime" readonly="readonly">
+          </span>
+        </li>
+      </ul>
+        </div>
+-->
 
 
 
@@ -905,6 +929,8 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
             window.location.reload(true);
          });
 
+
+
        });
      }
 
@@ -1082,10 +1108,14 @@ $('#schedule-close-button').click(function(){
 });
 
 
-$(".flatpickr").flatpickr({
-    enableTime: true,
-    dateFormat: "Y-m-d H:i",
-});
+
+
+
+
+function showDate(input){
+
+alert(input.value)
+}
 
 
 </script>
