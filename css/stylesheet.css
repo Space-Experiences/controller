@@ -934,6 +934,10 @@ opacity: 1;
       margin: 8px;
 }
 
+.small-action-button{
+  background: blue;
+}
+
 .schedule-card.disabled{
   top:110%;
   transition: top .25s 0s;

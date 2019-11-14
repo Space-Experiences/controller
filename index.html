@@ -393,17 +393,29 @@ more_vert
 
 
             <div class="schedule-card disabled">
-              <button class="mdc-icon-button mdc-snackbar__dismiss material-icons" title="Dismiss" id="schedule-close-button">close</button>
-              <div class="full-card_inner" style="opacity: 1;">
-                  <div class="mdc-typography full-card_content">
-                    <h2 class="mdc-typography--headline4 data-info" info="classID">B333</h2>
-                    <p class="mdc-typography--subtitle1 data-info" info="description">A short demo of our class, with an intention based on changing the way you think about what's possible in life.</p>
+              <button class="mdc-icon-button material-icons" title="Dismiss" id="schedule-close-button">close</button>
 
-                  </div>
-                  <div class="full-card_actions">
-                    <input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.." data-id="datetime" readonly="readonly">
-                  </div>
-                </div>
+              <button class="mdc-button mdc-button--raised save-schedule-event-button small-action-button" style="background: blue;float: right;margin: 15px;" data-mdc-auto-init="MDCRipple">Save</button>
+
+              <div class="mdc-layout-grid__cell--span-12" style="  border-top: 1px solid #EEEEEE;">
+    <ul class="mdc-list control-list">
+      <li class="mdc-list-item list-title">
+        Schedule a class
+      </li>
+      <li class="mdc-list-item" tabindex="0">
+        <label class="mdc-list-item__text">Class ID</label>
+        <span class="mdc-list-item__meta data-info" info="classID">--</span>
+      </li>
+      <li class="mdc-list-item">
+        <label class="mdc-list-item__text">Date and time</label>
+        <span class="mdc-list-item__meta">
+          <input class="flatpickr flatpickr-input" type="text" placeholder="Select Date.." data-id="datetime" readonly="readonly">
+        </span>
+      </li>
+    </ul>
+  </div>
+
+
 
 
             </div>
@@ -898,6 +910,8 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
 
 
      channel.bind('portal-event', function(msg) {
+       console.log('portal-event');
+       console.log('portal-event');
        socketManager.parsePortalEvent(msg);
      });
 
@@ -1062,15 +1076,17 @@ $('#onboard-class-btn').click(function(){
 
 $('.schedule-button').click(function(){
   $('.schedule-card').addClass('enabled');
-});
+})
 $('#schedule-close-button').click(function(){
   $('.schedule-card').removeClass('enabled');
 });
+
 
 $(".flatpickr").flatpickr({
     enableTime: true,
     dateFormat: "Y-m-d H:i",
 });
+
 
 </script>
 

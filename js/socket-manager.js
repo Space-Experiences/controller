@@ -5,6 +5,7 @@ var SocketManager = function(){
   this.parsePortalEvent = function(msg){
 
     try{
+      console.log('msg.data.type = ' + msg.data.type);
     if(msg.data.type == 'responseAirtableClassData'){
       //...
       classData = msg.data.val; // Set array
