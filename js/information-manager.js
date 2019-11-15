@@ -32,6 +32,10 @@ var PortalStateView = function(){
     setTemp:$('.climate-data[climate-info-type="current"][climate-name="setTemp"]')
   };
 
+  var scheduledClassElems = {
+    calendarIcon:$('#scheduled-class-calendar-icon')
+  };
+
 
 
   this.returnPortalState = function(){
@@ -64,6 +68,7 @@ var PortalStateView = function(){
 
 
       _this.updatePortalClimate();
+      _this.updatePortalScheduledClassStatus();
 
   //  }
 
@@ -204,6 +209,31 @@ var PortalStateView = function(){
   }
 
   this.waitForResponseListener = function(callback){
+
+  }
+
+
+  this.updatePortalScheduledClassStatus = function(){
+
+      if(portalState.scheduledClassId != false){
+        $(scheduledClassElems.calendarIcon).addClass('scheduled-class-exists');
+
+        // Display scheduled events.
+        $('#existing-schedule-event-class-id').text(portalState.scheduledClassId);
+        $('#existing-schedule-event-datetime').text(portalState.scheduledClassTime);
+        $('#delete-schedule-event-button').show();
+        $('#save-schedule-event-button').hide();
+        $('#review-schedule-event').show();
+        $('#add-schedule-event').hide();
+        $('.schedule-button').addClass('disabled');
+      }else{
+        $(scheduledClassElems.calendarIcon).removeClass('scheduled-class-exists');
+        $('#delete-schedule-event-button').hide();
+        $('#save-schedule-event-button').show();
+        $('#review-schedule-event').hide();
+        $('#add-schedule-event').show();
+        $('.schedule-button').removeClass('disabled');
+      }
 
   }
 

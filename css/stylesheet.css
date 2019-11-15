@@ -971,6 +971,23 @@ color: gray;
 font-weight: 500;
 }
 
+#scheduled-class-calendar-icon{
+    color: #BDBDBD;
+}
+#scheduled-class-calendar-icon.scheduled-class-exists{
+  color:#484848;
+}
+#scheduled-class-calendar-icon.scheduled-class-exists:after{
+  content: " ";
+  height: 5px;
+  width: 5px;
+  background: blue;
+  border-radius: 20px;
+  opacity: 1;
+  top: 23px;
+  position: absolute;
+  left: 19px;
+}
 
 .full-card {
   text-align: left;

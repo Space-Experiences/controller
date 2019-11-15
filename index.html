@@ -74,7 +74,7 @@ more_vert
 
 
         <button class="material-icons mdc-top-app-bar__action-item--unbounded" id="toggle-lock-state-btn" style="opacity:0;" aria-label="lock"><i class="material-icons">lock</i></button>
-<button class="mdc-icon-button material-icons">calendar_today</button>
+<button class="mdc-icon-button material-icons" id="scheduled-class-calendar-icon">calendar_today</button>
       </section>
     </div>
 </header>
@@ -393,10 +393,11 @@ more_vert
             </div>
 
 
-            <div class="schedule-card disabled">
+<div class="schedule-card disabled">
               <button class="mdc-icon-button material-icons" title="Dismiss" id="schedule-close-button">close</button>
 
-              <button class="mdc-button mdc-button--raised save-schedule-event-button small-action-button" id="save-schedule-event-button" style="background: blue;float: right;margin: 15px;" data-mdc-auto-init="MDCRipple">Save</button>
+      <button class="mdc-button mdc-button--raised save-schedule-event-button small-action-button" id="save-schedule-event-button" style="background: blue;float: right;margin: 15px;" data-mdc-auto-init="MDCRipple">Save</button>
+      <button class="mdc-button mdc-button--raised save-schedule-event-button small-action-button" id="delete-schedule-event-button" style="display:none;background: red;float: right;margin: 15px;" data-mdc-auto-init="MDCRipple">Delete</button>
 
 <div class="mdc-layout-grid__cell--span-12" style="  border-top: 1px solid #EEEEEE;" id="add-schedule-event">
     <ul class="mdc-list control-list">
@@ -418,6 +419,28 @@ more_vert
       </li>
     </ul>
   </div>
+
+
+  <div class="mdc-layout-grid__cell--span-12" style="display:none;pointer-events:none;border-top: 1px solid #EEEEEE;" id="review-schedule-event">
+      <ul class="mdc-list control-list">
+        <li class="mdc-list-item list-title" id="showdate">
+          Scheduled class
+        </li>
+        <li class="mdc-list-item" tabindex="0">
+          <label class="mdc-list-item__text">Class ID</label>
+          <span class="mdc-list-item__meta data-info" id="existing-schedule-event-class-id">--</span>
+        </li>
+        <li class="mdc-list-item">
+          <label class="mdc-list-item__text">Date and time</label>
+          <span class="mdc-list-item__meta" id="existing-schedule-event-datetime">
+            --
+          </span>
+        </li>
+      </ul>
+    </div>
+
+
+
 
 </ul>
 <!--
@@ -768,11 +791,8 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
       nextClassCountdown:"...", // If class is about to start, how much time until next class
       classSchedule:[], // Schedule of upcoming classes
       climate:{f:0,h:0,setTemp:0},
-      scheduledClass:{
-        startClassJob:false,
-        startHeatJob:false,
-        startClassId:false
-      }
+      scheduledClassId:false,
+      scheduledClassTime:false
     };
     var socketManager = new SocketManager();
 
@@ -1107,10 +1127,21 @@ $('#onboard-class-btn').click(function(){
 
 
 // Scheduling.
-
 $('.schedule-button').click(function(){
-  $('.schedule-card').addClass('enabled');
-})
+  if($(this).hasClass('disabled')){
+    notification('Scheduled class already exists.','error');
+  }else{
+    $('.schedule-card').addClass('enabled');
+  }
+});
+$('#scheduled-class-calendar-icon').click(function(){
+  if($(this).hasClass('scheduled-class-exists')){
+    $('.schedule-card').addClass('enabled');
+  }else{
+    notification('No scheduled classes');
+  }
+
+});
 $('#schedule-close-button').click(function(){
   $('.schedule-card').removeClass('enabled');
 });
@@ -1137,8 +1168,6 @@ function scheduleEvent(eventDate,_classID,_recordId){
                                   classRecordId:_recordId,
                                    dateAndTime:eventDate}
                                  });
-
-
 }
 
 
@@ -1154,6 +1183,7 @@ var dateTime = new Date(document.getElementById("datetime").value);
     console.log(dateTime);
     notification('Class scheduled for ' + dateTime,'success');
     scheduleEvent(dateTime,classID,recordId);
+
     $('#schedule-close-button').click();
     appBarBackButton.click();
     showScreen('home','Portal');
@@ -1162,6 +1192,23 @@ var dateTime = new Date(document.getElementById("datetime").value);
 
   }else{
     notification('No date selected.','error');
+  }
+});
+
+
+$('#delete-schedule-event-button').click(function(){
+  var txt;
+  var r = confirm("Are you sure you want to delete this class?");
+  if (r == true) {
+    channel.trigger('client-event', {eventType:'GET',
+                                     value:'deleteScheduledClass',
+                                     params:{}
+                                   });
+    notification('Class deleted','success');
+    $('#schedule-close-button').click();
+  } else {
+    //.. do nothing
+
   }
 });
 
