@@ -69,6 +69,8 @@ var PortalStateView = function(){
 
       _this.updatePortalClimate();
       _this.updatePortalScheduledClassStatus();
+      _this.updateTemperatureSwitchStatus();
+      _this.updatePortalLightStatus();
 
   //  }
 
@@ -235,6 +237,26 @@ var PortalStateView = function(){
         $('.schedule-button').removeClass('disabled');
       }
 
+  }
+
+  this.updateTemperatureSwitchStatus = function(){
+    if(portalState.heatIsOn == true){
+      $('.heat-switch').addClass('mdc-switch--checked');
+      $('.heat-switch').attr('data-is-active',1);
+    }else{
+      $('.heat-switch').removeClass('mdc-switch--checked');
+      $('.heat-switch').attr('data-is-active',0);
+    }
+  }
+
+  this.updatePortalLightStatus = function(){
+    if(portalState.lightIsOn == true){
+      $('.light-switch').addClass('mdc-switch--checked');
+      $('.light-switch').attr('data-is-active',1);
+    }else{
+      $('.light-switch').removeClass('mdc-switch--checked');
+      $('.light-switch').attr('data-is-active',0);
+    }
   }
 
 };
@@ -654,6 +676,18 @@ function handleSwitchEvent(switchName,value){
     }
 }
 
+function confirmTurnOnWemos(){
+
+  var r = confirm("Turn on the wemos?");
+  if (r == true) {
+    channel.trigger('client-event', { type: 'pusher', value: 'wemosOn' });
+    $('.heat-switch').addClass('mdc-switch--checked');
+  } else {
+    //.. do nothing
+    $('.heat-switch').removeClass('mdc-switch--checked');
+  }
+}
+
 $('.mdc-switch').click(function(){
 
 //data-switch="togglePortalLight" data-active-value="enablePortalLight" data-inactive-value="disablePortalLight" data-is-active="false"
@@ -678,8 +712,16 @@ $('.mdc-switch').click(function(){
 
          console.log('new switch value: ' + !!isActive);
 
-         channel.trigger('client-event', { type: 'pusher', value: sendValue });
-
+         if(sendValue == "wemosOn"){ // Trigger all events except wemosOn.
+           confirmTurnOnWemos();
+         }
+         else{
+           channel.trigger('client-event', { type: 'pusher', value: sendValue });
+         }
          handleSwitchEvent($(this).attr('data-switch'),sendValue);
+
+         if(sendValue == "wemosOff"){
+           $('.heat-switch').removeClass('mdc-switch--checked');
+         }
 
 });

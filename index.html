@@ -259,7 +259,7 @@ more_vert
   <li class="mdc-list-item" role="switch" aria-checked="false">
     <label class="mdc-list-item__text" for="demo-list2-switch-item-1">Light</label>
     <span class="mdc-list-item__meta">
-      <div class="mdc-switch" data-mdc-auto-init="MDCSwitch" data-type="pusher" data-switch="togglePortalLight" data-active-value="enablePortalLight" data-inactive-value="disablePortalLight" data-is-active="0" >
+      <div class="mdc-switch light-switch" data-mdc-auto-init="MDCSwitch" data-type="pusher" data-switch="togglePortalLight" data-active-value="enablePortalLight" data-inactive-value="disablePortalLight" data-is-active="0" >
         <div class="mdc-switch__track"></div>
         <div class="mdc-switch__thumb-underlay">
           <div class="mdc-switch__thumb">
@@ -275,7 +275,7 @@ more_vert
   <li class="mdc-list-item" role="switch" aria-checked="true" tabindex="0">
     <label class="mdc-list-item__text" for="demo-list2-switch-item-2">Humidifiers & Space Heaters</label>
     <span class="mdc-list-item__meta">
-      <div class="mdc-switch" data-mdc-auto-init="MDCSwitch" data-type="pusher" data-switch="toggleTemperature" data-active-value="wemosOn" data-inactive-value="wemosOff" data-is-active="0" >
+      <div class="mdc-switch heat-switch" data-type="pusher" data-switch="toggleTemperature" data-active-value="wemosOn" data-inactive-value="wemosOff" data-is-active="0" >
         <div class="mdc-switch__track"></div>
         <div class="mdc-switch__thumb-underlay">
           <div class="mdc-switch__thumb">
@@ -792,7 +792,9 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
       classSchedule:[], // Schedule of upcoming classes
       climate:{f:0,h:0,setTemp:0},
       scheduledClassId:false,
-      scheduledClassTime:false
+      scheduledClassTime:false,
+      lightIsOn:false,
+      heatIsOn:false
     };
     var socketManager = new SocketManager();
 
@@ -1006,12 +1008,13 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
    //const select = new MDCSelect(document.querySelector('.mdc-select'));
 
 var delaySelect = mdc.select.MDCSelect.attachTo(document.querySelector('.mdc-select'));
-mdc.autoInit();
 
 
 var loadProgressBar = mdc.linearProgress.MDCLinearProgress.attachTo(document.querySelector('.mdc-linear-progress'));
 loadProgressBar.initialize();
 loadProgressBar.close();
+
+mdc.autoInit();
 
 
 // Top bar menu MDC init

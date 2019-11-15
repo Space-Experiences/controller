@@ -939,7 +939,7 @@ opacity: 1;
 }
 
 .schedule-card.disabled{
-  top:110%;
+  top:140%;
   transition: top .25s 0s;
   pointer-events: none;
 }
