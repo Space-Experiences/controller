@@ -948,6 +948,10 @@ opacity: 1;
   pointer-events: all;
 }
 
+#review-schedule-event{
+  margin: 15px;
+}
+
 
 .schedule-card .full-card_inner{border: 1px solid;margin: 15px;padding: 0px;}
 .schedule-card h2[info="classID"]{line-height: 0;font-size: 20px;}
