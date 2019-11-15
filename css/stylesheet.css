@@ -5,7 +5,10 @@
   font-size: 16px;
 }
 
-html {}
+html {
+
+  overflow: hidden;
+}
 
 html.dark:root {
   background: rgb(33, 33, 33);
