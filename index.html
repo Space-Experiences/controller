@@ -306,7 +306,7 @@ more_vert
         Portal Status
       </li>
       <li class="mdc-list-item">
-        <button data-type="pusher" data-value="resetPortalState">Reset</button>
+        <button data-type="pusher" data-value="resetPortalState" id="reset-portal-state-button">Reset</button>
       </li>
     </ul>
   </div>
@@ -1227,6 +1227,12 @@ $('#delete-schedule-event-button').click(function(){
 });
 
 
+$('#reset-portal-state-button').click(function(){
+  $(this).fadeOut(500);
+  setTimeout(function(){
+    window.location.reload(true);
+  },500);
+})
 
 
 </script>
