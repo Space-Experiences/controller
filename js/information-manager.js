@@ -473,6 +473,9 @@ $('.full-card .start-button').click(function(){
   loadingOverlay(true);
   loadClass(classID,function(){
 
+    window.location.reload(true);
+
+/*
       loadingOverlay(false);
       appBarBackButton.click();
         $(appBarBackButton).unbind('click.back');
@@ -484,6 +487,7 @@ $('.full-card .start-button').click(function(){
         $(this).unbind('click.showcontrols');
         toggleNavigation(true);
       })
+      */
   });
 
 })

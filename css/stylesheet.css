@@ -828,7 +828,7 @@ body .navigation .mdc-tab {
   background-position: center;
   overflow: hidden;
   top: -56px;
-  background-size: 20%;
+  background-size: 40%;
   background-repeat: no-repeat;
   background-color: #2b2b2b;
   height: calc(100% + 56px);
