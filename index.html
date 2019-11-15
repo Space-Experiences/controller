@@ -767,7 +767,12 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
       classProgress:"...", // percentage complete for class (calculated on client side for time)
       nextClassCountdown:"...", // If class is about to start, how much time until next class
       classSchedule:[], // Schedule of upcoming classes
-      climate:{f:0,h:0,setTemp:0}
+      climate:{f:0,h:0,setTemp:0},
+      scheduledClass:{
+        startClassJob:false,
+        startHeatJob:false,
+        startClassId:false
+      }
     };
     var socketManager = new SocketManager();
 

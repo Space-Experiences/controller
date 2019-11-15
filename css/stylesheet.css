@@ -962,7 +962,13 @@ opacity: 1;
 }
 
 .scheduled-event{
-  
+
+}
+
+#schedule-event-class-id{
+  font-size: 18px;
+color: gray;
+font-weight: 500;
 }
 
 
@@ -1105,16 +1111,17 @@ body.dark #start-class-btn{
 .full-card .start-button {
   min-width: 49%;
   display: inline-block;
-  width: 98%;
+  width: 100%;
   margin: auto;
   min-height: 48px;
   font-weight: 600;
 }
 
 .full-card .schedule-button {
-  min-width: 49%;
+  min-width: 100%;
   margin-top: 0px;
   cursor: not-allowed;
+  height: 48px;
 }
 
 .portal-display {
