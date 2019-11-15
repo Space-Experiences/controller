@@ -1134,7 +1134,7 @@ $('.schedule-button').click(function(){
   if($(this).hasClass('disabled')){
     notification('Scheduled class already exists.','error');
   }else{
-    $('.schedule-card').addClass('enabled');
+    $('.schedule-card').show().addClass('enabled');
   }
 });
 $('#scheduled-class-calendar-icon').click(function(){

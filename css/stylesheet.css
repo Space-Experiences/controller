@@ -943,12 +943,14 @@ opacity: 1;
 
 .schedule-card.disabled{
   top:140%;
-  transition: top .25s 0s;
+  transition: all .25s 0s;
   pointer-events: none;
+opacity: 0;
 }
 .schedule-card.disabled.enabled{
   top:0%;
   pointer-events: all;
+  opacity: 1;
 }
 
 #review-schedule-event{
