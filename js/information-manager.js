@@ -569,7 +569,7 @@ var StartCountdown = function(){
       TweenMax.to(runner,_this.startTime,{color:"white",ease:Linear.easeNone});
       TweenMax.to(progress,_this.startTime,{x:"0%",ease:Linear.easeNone});
 
-        toggleNavigation(false);
+      toggleNavigation(false);
   }
 
   this.show = function(){

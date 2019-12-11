@@ -134,9 +134,9 @@ more_vert
                   <!-- live portal controls -->
                       <div class="portal-live-controls" style="display:none;">
                         <!--
-                        Onboard button
+                        Onboard button-->
                         <button class="mdc-button mdc-button--raised secondary-btn"   data-value="Onboard" data-type="pusher" class="mdc-button"   data-mdc-auto-init="MDCRipple" id="onboard-class-btn">Onboard</button>
-                      -->
+
                         <button class="mdc-button mdc-button--raised secondary-btn"   data-value="Start Class" data-type="pusher" data-mdc-auto-init="MDCRipple" id="start-class-btn">Start</button>
                     <!-- small start button -->
                     <!--<button class="mdc-button mdc-button--raised"   data-value="Start Class" data-type="pusher" class="mdc-button"   data-mdc-auto-init="MDCRipple" id="start-class-btn">Start</button>-->
@@ -307,6 +307,25 @@ more_vert
       </li>
       <li class="mdc-list-item">
         <button data-type="pusher" data-value="resetPortalState" id="reset-portal-state-button">Reset</button>
+      </li>
+    </ul>
+  </div>
+  <div class="mdc-layout-grid__cell--span-12">
+    <ul class="mdc-list control-list">
+      <li class="mdc-list-item list-title">
+        Studio LEDs
+      </li>
+      <li class="mdc-list-item">
+        <button data-type="pusher" data-value="turnLEDsOn" >Standby</button>
+      </li>
+      <li class="mdc-list-item">
+        <button data-type="pusher" data-value="onboardLEDs">Onboard</button>
+      </li>
+      <li class="mdc-list-item">
+        <button data-type="pusher" data-value="afterClassLEDs">After Class</button>
+      </li>
+      <li class="mdc-list-item">
+        <button data-type="pusher" data-value="turnLEDsOff" >Off</button>
       </li>
     </ul>
   </div>
@@ -1136,7 +1155,7 @@ $('html').toggleClass('dark');
 })
 
 $('#onboard-class-btn').click(function(){
-    countdown.setStartTime(140);
+    //countdown.setStartTime(140);
 })
 
 
