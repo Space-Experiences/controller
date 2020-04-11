@@ -1,4 +1,4 @@
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +29,7 @@
      end chartjs scripts -->
 
 
-<body class="top-bar-menu top-bar-back top-bar-neutral">
+<body class="top-bar-menu top-bar-back top-bar-neutral dark">
   <header class=" mdc-top-app-bar mdc-top-app-bar--fixed app-top-bar" data-mdc-auto-init="MDCTopAppBar">
     <div class="mdc-top-app-bar__row">
       <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
@@ -134,9 +134,9 @@ more_vert
                   <!-- live portal controls -->
                       <div class="portal-live-controls" style="display:none;">
                         <!--
-                        Onboard button-->
+                        Onboard button
                         <button class="mdc-button mdc-button--raised secondary-btn"   data-value="Onboard" data-type="pusher" class="mdc-button"   data-mdc-auto-init="MDCRipple" id="onboard-class-btn">Onboard</button>
-
+                        -->
                         <button class="mdc-button mdc-button--raised secondary-btn"   data-value="Start Class" data-type="pusher" data-mdc-auto-init="MDCRipple" id="start-class-btn">Start</button>
                     <!-- small start button -->
                     <!--<button class="mdc-button mdc-button--raised"   data-value="Start Class" data-type="pusher" class="mdc-button"   data-mdc-auto-init="MDCRipple" id="start-class-btn">Start</button>-->
@@ -809,7 +809,7 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
   <script>
 
 /* Working client connection to heroku server for websocket client authentication */
-  // Enable pusher logging - don't include this in production
+// Enable pusher logging - don't include this in production
 
     // Parse incoming messages from pusher socket.
     var classData = [];
@@ -831,8 +831,7 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
     var psm = new PortalStateView();
 
 
-    // Manage pub sub events.
-
+  // Manage pub, sub events.
     var EventBus = {};
     (function(q) {
         var topics = {}, subUid = -1;
@@ -970,6 +969,7 @@ navigator.serviceWorker && navigator.serviceWorker.register('./sw.js').then(func
 
          }
          setTimeout(function(){
+
            pageLoaded = true;
               if(portalState.state != 'classReady'){
                 if(portalState.state == 'loadingClass'){

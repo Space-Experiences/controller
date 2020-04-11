@@ -138,7 +138,7 @@ var PortalStateView = function(){
 
         setTimeout(function(){
         linearProgressCatch = EventBus.subscribe('responsePortalState',function(){
-  console.log('clearedLoadCatch')
+          console.log('clearedLoadCatch')
           clearTimeout(catchLoadingError)
           EventBus.unsubscribe(linearProgressCatch);
         });
