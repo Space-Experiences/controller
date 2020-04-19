@@ -1139,6 +1139,7 @@ function offlineStatus(callback = false){
  toggleClimateDisplay(false);
 
   var confirmCallback =  EventBus.subscribe('responsePortalState', function(){
+
     notification('Conencted to the Portal.','success');
     toggleClimateDisplay(true);
       if(callback){

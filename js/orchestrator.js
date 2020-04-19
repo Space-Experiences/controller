@@ -60,10 +60,17 @@ toggleClassControls(false);
 function setClassControls(type = 'hide') {
     if (type == 'showStart') {
         $('#pause-class-btn').hide();
-        $('#start-class-btn').show();
-        $('#start-delay-btn').show();
+
+          $('#start-delay-btn').show();
+        TweenMax.from('#start-clas-btn',.3,{scale:.8,opacity:0,onStart:function(){
+                $('#start-class-btn').show();
+                  $('#start-class-btn').text('Start');
+        }})
+        TweenMax.from('#start-delay-btn',.3,{opacity:0,onStart:function(){
+                $('#start-delay-btn').show();
+        }})
         $('#onboard-class-btn').show();
-        $('#start-class-btn').text('Start');
+
     }
     if (type == 'showPause') {
       $('#onboard-class-btn').hide();
