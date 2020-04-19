@@ -1191,6 +1191,16 @@ body.dark .full-card div.info-box{
     background-color:#1c1c1c!important;
 }
 
+body.dark .full-card div.info-box div{
+    background-color:#1c1c1c!important;
+}
+
+body.dark .full-card_actions{
+      background-color:#1c1c1c!important;
+}
+body.dark .full-card_content{
+  background: #1c1c1c;
+}
 .full-card .schedule-button {
   min-width: 100%;
   margin-top: 0px;
