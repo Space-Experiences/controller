@@ -25,6 +25,10 @@ body {
   background-color: #ffffff;
 }
 
+body.dark{
+      background: #252525;
+}
+
 body div {
   /* color:inherit; */
   /* background-color: inherit; */
@@ -206,7 +210,7 @@ body.top-bar-menu.top-bar-back #top-app-btn-back {
   background: white;
   clip-path: none;
   padding: 5px;
-  top: 56px;
+  top: 36px;
   padding-top: 16px;
   padding-top: 42px;
   box-shadow: rgb(234, 234, 234) 0px -5px 2px -4.5px inset, rgb(234, 234, 234) 0px 4px 2px -4.5px inset;
@@ -666,6 +670,12 @@ body.visual #pause-class-btn {
   max-width: 420px;
   height: 63px;
   bottom: 52px;
+  color: #2196F3 !important;
+  max-width: 420px;
+  height: 63px;
+  font-size: 21px;
+  font-weight: 600;
+  font-size: 1.1rem !important;
 }
 
 body.visual.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title {
@@ -679,6 +689,7 @@ body.visual.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title {
   transition: background-color .5s 0s;
   /* box-shadow: 0px -2px 0px -1.5px #BDBDBD inset; */
   box-shadow: 0px -2px 0px -1.5px #E0E0E0 inset;
+      width: calc(100% + 1px);
 }
 
 .main {
@@ -713,7 +724,7 @@ body.visual.top-bar-menu.top-bar-back.top-bar-neutral .top-app-bar-title {
 
 
 .navigation .mdc-tab__ripple{
-  display:none;
+
 }
 .navigation .mdc-tab-indicator .mdc-tab-indicator__content--underline{
   border-color: #03A9F4;
@@ -733,6 +744,7 @@ body.dark .mdc-tab--active .mdc-tab__text-label, .mdc-tab--active .mdc-tab__icon
 
 body .navigation .mdc-tab {
   height: 70px !important;
+  overflow: hidden;
 }
 
 .main.nav-disabled.nav-enabled .navigation {
@@ -834,15 +846,16 @@ body .navigation .mdc-tab {
   background-repeat: no-repeat;
   background-color: #2b2b2b;
   height: calc(100% + 56px);
+      background-color: #2b2b2b !important;
 }
 
 .loading-visual img {
-  width: 90%;
-  height: auto;
-  margin: auto;
-  margin-top: 19vh;
-  display: none;
-  position: relative;
+  width: 60%;
+      height: auto;
+      margin: auto;
+      margin-top: 31vh;
+      /* display: none; */
+      position: relative;
 }
 
 .class-list {
@@ -870,10 +883,10 @@ body .navigation .mdc-tab {
   border-radius: 3px;
   box-shadow: 0px 2px 0px -2px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 4px 15px 0px hsla(0, 0%, 17%, 0.12);
   transition: none;
-  margin: 20px 0px;
+  margin: 0px 0px;
   font-size: 1rem;
-  border: 1px solid #ececec;
-  min-height: 208px;
+  border-bottom: 1px solid #969696;
+  min-height: 148px;
 }
 
 .class-card_headline {
@@ -1102,25 +1115,33 @@ font-weight: 500;
   white-space: normal;
   top: 20px;
   position: relative;
+
 }
 
 /* Dark mode */
 body.dark div, body.dark span {
-  background: #212121;
+  background: #2b2b2b;
   color: white !important;
   border-color: #000000;
   /* background: inherit; */
+  background: #252525;
 }
 
 body.dark .class-card {
   border-radius: 0px;
   box-shadow: none;
-  border-color: #000000;
-  background: #252525;
+  border-color: #424242;
+
+      background-color: #1c1c1c;
 }
 
 body.dark .mdc-card__primary-action:first-child, body.dark .mdc-card__primary-action div {
   background: inherit;
+}
+
+.class-card_action{
+  background: none !important;
+  background-color:none !important;
 }
 
 body.dark #top-app-btn-back {
@@ -1129,7 +1150,8 @@ body.dark #top-app-btn-back {
 
 body.dark .mdc-button--raised:not(:disabled), .mdc-button--unelevated:not(:disabled) {
   background: rgb(255, 255, 255);
-  color: #2196F3;
+  /* color: #2196F3 !important; */
+  /* font-size: 1.3rem; */
 }
 body.dark #start-class-btn{
   color:black !important;
@@ -1153,8 +1175,20 @@ body.dark .start-button{
   display: inline-block;
   width: 100%;
   margin: auto;
-  min-height: 48px;
+  min-height: 60px;
   font-weight: 600;
+  font-size: 1rem !important;
+}
+
+body.dark .full-card{
+  background-color:#1c1c1c!important;
+}
+body.dark .full-card_inner{
+  background-color:#1c1c1c!important;
+}
+
+body.dark .full-card div.info-box{
+    background-color:#1c1c1c!important;
 }
 
 .full-card .schedule-button {
@@ -1162,6 +1196,7 @@ body.dark .start-button{
   margin-top: 0px;
   cursor: not-allowed;
   height: 48px;
+  min-height: 60px;
 }
 
 .portal-display {
@@ -1181,7 +1216,7 @@ body.dark .start-button{
 
 .screen[data-screen-title="Portal"] .portal-display {
   text-align: center;
-  margin-top: calc(50px + 5vh);
+  margin-top: calc(50px + 11vh);
 }
 
 .pd-info {}
@@ -1446,7 +1481,7 @@ body.dark .start-button{
 
 .screen-info{position: fixed;height: 100%;width: 100%;left: 0px;right: 0px;background: white;color: #424242;top: 0px;z-index: 1000;padding: 54px 0px;text-align: center;font-size:24px;transition: top .15s 0s;}
 .screen-info.disabled{top: 100%;}
-.screen-info.disabled.enabled{top: 0%;}
+.screen-info.disabled .enabled{top: 0%;}
 
 .info-header{
 margin-top:20%;

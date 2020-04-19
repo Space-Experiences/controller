@@ -312,7 +312,7 @@ function toggleClimateCard(command) {
 }
 
 $(climateDisplay).click(function(){
-toggleClimateCard(true);
+//toggleClimateCard(true);
 });
 
 var rotationSnap = 6;

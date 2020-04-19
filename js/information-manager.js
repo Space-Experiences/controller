@@ -270,7 +270,7 @@ function returnClassCard(info){
     var h = '<div data-mdc-auto-init="MDCRipple" class="mdc-card class-card" data-mdc-auto-init="MDCCard" data-class-id="'+info.classID+'" id="class-card--'+genUid()+'" data-type="pusher" data-value="Prepare Class B102">';
       h+='<div class="mdc-card__primary-action class-card_action" tabindex="0">';
         h+='<div class="mdc-card__media mdc-card__media--square class-card_media"></div>';
-        h+='<div class="">';
+        h+='<div class="" style="pointer-events:none;background:none;background-color:none">';
           h+='<h2 class="demo-card__title mdc-typography mdc-typography--headline6 class-card_headline">'+info.classID+'</h2>';
           h+='<h3 class="demo-card__subtitle mdc-typography mdc-typography--subtitle2 class-card_subtitle">'+info.instructorName+'</h3>';
           h+='   <div class="demo-card__secondary mdc-typography mdc-typography--body2">'+info.description+'</div>';
@@ -339,14 +339,14 @@ $( event.target ).addClass( "tap" );
         $('.class-card').on({ 'touchstart' : function(){
           console.log('class-card mousedown, dragging = ' + dragging)
           if(dragging == false){  }
-            TweenMax.to(this,.1,{scale:.95});
+            TweenMax.to(this,.1,{backgroundColor:"#333333"});
             touchingCard = $(this);
 
         }});
         $(document).on('touchmove', function() {
             detectTap = false; //Excludes the scroll events from touch events
             if(touchingCard){
-                  TweenMax.to('.class-card',.1,{scale:1});
+                  TweenMax.to('.class-card',.1,{backgroundColor:"#1c1c1c"});
             }
         });
 
@@ -354,7 +354,7 @@ $( event.target ).addClass( "tap" );
 
         $('.class-card').on('mouseup',function(){
 
-          TweenMax.to(this,.4,{scale:1});
+          TweenMax.to(this,.4,{backgroundColor:"#1c1c1c"});
             if(dragging == false){
               TweenMax.to(this,.1,{scale:1.05});
               TweenMax.to(this,0,{scale:1,delay:.2})
@@ -408,9 +408,9 @@ if(fullCardShowing == false){
 
   TweenMax.to(fcoverlay,.05,{opacity:.3});
 
-  TweenMax.from(fc,.3,{height:abs.height,
+  TweenMax.from(fc,.5,{height:abs.height,
     top:abs.top - 60,
-    left:16,//abs.left,
+    left:0,//abs.left,
     width:abs.width,
     ease:Power3.easeOut,
     borderRadius:2,
